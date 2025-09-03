@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="Chatbot.css" />
+</head>
+<body><button id="chatbot-btn">💬 Chat</button>
+    <div id="chatbot-container">
+        <div id="chatbot-header">AI Chatbot <span id="close-btn" style="float:right; cursor:pointer;">&times;</span></div>
+        <div id="chatbot-messages"></div>
+        <div id="chatbot-input">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById('chatbot-btn').addEventListener('click', function() {
+            document.getElementById('chatbot-container').style.display = 'flex';
+            this.style.display = 'none';
+        });
+
+        document.getElementById('close-btn').addEventListener('click', function() {
+            document.getElementById('chatbot-container').style.display = 'none';
+            document.getElementById('chatbot-btn').style.display = 'block';
+        });
+
+        document.getElementById('send-btn').addEventListener('click', function() {
+            let userInput = document.getElementById('user-input').value;
+            if (userInput.trim() !== "") {
+                let chatMessages = document.getElementById('chatbot-messages');
+                let userMessage = `<div><strong>You:</strong> ${userInput}</div>`;
+                chatMessages.innerHTML += userMessage;
+                document.getElementById('user-input').value = "";
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        });
+    </script>
+
+</body>
+</html>
+

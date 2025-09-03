@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href ="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script -->
+</head>
+<body>
+<!--
+<div class="wid">
+    <div class="container">
+        <div class="cardSurvey" >
+            <div class="card-content"> -->
+
+                <section class="surveySection">
+                <form id="surveyForm">
+                     <h2 style="text-align:center"> Survey Form </h2>
+                    <label id="labcanName"> Candidate's Name </label>
+                        &emsp;<input type = "text" id = "candidatename" placeholder="" style="width: 200px; height: 30px; font-size: 12px; margin-left: 14px;" > <br />
+                    <label id="labcanEmail">Email Address  </label>
+                    &emsp;&emsp;<input type = "text" id = "candidateemail" placeholder="" style="width: 200px; height: 30px; font-size: 12px; margin-left: 20px;" > <br />
+                     <label id="labcanCollege">College / University </label>
+                    &emsp;<input type = "text" id = "college"  placeholder="" style="width: 200px; height: 30px; font-size: 12px;margin-left: 0px;"> <br /><br />
+
+                    <div class="radio-group">
+                        <label id="labgrad">Graduation Year <span style="color:red;">*</span></label><br>
+                        <input type="radio" name="gradYear" value="May 2024" required> May 2024<br />
+                        <input type="radio" name="gradYear" value="Dec 2024" required> Dec 2024 <br />
+                        <input type="radio" name="gradYear" value="May 2024" required> May 2025<br />
+                        <input type="radio" name="gradYear" value="Dec 2025" required> Dec 2025<br>
+                        <input type="radio" name="gradYear" value="Graduate" required> Graduate
+                    </div>
+                    <br />
+                     <div class="radio-group">
+                        <label id="labposition">Currently seeking a position <span style="color:red;">*</span></label><br>
+                        <input type="radio" name="position" value="Regular" required> Regular<br />
+                        <input type="radio" name="position" value="Intern" required> Intern <br>
+                    </div>
+                    <br / >
+                    <div class="radio-group">
+                        <label id ="labworkauth">Which work authorization do you currently have? <span style="color:red;">*</span></label><br>
+                        <input type="radio" name="workauth" value="CPT" required> CPT <br />
+                        <input type="radio" name="workauth" value="OPT" required> OPT  <br>
+                    </div>
+                    <br />
+                    <div>
+
+                    <label id ="labsalary" > What salary range are you expecting for the role you applied for? </label>
+                        &emsp;<input type = "text" id = "salary" placeholder="" style="width: 200px; height: 30px; font-size: 12px; margin-left: 0px;" > <br />
+                    </div>
+                    <br />
+                    <div>
+                    <label id ="laboffered">If offered this position, when would you be available to start? </label>
+                        &emsp;&emsp;<input type = "text" id = "offered" placeholder="" style="width: 200px; height: 30px; font-size: 12px; margin-left: 8px;" > <br />
+                    </div>
+                    <br />
+                    <div>
+                  <label id ="labtimeframe">  If you are joining as an Intern, mention the timeframe of your availability. (Start_date to End_date) </label>
+                        &emsp;<input type = "text" id = "timeframe" placeholder="" style="width: 200px; height: 30px; font-size: 12px; margin-left: 8px;" > <br />
+                    </div>
+                     <div>
+                         <p style="font-size:13px"> <strong> Disclaimer: </strong><br />
+                         <p style="font-size:13px"> <strong> Disclaimer: </strong><br />
+                    NOTE: At the moment, successful intern candidates yet to obtain work authorization are given 10-12 week orientation opportunity during which they engage in various development activities, assuming 360 degree immersion responsibilities that prepare them to assume a full time, compensated hire basis upon completion of their respective academic programs.
+                         </p>
+                    </div>
+
+                    <div class = "form-group">
+                        <input type="button" id="btnClear" name="Clear" value="Clear" size="20" class="button"  style="width: 75px; height: 28px; font-size: 14px; margin-left: 70px;">
+                        <input type="button" id="btnSubmit" name="Submit" value="Submit" size="10" class="button" style="width: 75px; height: 28px; font-size: 14px; margin-left: 30px;">
+                    </div>
+                    <p id = "output"> </p>
+                </form>
+                </section>
+
+      <!--      </div>
+        </div>
+    </div>
+</div> -->
+
+<script src="Survey.js"></script>
+</body>
+</html>

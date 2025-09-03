@@ -1,0 +1,500 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<script src="script1.js" defer></script>
+
+    <form id="form1" runat="server">
+         <div class="wid">
+
+        <a id="home-link" href="#" class="Home"> Home </a> <br />
+        <h1 class="hdrCol"> Path: Generate Smarter Generative AI Outputs </h1>
+
+<h2> Vector Search and Embeddings</h2>
+This course introduces Vertex AI Vector Search and describes how it can be used to build a search application with large language model (LLM) APIs for embeddings. The course consists of conceptual lessons on vector search and text embeddings, practical demos on how to build vector search on Vertex AI, and a hands-on lab.
+
+    <ul id="List"> 
+        <li><a href ='#WhyVS'> WHY USE VECTOR SEARCH? </a></li>
+        <li><a href ='#GenerateEmbeddings'> GENERATE EMBEDDINGS </a></li>
+        <li><a href ='#CreateVS'> CREATE VECTOR SEARCH </a></li>
+        <li><a href ='#VSInAction'> VECTOR SERACH IN ACTION </a></li>
+        <li><a href ='#VSWithRAG'> VECTOR SEARCH WITH RAG </a></li>
+    </ul>
+<h3 id="WhyVS" class="hdrCol">WHY USE VECTOR SEARCH?</a>  </h3>
+        
+
+Hello everybody.<br />
+Welcome to the course on Vector Search and embeddings. <br />
+In this course, you uncover the secrets of Google search. <br />
+Specifically, you explore an advanced search technology called Vector Search and learn to build your own search engine on Google Cloud.<br />
+Finding the most relevant information quickly and efficiently is always a challenge.<br />
+Do you remember the days before Google or BG when you couldn't search the web?<br />
+Search engines revolutionized the way people find information.<br />
+In the AG era, After Google, Google has been constantly researching and upgrading its search technology to provide access to the world's information with just one click.<br />
+The good news is that you can now create a Google-like search engine for your organization, or integrate Google-like search functionality into your applications with Google Cloud.<br />
+To know how, you first learn what Vector Search is.<br />
+How it differs from traditional keyword search and how it works at a high level.<br />
+Then you concentrate on the two key technologies that underpin Vector Search,
+<ol> 
+    <li>Embeddings, which convert text and other data into vectors that contain semantic meaning.<br /></li>
+    <li>Vector Search, which creates an index vector space to enable fast and scalable search.<br /></li>
+</ol>
+After that, you go through the demos to build Vector Search on Google Cloud by using both the user interface UI and code.<br />
+Finally, you explore a difficult problem with large language models known as hallucination, and learn how vector search can help to solve it using an architecture called RAG, Retrieval Augmented Generation.<br />
+
+So what is Vector Search?<br />
+You may be using it every day without even realizing it. Consider this.<br />
+<li> You wanna find a product, but you only have a vague idea of what it looks like, and don't know the name or brand.<br /></li>
+<li> Or you remember a lyric from a song, but you wanna know the name of the song and the artist as well as similar songs.</li>
+<li> Or you look for a vacation recommendation based on a few conditions like location, budget, and time.</li>
+For enterprises, do you wanna develop visual search, natural language search, and recommenders to both manage knowledge internally and improve the customer and partner experience externally?<br />
+For example, 
+<li> Externally, you could help customers find similar products through images, search for products through conversations and recommend products. </li>
+<li> Internally, you could help knowledge workers search for relevant documentation, find subject matter experts, SMEs, and discover use cases across teams. </li>
+<br />
+Vector Search, a technology that focuses on semantic similarity, can be used to perform all of these tasks. It has the ability to search through billions of semantically similar or related items.<br />
+<br />Why is Vector Search important? <br />
+Let's look at how it differs from the traditional search technologies like keyword search.<br />
+Keyword search follows a process that begins with crawling the web, indexing keywords and then serving the results by retrieval and ranking. The data is stored in tables and the search is only effective to a certain extent.<br />
+As people increasingly demand more sophisticated search capabilities, they expect search engines to be more intelligent and have a better understanding of their intent.
+They also want search engines to perform a wider range of tasks such as generating summaries and making recommendations.
+However, traditional search technology faces a few challenges.<br />
+ <ul>
+     <li> It can't understand the intention and context of a query.<br /></li>
+     <li> It does not support multimodal search.<br /></li>
+     <li> And it lacks domain specificity.<br /></li>
+ </ul>
+To address these challenges, Vector Search technology converts data into a special vector called embeddings, which contains semantic meaning.<br />
+The benefits of Vector Search are:<br />
+<ul>
+    <li>Semantic understanding: Vector Search can find results that are similar in meaning to a query even if they do not contain the exact same keywords.
+        This is useful for natural language queries where users may not be using precise or technical language.</li>
+    <li> Multimodal search capabilities: Vector Search can be applied to various data types, including text, images, and audio.
+        This enables multimodal search applications where users can search for information using multiple types of data.</li>
+    <li>Personalization and recommendation: Vector Search can be used to personalize search results and recommendations by leveraging its context understanding capability.
+        This can help users find more relevant and interesting information.</li>
+    <li> In addition, Vector Search is a critical component in generative AI applications to help retrieve information fast and efficiently. It is becoming one of the most important components in AI and machine learning services.</li>
+</ul>
+
+Overall, Vector Search technology is transforming the way people engage with information. It allows for more relevant, efficient, and personalized search experiences across a wide range of applications.
+As data volumes continue to grow and user expectations for search become more sophisticated, Vector Search is poised to play an increasingly crucial role in the future of search.<br />
+So how does Vector Search work? Let's explain the process at a high level.<br />
+<ol>
+    <li> Encode data into vectors by using AI models called, embedding models.</li>
+    <li> Create an index to enable fast and scalable Vector Search.</li>
+    <li> Search the vector space to find information that is similar to the query.</li>
+</ol>
+A slightly more detailed view from two perspectives.<br />
+        <ol>
+    <li> Build the Vector Search at development time. This involves generating embeddings, building and deploying an index.</li>
+    <li> Query the vector space at serving time. This involves encoding a query, searching the vector space and serving results.</li>
+</ol>
+Let's use a book index as an analogy.<br />
+<ol>
+    <li> Encoding data is like generating a list of keywords from the book.</li>
+    <li> Indexing is like creating an indexing system such as pairing each keyword with pages.</li>
+    <li> Searching is like finding the keyword based on a search mechanism such as alphabetical order.</li>
+</ol>
+To accomplish this process, you must overcome two major obstacles.<br />
+        <ol>
+    <li> How to encode data? More specifically, how to convert multimodal data to a representation that captures semantic meanings? </li>
+    <li> How to index and search data? More specifically, how to build a search space that enables fast and efficient search?</li>    
+</ol>
+To address these challenges, let's explore the technologies of embeddings and vector search, respectively.<br />
+These two technologies also lay the foundation for many other modern AI and machine learning applications such as large language models and generative AI.<br />
+<a href ='#List'> Back to List</a>
+<h3 id="GenerateEmbeddings" class="hdrCol">GENERATE EMBEDDINGS</h3>
+How to generate embeddings.<br />
+The first technology you explore is embeddings, which address the first issue of encoding data into a representation that captures semantic meaning.<br />
+Although multimodal data, including text, images, audio, video, and code can be converted to vector embeddings, let us use text embeddings as an example.<br />
+The challenge is, again, how to represent text in a numeric format while retaining its meaning.<br />
+This challenge can be further divided into two sub problems.<br />
+        <ul>
+            <li> how do you turn text to numbers that retain meaning?<br />
+                For example, the numbers should indicate relationships between words such as similarity and difference.</li>
+            <li> how do you turn text into numbers that can be fed into a machine learning model?<br />
+                For example, a machine learning model normally requires the input to be a relatively dense matrix or vectors. An overly sparse matrix might lead to model overfitting.</li>
+        </ul>
+<p>
+    Any ideas for how to resolve this?
+</p>
+<p>
+    Let's talk about text representation techniques to  set the stage for vector
+    embeddings.
+</p>
+<p>
+    From simple approaches to state-of-the-art  techniques, including basic
+    vectorization and word embeddings.
+</p>
+<p>
+    Let's start with the basic vectorization techniques.
+</p>
+<p>
+    For example, an intuitive technique called
+    <strong>
+        one-hot  encoding
+    </strong>
+    . With this technique, you one-hot encode each word in your  vocabulary.
+</p>
+<p>
+    Consider the sentence, "A dog is chasing a  person."
+</p>
+<p>
+    After tokenization, which divides the sentence into  smaller, digestible
+    units and pre-processing, which leaves the root and  keywords, the sentence
+    can be represented by three words: Dog, chase, person.
+</p>
+<p>
+    Assume you have a vocabulary that includes six  words: Dog, chase, person,
+    my, cat, and run, which can easily be tens of  thousands.
+</p>
+<p>
+    You then place a 1 in the position that corresponds  to the word and zeros
+    in the rest of the positions.
+</p>
+<p>
+    By conducting one-hot encoding, you tune each word  to a vector and convert
+    the sentence, “A dog is chasing a person” into a matrix  that a machine
+    learning model ingests.
+</p>
+<p>
+    What are the <strong>benefits</strong> of one-hot encoding?
+</p>
+<p>
+    ·        It's intuitive to understand and easy to  implement.
+</p>
+<p>
+    However, let's also acknowledge the disadvantages. Recall  the two sub
+    challenges of text representation. One-hot encoding has two main  issues,
+    among others.
+</p>
+<p>
+    1.      This representation does not convey any  relationships between
+    words.<br />
+    2.      The generated matrix is high dimensional and  sparse, which leads to
+    overfitting of the machine learning model.
+</p>
+<p>
+    What does it mean?
+</p>
+<p>
+    The dimensions of each vector depend on the size of  the vocabulary, which
+    can easily be tens of thousands. Also, most of the values  of each vector
+    are zeros, which means that this is a super sparse  representation.
+</p>
+<p>
+    Imagine you have 10,000 words in the vocabulary. You  can create a matrix
+    where 99.99% of the elements are zero. This results in a  large sparse
+    matrix, which can lead to computational waste and model  overfitting.
+</p>
+<p>
+    To solve these problems, you explore a new approach  called word
+    <strong>
+        embeddings.
+    </strong>
+    
+</p>
+<p>
+    Let’s start with intuition to see how you can encode  text to numbers that
+    convey meanings using word embeddings. Let's ask the  question, how would
+    you describe a dog? How about their breeds?<br />
+    Physical stats such as height and weight, hair  color, and length.
+    Relationship to you, such as a family member or neighbor's  dog. Their
+    behaviors, like bark or quiet.<br />
+    You get the idea. You can easily think of at least  20 different dimensions
+    to describe a dog. How do you describe a word then?<br />
+    For example, the word Paris.<br /><br />
+    How do you convey the location, history, culture,  continent, art,
+    associated with this word by using quantitative measurements? You  can use
+    dimensions, and in math, a vector space.<br />
+    You can now generate an idea.
+</p>
+<p>
+    How about representing a word in a vector space with  dimensions to describe
+    its properties?<br />
+    Not only that, you want the distance between the  words to indicate the
+    semantic similarities between them.
+</p>
+<p>
+    For example, Paris and Tokyo are close to each  other, but far from apple.
+</p>
+<p>
+    Additionally, you want this representation to  capture the analogy between
+    words.
+</p>
+<p>
+    For example, the distance between Paris and Tokyo is  similar to the
+    distance between France and Japan.
+</p>
+<p>
+    Now you have Paris minus France plus Tokyo equals to  Japan.
+</p>
+<p>
+    Isn't it amazing to play with words in the same way  you play with numbers?
+</p>
+<p>
+    Word embedding is a technique to encode text into  meaningful vectors. The
+    technique lets you represent text with low dimensional,  dense vectors. You
+    don't need the vector size as big as 20,000, like in one-hot  encoding.
+    Instead, you have between single digit dimensions for small data sets  and
+    four digit dimensions for large data sets. Each dimension is supposed to
+    capture a feature of a word. A higher dimensional embedding captures
+    detailed  relationships between words. However, it takes more data and
+    resources to  train. Additionally, you don't have sparse vectors anymore.
+    The cells of a  vector in word embeddings normally contain values. More
+    importantly, the  vectors capture the relationships between words where
+    similar words have a  similar encoding. Word embedding is sometimes referred
+    to as distributed  representation, indicating that the meanings of a word
+    are distributed across  dimensions.
+</p>
+<p>
+    You now understand the idea of word embedding, but  how can you develop such
+    an encoding system to convert text to vectors?
+</p>
+<p>
+    Instead of manually specifying the values for the  embedding, you train a
+    neural network to learn those numbers. Neural networks  have been used to
+    train word embeddings, which include a variety of algorithms  or models such
+    as the popular Word2vec by Google, GloVe by Stanford, and  FastText by
+    Facebook.
+</p>
+<p>
+    Training on a large corpus typically requires a  great deal of computational
+    resources. Fortunately, you do not have to train  the neural networks
+    yourself. Instead, you can use pre-trained embedding models  by calling
+    APIs.
+</p>
+<p>
+    Consider the following code example to see how  simple it is to use
+    embedding APIs.
+</p>
+<p>
+    1.      After importing the embedding libraries, you  first need to specify
+    the name of the pre-trained embedding model that you want  to use, such as
+    textembedding-gecko and multimodalembedding, both provided by  Google. <br />
+    2.      You need to define the text input.<br />
+    3.      You need to get the embeddings.
+</p>
+
+
+<a href ='#List'> Back to List</a>
+<h3 id="CreateVS" class="hdrCol">CREATE VECTOR SEARCH </h3>
+Hello, everybody.<br />
+In this video, we are going to talk about how to create Vector Search.<br />
+Let's examine the next core technology, Vector Search.<br />
+Now that the embeddings are prepared, the list of terms is ready.<br />
+The next step is to create a book index.<br />
+In Vector Search, the challenge is how to index the vector space to enable fast and efficient search.<br />
+However, fast and scalable Vector Search isn't easy.<br />
+It contains two major challenges, among others.<br />
+How can you measure the distance between vectors, and how can you search vectors in a fast and scalable way?<br />
+Let's address the first issue.<br />
+How can you measure the distance between vectors?<br />
+Imagine you have a multi-dimensional vector space where visual detection is impossible.<br />
+How do you know that Paris and Tokyo are closer to each other than they are to Apple?<br />
+When building vector search on Google Cloud, you can choose from four widely used metrics to measure the distance between vectors.<br />
+The selection depends on various factors, with the embedding model being one of the primary considerations.<br />
+The first two metrics, Manhattan and Euclidean distance, measure the distance between the endpoints of the vectors.<br />
+The third metric, cosine distance, measures the angle between two vectors and defines the vector similarity in terms of directions.<br />
+The fourth metric, dot product distance, considers the similarity in terms of both the direction and the magnitude of two vectors.<br />
+First is Manhattan distance, also known as the L1 distance.<br />
+Manhattan distance calculates the distance between two points in a grid-like pattern, like the streets of Manhattan in New York City.<br />
+It is defined as the sum of the absolute differences between the corresponding coordinates of the two points, where one can only move along one axis at a time.<br />
+Next is Euclidean distance, also known as the L2 or square distance.<br />
+Euclidean distance calculates the shortest distance between two points in a straight line.<br />
+It is defined as the square root of the sum of the squared differences between the corresponding coordinates of the two points.<br />
+Third is Cosine distance, which measures the similarity of two vectors in terms of their direction.<br />
+Cosine similarity is calculated by taking the cosine of the angle between the two vectors, where zero indicates that the vectors are completely aligned and one indicates that they are completely orthogonal.<br />
+Last is the dot product distance, also known as the inner product distance.<br />
+It is based on the projection of one vector onto another.<br />
+It considers the similarity between two vectors in terms of both their direction and magnitude.<br />
+Once you know how to measure the distance between two vectors, the next challenge is to efficiently find the similar vectors in the vast vector space.<br />
+Two search algorithms have seen extensive use: Brute-force, which is based on an accurate, exhaustive search approach, and TreeAh, which relies on an approximate tree search algorithm.<br />
+TreeAh stands for shallow tree and Asymmetric Hashing.<br />
+It is widely used in a production environment.<br />
+The brute-force algorithm typically consists of three steps.<br />
+Step one, calculate the distances from the query to the other vectors in the vector space.<br />
+Step two, sort all distances.<br />
+Step three, find the top k nearest vectors.<br />
+Because the size of the database can easily be in the millions or even billions, exhaustive search is impractical and the brute-force algorithm becomes a computational bottleneck.<br />
+The TreeAh algorithm accelerates search by using an approximate search technique called ANN, or approximate nearest neighbor.<br />
+ANN enables fast and scalable search with billions of embeddings by dividing the search space into multiple spaces,<br />
+indexing the spaces using a tree structure, and trading some accuracy for a significant speed-up over brute-force search.<br />
+In 2020, Google Research introduced ScaNN, which means Scalable Approximate Nearest Neighbor, a new ANN algorithm.<br />
+ScaNN is the foundation for many Google services, including Google Search, YouTube, and its recommendation system.<br />
+It is considered one of the best ANN algorithms in the industry, both in terms of accuracy and speed.<br />
+You can check the reading list for more information.<br />
+How does ScaNN enable fast and scalable Vector Search?<br />
+Let's uncover the secrets of Google Search.<br />
+Consider the brute-force complexity, which is O(N*d), where N is the number of vectors, and d is the number of dimensions.<br />
+To enhance Vector Search performance, you need to apply a combination of critical techniques, reduce the search space, also known as space pruning, and compress the vector size using data quantization.<br />
+Also, you need to increase ranking efficiency by integrating business logics.<br />
+To reduce the search space, ScaNN uses a multi-level tree search for space pruning.<br />
+The first step is to divide the vector space into hierarchical partitions, as shown on the right.<br />
+A search tree is then constructed to represent this structure, as shown on the left.<br />
+Each node in the tree represents the centroid, the center point of a partition.<br />
+Next, you select the partitions closest to the query.<br />
+The red squares represent vector spaces that are close to the query, while the yellow squares indicate the spaces that are far from the query and will then be pruned.<br />
+You start by searching from the root node, the query, then moving to the branches, the partitions, and finally to the leaves, the sub-partitions.<br />
+During this process, you prune the tree to eliminate irrelevant search space.<br />
+Last, you search for approximate data points within leaves, the most relevant sub-partitions.<br />
+The second technique is data quantization.<br />
+Data quantization is used to compress data points to save space and reduce indexing time.<br />
+For example, data quantization can be used to compress a nine-dimensional vector from nine floats to 12 bits.<br />
+The third technique is to incorporate business logic to retrieve only the data that is relevant.<br />
+For example, you can use a filter to find resorts in the United States and dresses in the color red.<br />
+From a technical perspective, this is known as restricting the search to a portion of the dataset.<br />
+ScaNN, Scalable Approximate Nearest Neighbor, is a combination of these techniques.<br />
+Vertex AI Vector Search is built on a similar, more advanced version of ScaNN.<br />
+Vertex AI Vector Search provides a fully managed similarity Vector Search service.<br />
+It was launched in 2021 under the name Matching Engine.<br />
+Powered by ScaNN and Vertex AI, the unified AI development platform, Vector Search is 30 to 50% less expensive than comparable services, while maintaining fast searching, lower latencies, and scaling to billions of vectors.<br />
+Thank you for watching.<br />
+Please check out the next lesson about Vector Search in action.<br />
+
+<br />        <a href ='#List'> Back to List</a>
+<h3 id="VSInAction" class="hdrCol">VECTOR SERACH IN ACTION</h3>
+Having grasped the concepts of embeddings and Vector Search, you can now build a search engine by using the Vector Search service on Google Cloud.<br />
+Vector Search is now available for developers on Vertex AI, Google's unified AI development platform.<br />
+Vertex AI is a fully managed service that is tightly integrated with Google Cloud's other services such as BigQuery, embedding APIs, and MLOps (Machine Learning Operations).<br />
+This makes it easy to run queries and build indexes.<br />
+Vector Search provides excellent performance with high scalability and reliability, which makes it a good fit for Google Scale Enterprise services.<br />
+You can quickly create a production machine learning pipeline from data extraction, embedding generation, index creation, to endpoint deployment.<br />
+There are three ways to set up your own Vector Search project and interact with Vector Search on Google Cloud.<br />
+No-code using the user interface (UI) in the Vertex AI console on Google Cloud.<br />
+Code-based using APIs for pre-trained embeddings and Vector Search with Vertex AI Notebooks.<br />
+Minimum code using the command line with Gcloud.<br />
+Gcloud offers limited functionality for creating and monitoring Vector Search.<br />
+In this lesson, you focus on no-code UI and code-based APIs with Notebooks.<br />
+You can use APIs to build a Vector Search pipeline and the UI for experimenting and monitoring.<br />
+Navigate to Vector Search of Vertex AI on Google Cloud.<br />
+It's currently under the deploy and use tab.<br />
+Please be aware that the UI might change as AI tools and technologies rapidly evolve.<br />
+There are two menus: Indexes, where you can create and deploy a new index.<br />
+Index endpoints, where you can run queries and monitor an index.<br />
+Let's walk through how to create a new index.<br />
+After providing a name, description, and region, you must define the vector data source.<br />
+You are not restricted to using Google models to generate embeddings, you can use any model on the market.<br />
+However, the generated vectors must be stored on Google Cloud for the subsequent index creation.<br />
+Next is to determine the search algorithm.<br />
+TreeAh is the default Vector Search algorithm based on ANN (Approximate Nearest Neighbor), it is fast and scalable and used in a production environment.<br />
+Brute force is the other option.<br />
+Based on a linear search, it is straightforward but less performant, especially when the data size becomes large.<br />
+Brute force is more commonly used during development.<br />
+You then instruct Vector Search with the dimensions of your embeddings, recall the embedding section from the earlier lesson and approximate number of neighbors, recall the concept from explaining ANN.<br />
+Next is to decide if you need to retrieve the query result with Batch or Stream.<br />
+Finally, you can decide the shard size.<br />
+Index data is divided into equal parts to be processed, which are called "shards".<br />
+To learn more about the types of shard sizes available and their corresponding prices, see the pricing page linked in the reading list.<br />
+In addition to the basic setup options, you can also define some advanced options such as the distance measure type.<br />
+As you might recall from the previous lesson, you have four choices: Euclidean or L_2 distance, Manhattan or L_1 distance, Cosine distance, and dot product distance.<br />
+Dot product distance is the default and recommended metric for measuring vector distance.<br />
+After you click create, you should see that the index creation is in progress.<br />
+It's usually very fast, taking less than 10 minutes, depending on the data size.<br />
+Once the index is created, you can deploy it to an endpoint by clicking the index name.<br />
+Now the endpoint is ready, you can run queries or monitor the endpoint during production.<br />
+Note that you can code all these options with Vertex AI Notebooks and do even more to manage the pipeline.<br />
+Let's look at an example.<br />
+Assume you are a data scientist and would like to improve the customer searching experience and help them find similar items.<br />
+First, you get embeddings for each item, next, build an index on vector search with the embeddings,<br />
+and last, you can run a query on Vector Search to find similar items by their names.<br />
+Let's explore how this works.<br />
+The BigQuery table for items such as pants and socks is shown here.<br />
+BigQuery is the primary data warehouse product on Google Cloud.<br />
+You can easily get text embeddings in BigQuery by using the ML.EMBED_TEXT function.<br />
+Although the process is straightforward, the results are cutting-edge.<br />
+The large language model powered text embeddings are carefully organized in the embedding space with human-level intelligence and common sense.<br />
+You then export the embeddings to a JSON file and store them on Cloud Storage.<br />
+Each embedding has 768 dimensions.<br />
+Note that the number of dimensions is a hyperparameter that you can specify when you call the embedding API.<br />
+Afterward, create an index by invoking the Vector Search APIs.<br />
+You can designate the search algorithm, which is TreeAh in the demo, establish<br />
+the Cloud Storage address of the JSON file, and include parameters like the dimensions, number of items to retrieve, and similarity measurement type.<br />
+Google provides a rapid indexing service, which only takes a few minutes to index three-digit megabytes.<br />
+The final step is to deploy the index to an endpoint.<br />
+The endpoint receives query requests from the front end and executes the Vector Search.<br />
+The Vector Search engine is now ready to serve.<br />
+To begin, provide the embedding of an item to the search engine.<br />
+In a matter of milliseconds, you will receive a list of similar items.<br />
+Please note that this is not a keyword search, but a semantic search.<br />
+This means that the search engine understands the meaning of the search item and finds the closest information.<br />
+This can provide a much better user experience for exploring and finding relevant items.<br />
+Vector Search is also very easy to use.<br />
+You can do it with just a few clicks or simple coding.<br />
+Thank you for watching.<br />
+Please check out the next lesson about Vector Search with RAG.<br />
+
+<br />        <a href ='#List'> Back to List</a>
+<h3 id="VSWithRAG" class="hdrCol">VECTOR SEARCH WITH RAG</h3>
+You learned how to build Vector Search on Google Cloud.<br />
+Before we conclude, let's look at an exciting application of Vector Search in solving the LLM hallucination problem with RAG.<br />
+Vector Search has a variety of applications.<br />
+In addition to search, it can be used for personalization, trust, and safety.<br />
+One recent application is to use Vector Search to address the hallucination problem of large language models.<br />
+You might find yourself in a situation where the LLM, such as a chatbot, provides you with an entirely incorrect response.<br />
+For example, the chatbot recommends eating yellow raspberries, which do not exist.<br />
+This issue is known as the grounding problem, or LLM hallucination.<br />
+LLMs can only understand the information they were trained on.<br />
+This means that they might not be aware of your business's proprietary or domain-specific data.<br />
+Also, they do not have access to real-time information.<br />
+To make matters worse, LLMs only understand the information that is explicitly given to them in the prompt.<br />
+In other words, they often assume that the prompt is true.<br />
+They also do not have the ability to ask for more context information.<br />
+Ultimately, an LLM does not know anything outside of what it was trained on, and it cannot truly know if that information is accurate.<br />
+Hallucination is a major problem with LLMs.<br />
+Common solutions to this problem include: Fine-tuning: This is an expensive process that requires a large amount of data and computing power.<br />
+Human review: This is also an expensive and time-consuming process, and it is not always possible to catch all of the hallucinations.<br />
+And prompt engineering: This approach can help to reduce hallucinations, but it is limited by the existing knowledge of the LLM.<br />
+How about using Vector Search to provide additional real-time fact checks for LLMs?<br />
+Vector Search can be used to feed the LLM with relevant context in real time.<br />
+The architecture to accomplish this process is called RAG, which stands for Retrieval Augmented Generation.<br />
+To do this, you take the input prompt, query the real-time information using Vector Search, retrieve the top results, and append them to the original prompt.<br />
+You then pass this augmented prompt with real-time context information to the LLM.<br />
+Now, the LLM has not only the original user query but also additional information that it can use to answer the query.<br />
+When you combine the search capability with the verification ability to ensure the freshness and accuracy of data, the search becomes more reliable and trustworthy.<br />
+Let's look at a use case of utilizing RAG to create a sophisticated chatbot.<br />
+A user communicates with the chatbot through a text-based interface to inquire about topics covered in Google research papers.<br />
+However, the challenge is that LLMs cannot accurately memorize hundreds of documents.<br />
+One approach is to use the RAG model, which enables the LLM to conduct a Vector Search to identify relevant papers.<br />
+The LLM generates a summarized response to the question after reading the papers.<br />
+The RAG model eliminates the need to train the LLM to memorize everything, which helps reduce the risk of hallucinations.<br />
+This is the prompt used in a RAG sample code.<br />
+It contains: the question from the user, the instructions for the LLM, such as, "Use only the search results and do not make up an answer," and the papers retrieved through Vector Search.<br />
+The RAG system can engage in conversations like this one using knowledge gained through Vector Search to respond to questions.<br />
+A quick recap of using Vector Search in RAG:<br />
+Grounding occurs when the LLM doesn't have enough information to accurately complete a request.<br />
+The LLM can only understand its training data and any prompt information.<br />
+Sometimes the LLM might hallucinate (make up data) to answer prompts.<br />
+Retrieval-augmented generation is the process of injecting additional supporting information into a prompt.<br />
+Vector Search helps RAG by adding supporting context and quickly searching relevant information in real time.<br />
+Now, it's time for practice.<br />
+In this lab, you build a small-size search engine by using Vector Search and text embeddings.<br />
+Specifically, you quickly query Stack Overflow by asking coding questions like, "How can you shuffle rows in SQL?"<br />
+The search engine performs a text search on 8 million questions posted on Stack Overflow.<br />
+This lab consists of three steps:<br />
+First, you generate embeddings for your data.<br />
+Then you create a Vector Search index and deploy it.<br />
+And lastly, you run a query.<br />
+By the end of this lab, you will be prepared to use Vector Search to find similar items in your data.<br />
+In this course, you learned that embeddings provide a new standard for representing business data essential for the next-generation user experience.<br />
+Additionally, Vector Search plays a crucial role in managing and searching billions of embeddings within milliseconds.<br />
+Vector Search with Vertex AI offers scalable, reliable, production-quality Vector Search technology that powers many Google services.<br />
+It is user-friendly and easy to get started as demonstrated in the demos.<br />
+Lastly, you saw how you can build in a RAG system with Vector Search to solve the LLM hallucination problem.<br />
+We hope you enjoyed this course.<br />
+Be sure to check out other Google Cloud courses for continued learning.<br />
+Thank you so much for watching and see you in the next video.<br />
+
+
+
+        
+<br />        <a href ='#List'> Back to List</a>
+             </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,114 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+     <link rel="stylesheet" href="styles.css" />
+</head>
+<body id="Top">
+    <form id="form1" >
+        <div id ="Master" class="wid">
+        <a href ="Index.html" style="text-align: center; display: block;"> Home </a>
+           <ul>
+               <li> <a href="#MultiAgentSysinRAG">Mastering Complex Queries with Multi-Agent Systems in RAG </a></li>
+                <li> <a href="#ContextualRetrieval">RAG applications with Contextual Retrieval </a></li>
+               <li> <a href="#EffectiveAIAgents"> Guide to Building Effective AI Agents </a></li>
+           </ul>
+        <h2 id="MultiAgentSysinRAG"> Mastering Complex Queries with Multi-Agent Systems in RAG </h2>
+RAG is a game-changer in solving complex queries by combining retrieval-based techniques with Gen-AI. <br />
+            
+When paired with a multi-agent system, RAG takes contextual understanding and response generation to an entirely new level. <br />
+Here's how this dynamic approach works, step by step. 👇<br />
+
+🔄 The Multi-Agent RAG Flow:<br />
+<ol>
+<li>Query Processing: The Starting Point -> 
+The journey begins with the user query, which undergoes pre-processing to clean and normalize it for accuracy. This ensures irrelevant data doesn’t hamper the retrieval process.</li><webopt:BundleReference></webopt:BundleReference>
+<li>Query Rewrite: Refining the Input -> 
+The pre-processed query is rewritten to improve clarity and relevance. This step enhances the system’s ability to interpret the user’s intent effectively.</li>
+<li>Query Embedding: Numeric Power -> 
+The refined query is transformed into a numerical embedding, enabling efficient matching with stored text representations. This is where the magic of vectorization comes into play!</li>
+<li>Retrieval: Finding the Right Data -> 
+With the query embedding, the system searches a knowledge base or document store. Cutting-edge techniques like semantic search ensure precise results.</li>
+<li>Chunk Embedding: Fine-Tuning the Data -> 
+The retrieved information is divided into chunks, which are also embedded for easy comparison. This step ensures all data is ready for deeper evaluation.</li>
+<li>Recall & Ranking: Prioritizing Relevance -> 
+Two specialized agents spring into action:
+Recall Agent: Identifies chunks most likely to be relevant.
+Ranking Agent: Prioritizes the chunks based on how well they address the query.
+<li>False Premise Detection: Ensuring Trustworthiness -> 
+This step involves analyzing the retrieved chunks for any biases, inaccuracies, or misleading information. A detection agent ensures the foundation is solid.
+<li>Thought Agent: The Thinking Cap -> 
+The thought agent generates reasoning steps or "thoughts" from the prioritized chunks, ensuring logical flow and contextual integrity in the final answer.
+<li>Reference & Constraint Prompt: Setting Boundaries -> 
+Context and constraints guide the generation process, providing the answering agent with clear directions to ensure factual and relevant responses.
+<li>Answer Agent: Delivering the Solution -> 
+This agent synthesizes insights from the thought process and prompts to craft a detailed, user-centric response.
+    </ol>
+✅ Final Answer: Seamless Delivery
+The polished answer is presented to the user, ensuring clarity, relevance, and a satisfying experience. <br />
+
+💡 Why Multi-Agent RAG?
+<ul>
+<li>Handles Complexity: Processes intricate queries with precision.</li>
+<li>Improves Accuracy: False premise detection minimizes misinformation.</li>
+<li>Enhances Quality: Thought-driven generation ensures logically sound answers.</li>
+<li>Contextually Robust: Reference and constraints ensure user-specific relevance. </li>
+    </ul>        <br />
+🚀 Impactful Use Cases: From legal analysis to personalized education, multi-agent RAG is revolutionizing AI by enabling smarter, context-aware systems for diverse applications.
+        
+        <div>
+<img src="Multi-agents Vs RAG.jpeg"  /></div>
+   <p style="text-align:center">
+    <a href="#Top" style="color: green;">Back to top</a> <br>
+    <a href ="Index.html" style="text-align: center; display: block;"> Home </a>
+</p>
+            <hr />
+<h2 id="ContextualRetrieval">RAG applications with Contextual Retrieval </h2>
+Better context for your RAG applications with contextual retrieval <br />
+No matter how advanced your model (LLM) is, if the context chunks don't provide the right information, the model won't generate accurate answers. <br />
+Companies have started using this technique called 'contextual retrieval' to improve the quality of context chunks in RAG systems, so that they can generate more contextually relevant and accurate results/responses.<br />
+Contextual Retrieval (introduced by Anthropic) addresses a common issue in traditional Retrieval-Augmented Generation (RAG) systems: individual text chunks often lack enough context for accurate retrieval and understanding.<br />
+Contextual Retrieval enhances each chunk by adding specific, explanatory context before embedding or indexing it. This preserves the relationship between the chunk and its broader document, significantly improving the system's ability to retrieve and use the most relevant information.<br />
+<br />
+According to Anthropic's experiments:<br />
+⮕ Contextual Embeddings reduced the top-20 chunk retrieval failure rate by 35%.<br />
+⮕ Combining Contextual Embeddings with Contextual BM25 further reduced the failure rate by 49%.<br />
+These improvements highlight the potential of Contextual Retrieval to boost the performance of AI-powered question-answering systems, making them more accurate and contextually aware.<br />
+Know more about Contextual Retrieval: <a href="https://lnkd.in/g_sfYub8"> https://lnkd.in/g_sfYub8</a> <br />
+Complete article on practically implementing RAG: <a href="https://lnkd.in/gzrWXVPT"> https://lnkd.in/gzrWXVPT</a><br />
+Anthropic's article on Contextual Retrieval: <a href="https://lnkd.in/gWNnV4iC"> https://lnkd.in/gWNnV4iC</a><br />
+              <div style="text-align:center">
+                <img src="RAGWithContextualRetrieval.jpeg" width="500" height="500" />
+            </div>
+            <p style="text-align:left">
+                [<i> <a href ="https://www.linkedin.com/posts/pavan-belagatti_better-context-for-your-rag-applications-activity-7275380450670362624-Tu6o?utm_source=share&utm_medium=member_desktop">  Resouce Link</a> </i>] </p>
+<p style="text-align:center">
+    <a href="#Top" style="color: green;">Back to top</a> <br />
+    <a href ="Index.html" style="text-align: center; display: block;"> Home </a>
+</p>
+            <hr />
+            <h2 id="EffectiveAIAgents"> Guide to Building Effective AI Agents </h2>
+A detailed guide on how to build effective AI Agents based on a recent detailed article by Anthropic on the same so all credits to them.  While it focuses on agents, this can also be leveraged as principles to help build any complex Generative AI Application or System. Key aspects include:
+<br />
+- Basic building blocks for agents: LLMs, tools, retrieval and memory<br />
+- Prompt Chaining: Breaks down complex problems into sequential steps <br />
+- Routing: Uses an LLM to route to specific flows based on initial inputs<br />
+- Parallelization: Multiple subtasks can be executed in parallel increasing efficiency or multiple executions with voting for more consistency<br />
+- Orchestrator-Workers: A central LLM breaks down and delegates tasks to worker LLMs <br />
+- Evaluator-Optimizer: Here one LLM generates and one reviews and gives feedback to improve just like reflection agents<br />
+- Agents, how they work, design patterns, best practices and more<br />
+<a href="Guide to Building Effective AI Agents.pdf "> Guide to Building Effective AI Agents.pdf </a> <br />
+            <p style="text-align:left">
+            [<i> <a href="https://www.linkedin.com/posts/dipanjans_building-effective-ai-agents-activity-7277341335060205568-IoV0?utm_source=share&utm_medium=member_desktop"> Resouce Link </i>]
+            </p>
+            <p style="text-align:center">
+    <a href="#Top" style="color: green;">Back to top</a> <br>
+    <a href ="Index.html" style="text-align: center; display: block;"> Home </a>
+</p>
+            <hr />
+    </div>
+         </form>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" class="htmlCenter">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+
+    <link rel="stylesheet" href ="styles.css">
+    <script>
+        function generate(){
+            let n = document.getElementById("count").value;
+            if (n==="")
+                alert("Enter a number")
+            if (n < 0)
+                alert("Enter a positive number")
+            else
+            {
+                let output = "";
+                for (i=0;i<n;i++)
+    <!--                document.write((i+1) + " ")-->
+<!--                    document.write((i+1) + "<br /> ")-->
+                    output += (i+1) + " ";
+                    s = "Generated numbers are : "
+                    document.getElementById("output").innerHTML =  s + output;
+            }
+        }
+        function genSquare(no){
+            let n = document.getElementById("count").value;
+             if (n==="")
+                alert("Enter a number")
+             else
+<!--                document.write (n * n)-->
+                document.getElementById("output").innerHTML = "Square of the number " +  n  + " is "  + (n*n);
+        }
+
+    function add(){
+            let secNo =parseInt(document.getElementById("secNo").value);
+            let n = parseInt(document.getElementById("count").value);
+<!--            document.write(n+secNo);-->
+            document.getElementById("output").innerHTML = "Sum of the two numbers : " + (n+secNo);
+    }
+    </script>
+</head>
+<body  >
+
+<div class="wid">
+     <h3 style="text-align:center"> This page consists of the trials of various things in Javascript </h3>
+    Enter a number: &emsp;<input type = "text" id = "count" placeholder="count" style="width: 200px; height: 30px; font-size: 12px; margin-left: 45px;" > <br />
+    Enter second number: &emsp;<input type = "text"  id = "secNo" placeholder="count" style="width: 200px; height: 30px; font-size: 12px; margin-left: 8px;" > <br />
+    <br /><input type = "button" id ="btnGen" value="Generate numbers"  size="30" class="button"  style="width: 150px; height: 28px; font-size: 14px; margin-left: 20px;" onclick="generate()">
+       <input type = "button" id ="btnSquare" value="Generate Square"  size="40" class="button"  style="width: 150px; height: 28px; font-size: 14px; margin-left: 50px;"
+    onclick="genSquare(5)">
+    <input type = "button" id ="btnAdd" value="Add"  size="40" class="button"  style="width: 150px; height: 28px; font-size: 14px; margin-left: 60px;"
+    onclick="add()">
+<p id="output"> </p>
+</div>
+<!--script src="login.js"></script -->
+</body>
+</html>

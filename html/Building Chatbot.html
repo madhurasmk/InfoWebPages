@@ -1,0 +1,238 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head >
+    <link rel="stylesheet" href="styles.css" />
+    <title></title>
+        <style>        
+         
+        .hdrColor {
+            color:blue
+        }
+</style>
+</head>
+
+<body id="Top">
+    <form id="form1">
+        <div class="wid">
+            <p style="text-align:center"> <a href="Index.html" > Home</a></p>
+
+            <br />
+           <ul>
+               <li> <a href="#BuildingChatbot">Building Chatbot: A Hands-On Tutorial with Open-Source Tools </a></li>
+               <li><a href="#PromptFrameworks">ChatGPT Prompt Frameworks </a> </li>
+           </ul>
+<a href="https://machinelearningmastery.com/building-your-first-chatbot/"> Resource Link</a>
+<h1 id="BuildingChatbot">Building Your First Chatbot: A Hands-On Tutorial with Open-Source Tools</h1>
+<p> A chatbot is a computer program that can talk to people. 
+    It can answer questions and help users anytime. You don’t need to know a lot about coding to make one. 
+    There are free tools that make it simple and fun.</p>
+<h2 class="hdrColor"> Working of a Chatbot</h2>
+<p> Chatbots work by using algorithms to understand what users say. 
+    They listen to user input and find the best response. When a user types a question, the chatbot processes it. 
+    It looks for keywords and phrases to understand the meaning. Then, it selects an answer based on its training data.</p>
+<p> The more the chatbot interacts, the better it becomes. It learns from each conversation. 
+    This allows it to improve responses over time. Some chatbots use natural language processing (NLP) to understand language better. 
+    This makes conversations feel more natural.</p>
+<h2 class="hdrColor"> Chatterbot</h2>
+<p>ChatterBot is a Python library for making chatbots. It helps you create smart bots that can talk. 
+    The library uses machine learning to generate responses. This means the bot can learn from conversations. It is easy to use, even for beginners. 
+    ChatterBot provides different storage options. You can use SQL or MongoDB to save data. 
+    This lets you pick what works best for you. The library is also customizable. You can change how the bot responds to fit your needs. </p>
+<p> ChatterBot is open-source. This means it is free to use and modify. Anyone can use it to build chatbots. 
+    It includes built-in datasets for training. You can use English conversation data to help your bot learn. This makes it a great tool for creating engaging chatbots. </p>
+
+
+<h2 class="hdrColor"> Setting Up Your Environment</h2>
+Before you start, you need to set up your environment. Follow these steps:
+            <ul>
+<li> Install Python: Download and install Python from the official website. Make sure to get Python 3.5 or later.</li>
+<li> Create a Virtual Environment: This helps you manage your project. Run these commands in your terminal:</li></ul>
+<br />
+<pre>
+<code>
+python -m venv chatbot-env
+source chatbot-env/bin/activate  # On Windows, use `chatbot-env\Scripts\activate`
+</code>
+</pre>
+
+<h2 class="hdrColor"> Installing ChatterBot</h2>
+Next, you need to install ChatterBot. To create a chatbot, it is also necessary to install the ChatterBot Corpus. <br />
+<pre>
+<code>
+pip install chatterbot
+pip install chatterbot-corpus
+</code>
+</pre>
+Let’s import the Chatbot class of the chatterbot module.
+<pre>
+<code>
+from chatterbot import ChatBot
+</code>
+</pre>
+<h2 class="hdrColor"> Initializing the ChatterBot</h2>
+Once you have the ChatterBot library installed, you can start creating your chatbot.
+<pre>
+<code>
+# Create object of ChatBot class
+bot = ChatBot('MyChatBot')
+</code>
+</pre>
+<p> Storage is important for a chatbot. It helps the bot remember what it learns. With storage, the bot can keep track of conversations. It can recall past interactions. 
+    This improves the bot’s responses over time. You can choose different types of storage. Options include SQL and MongoDB. 
+    SQL storage saves data in a database. This makes it easier to manage and retrieve later.</p>
+<pre>
+<code>
+from chatterbot import ChatBot
+
+# Create a chatbot with SQL storage
+bot = ChatBot(
+    'MyChatBot',
+    storage_adapter='chatterbot.storage.SQLStorageAdapter',
+    database_uri='sqlite:///database.sqlite3'
+)
+</code>
+</pre>
+<h2 class="hdrColor"> Setting Up the Trainer</h2>
+<p> 
+    ChatterBot can be trained with various datasets. The ChatterBotCorpusTrainer allows you to train your chatbot with the built-in conversational datasets.<br />
+To train your chatbot using the English corpus, you can use the following code:
+</p>
+<pre>
+<code>
+from chatterbot.trainers import ChatterBotCorpusTrainer
+
+# Train the chatbot with the English corpus
+trainer.train("chatterbot.corpus.english")
+</code>
+</pre>
+<h2 class="hdrColor"> Customizing Your Chatbot</h2>
+You can customize your chatbot in several ways:
+<h3> Change Response Logic</h3>
+ChatterBot uses logic adapters to choose responses. You can change this behavior. Use the BestMatch adapter:
+<pre>
+<code>
+chatbot = ChatBot(
+    'MyBot',
+    logic_adapters=[
+        'chatterbot.logic.BestMatch'
+    ]
+)
+</code>
+</pre>
+<h3> Add More Training Data</h3>
+More training data improves your bot. You can create your own data file. Save it as custom_corpus.yml with pairs of questions and answers
+<pre>
+<code>
+- - How are you?
+  - I'm doing well, thank you!
+
+- - What is your name?
+  - I am MyBot.
+</code>
+</pre>
+Train your bot with this custom data:
+<pre>
+    <code> 
+trainer.train('path/to/custom_corpus.yml')
+    </code>
+</pre>
+<h3> Implement Custom Logic</h3>
+You can add custom logic for specific responses. Here’s an example of a simple custom adapter:
+<pre>
+<code>
+from chatterbot.logic import LogicAdapter
+
+class CustomLogicAdapter(LogicAdapter):
+def can_process(self, statement):
+    return 'weather' in statement.text
+
+def process(self, statement, additional_response_selection_parameters=None):
+    return 'I can’t provide weather information right now.'
+</code>
+</pre>
+<h2 class="hdrColor">Testing Your Chatbot </h2>
+Once your chatbot is trained, you can start interacting with it to test its responses. The following code creates a simple loop for chatting with your bot:
+<pre>
+<code>
+print("Chat with the bot! Type 'quit' to exit.")
+
+while True:
+    user_input = input("You: ")
+    if user_input.lower() == 'quit':
+        break
+    response = chatbot.get_response(user_input)
+    print("Bot:", response)
+</code>
+</pre>
+
+<pre>
+<code>
+Chat with the bot! Type 'quit' to exit.
+You: Hi there!
+Bot: Hello!
+You: How are you?
+Bot: I'm doing well, thank you!
+You: quit
+</code>
+</pre>
+<h2 class="hdrColor"> Deploying Your Chatbot for Interaction</h2>
+If you want to make your chatbot accessible online, consider integrating it with a web application. Here’s a simple way to integrate your ChatterBot with a Flask web application:
+<pre>
+<code>
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route("/chat", methods=["POST"])
+def chat():
+    user_input = request.json.get("message")
+    response = chatbot.get_response(user_input)
+    return jsonify({"response": str(response)})
+
+if __name__ == "__main__":
+    app.run(debug=True)
+</code>
+</pre>
+This setup makes it easy to deploy your chatbot. Users can chat with it online. You can send messages to the chatbot through a web application.
+<h2 class="hdrColor">Conclusion</h2>
+With tools like ChatterBot, you can make your own chatbot quickly. As you learn more about how to use ChatterBot, you can add some of its additional features. 
+            You can make your chatbot understand language better, and you can have it connect it with other apps to do more things. This will make your chatbot smarter and more helpful.
+<p style="text-align:center"> 
+    <a href="#BuildingChatbot"> Back to Top</a> <br />
+    <a href="Index.html"> Home</a>
+</p>
+<hr />
+
+<h2 id="PromptFrameworks"> Advanced ChatGPT Prompt Frameworks to Revolutionize AI use </h2>
+<p>100 Advanced ChatGPT Prompt Frameworks to Revolutionize Your AI Use</p>
+➜A prompt framework is a clear way to ask AI questions.<br />
+🟥A normal prompt ➜ simple question or instruction. <br />
+↳Example: "How do I improve my SEO?"<br /><br />
+🟩A prompt framework ➜ structured with clear details. <br />
+↳Example: "Write a blog post (Format) for small business owners (Audience) explaining 5 SEO strategies (Action)."<br /><br />
+🟦These frameworks are designed For ⤵️<br />
+Clarity➜Guides AI to give precise answers.<br />
+Structure➜Breaks down prompts into key elements.<br />
+Consistency➜Produces uniform responses.<br />
+Efficiency➜Saves time with focused instructions.<br />
+Flexibility➜Customizable for different needs.<br />
+            <a href ="ChatGPT Prompt Frameworks.pdf"> ChatGPT Prompt Frameworks </a>
+            <p style="text-align:center">
+    <a href="#Top"> Back to Top</a> <br />
+    <a href="Index.html"> Home</a>
+</p>
+<hr />
+            <a href="ChatGPT Prompt Frameworks.pdf">ChatGPT Prompt Frameworks</a><br />
+<a href="ChatGPT.pdf">ChatGPT</a><br />
+<a href="Custom GPTs to Agents.pdf">Custom GPTs to Agents</a><br />
+<a href="Introduction to Generative Pre-trained Transformer.pdf">Introduction to Generative Pre-trained Transformer</a><br />
+<a href="Interactive Mindmap using AI.pdf">Interactive Mindmap using AI</a><br />
+<a href="Illustrated Guide to Transformers.pdf">Illustrated Guide to Transformers</a><br />
+<a href="Guide to Building Effective AI Agents.pdf">Guide to Building Effective AI Agents</a><br />
+
+ </div>
+    </form>
+</body>
+</html>

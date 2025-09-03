@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="styles.css" />
+
+</head>
+<body onload="get()">
+    <div class="wid">
+        <h2 class="h2heading"> Welcome </h2>
+        <form id="myForm">
+            <div class="form-group">
+                <label for="name">Name:</label> &emsp;&emsp;&emsp;
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group ">
+                <label for="email">Email: </label> &emsp;&emsp;&emsp;
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone No:</label>&emsp;
+                <input type="text" id="phone" name="phone" >
+            </div>
+            <div class="form-group">
+                <input type="button" id="btnClear" name="Clear" value="Clear" size="10" class="button" >
+                &emsp;&emsp;  <input type="button" id="btnSubmit" name="Submit" value="Submit" size="10" class="button"
+                    onclick="save()">
+            </div>
+        </form>
+    <script src="web.js" defer></script>
+    <p id="output"></p> <!-- Area to display form data -->
+    <p id="savedText"> </p>
+    <p id="openedText"> </p>
+    </div>
+
+    <script>
+    function save()
+            {
+                var item = document.getElementById("email").value;
+                localStorage.setItem("storedItem", item);
+                document.getElementById("openedText").innerHTML = item +" SAVED";
+            }
+            function get()
+            {
+                localStorage.getItem("storedItem");
+                document.getElementById("savedText").innerHTML =storedItem +" OPENED";
+            }
+    </script>
+</body>
+</html>

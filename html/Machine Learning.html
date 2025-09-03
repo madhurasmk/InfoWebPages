@@ -1,0 +1,1692 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> <!--   runat="server" -->
+    <title></title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bodyCol">
+<script src="script1.js" defer></script>
+
+    <form id="form1" > <!--   runat="server" -->
+        <div class="wid">
+        <a id="home-link" href="#" class="Home"> Home </a> 
+        <p id="Contents"> Contents </p>
+
+            <select id="MLSelect" >
+            <option value= "" disabled selected>Select an option </option>
+                <option value= "#NaiveBayes"><a href="#DataAnalytics" >Data Analytics and Machine Learning: When to Use Which? </a></option>
+            </select>
+            <br />
+            <br />
+            <ol><li><a href= "#DataAnalytics">Data Analytics and Machine Learning: When to Use Which?</a></li>
+            <li><a href= "#ProbabilityDistributions">Probability Distributions</a></li>
+            <li><a href= "#7KeyTerms">7 Key Terms Every Machine Learning Beginner Should Know</a></li>
+            <li><a href= "#AutomateDataCleaning"> Automating Data Cleaning Processes with Pandas</a></li>
+            <li><a href= "#OneHotEncoding"> One Hot Encoding: Understanding the “Hot” in Data</a></li>
+            <li><a href="#OrdinalEncoding"> Decision Trees and Ordinal Encoding: A Practical Guide </a></li>
+            <li><a href= "#ClassificationAlgorithms">5 Essential Classification Algorithms Explained for Beginners</a></li>
+            <li><a href= "#Deployment"> Tips for Deploying ML Models Efficiently </a></li>
+            <li><a href= "#HyperparameterTuning">7 Tips for Tuning Hyperparameters in Machine Learning Models</a></li>
+            <li><a href= "#MasterHyperparamTuning">Mastering the Art of Hyperparameter Tuning: Tips, Tricks, and Tools</a></li>
+            <li><a href= "#MLModels">Mastering Machine Learning: A Guide to Popular Models </a></li>
+            <li><a href= "#Master8MLAlgorithms">Master 8 Machine Learning Algorithms </a></li>
+            <li><a href= "#NaiveBayes">Understanding Naive Bayes </a></li>
+            <li><a href="#LinearRegression"> Linear Regression: The Underrated Hero of ML </a></li>
+            <li><a href="#DeployUsingStreamlit"> How to Quickly Deploy Machine Learning Models with Streamlit</a></li>
+            <li><a href="#BiasVarTradeOff"> Bias-Variance Tradeoff in Polynomial Regression </a></li>
+            <li><a href="#SentimentAnalysis"> NLP: SVM with GridSearchCV for Sentiment Analysis </a></li>
+                 <li><a href="#Learning"> Transfer Learning vs. Fine-tuning vs. Multitask Learning vs. Federated Learning </a></li>
+                  <li> <a href="#MLRoadmap"> Machine Learning Roadmap </a> </li>
+                 <li> <a href="#LinearAlgebra"> Linear Algebra </a> </li>
+                <li> <a href="https://www.linkedin.com/posts/syed-afroz-70939914_python-panda-for-machine-learning-activity-7297167592459317248-avVi?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAserdoBrWTJ_GT-n7tBmRXeigaawSekO2M"> Python Pandas: A Step-by-Step Tutorial for Data Wrangling in Machine Learning</a></li>
+            </ol>
+            <h2 id="DataAnalytics" class="h2color">What Exactly is Data Analytics vs. Other “Data” Fields?</h2>
+            [<i> Resource: https://machinelearningmastery.com/machine-learning-vs-traditional-analytics-when-use-which/</i>]
+            <ul>
+                <li> <b> Data Analysis: </b>it focuses on examining data to identify trends, patterns, and relationships, typically using a blend of statistical and visualization methods. Traditional hypothesis tests, regression analysis, variance analysis, and time series analysis techniques fall under the umbrella of data analysis.</li>
+                <li><b>Data Analytics: </b>it concentrates on predictive, descriptive, and prescriptive analysis, i.e. discovering future patterns and trends to support business decision-making. In essence, data analytics is a subtle contextualization and more domain-specific conceptualization of data analysis: the difference is purely semantic and application context-oriented, but underlying methods are nearly identical in both fields. Customer segmentation and customer retention analysis in marketing and retail can be categorized within the scope of data analytics processes.</li>
+                <li><b>Data Science: </b>it focuses on the study and engineering processes of complex data to gain deep insights and knowledge. It often entails the use of advanced algorithms and modeling techniques under the machine learning umbrella, as well as cleaning, warehousing, and presenting data. </li>
+                <li><b>Big Data: </b>this term refers to the process of managing and analyzing huge and complex datasets that cannot be effectively dealt with by using traditional data processing approaches. It largely focuses on the use of hardware and distributing computing technologies (thanks to tools like Hadoop and Spark) for efficient, high-performance data handling at scale. </li>
+                <li><b>Business Intelligence: </b>it entails the triple process of collecting, analyzing — usually from a descriptive vantage point — and visually presenting data in organizations for supporting decisions. Whilst very similar to data analytics, business intelligence puts more focus on the creation of reports and interactive dashboards to provide relevant information to decision-makers. Power BI, Tableau, and QlikView are well-known BI tools on the market. </li>
+            </ul>
+             <div style="text-align:center">
+            <img src="data_areas.jpeg" width="600" height="500"  /></div>
+
+            <p >
+                Now we are in a better position for comparing data analytics and machine learning. <b>Machine learning (ML) </b> is a subarea of artificial intelligence, whereby software models fueled by data and capable of learning by themselves to perform a task are built.
+                ML models perform tasks like classifications, regression, clustering, and so on, by being exposed to data used for learning, a.k.a. training data.
+            </p>
+            <p>
+                ML can sometimes be used as a data analytics tool by businesses in certain use cases, typically of a forecasting nature: predicting sales trends, customer churn, or detecting fraud. In these scenarios, ML models for classification, regression, and anomaly detection, among others, can constitute powerful data analytic tools.
+                Remember, <b> the notion of data analytics is </b> not <b> determined by </b> the techniques used -whether ML or not- but by <b> the conjunction of data analysis approaches plus an application contextualization of business decision-making support.</b>
+            </p>
+            <p>
+                This means many modern data analytics processes and methodologies make use of ML techniques as part of them. But not all.
+                ML is not always the go-to approach for data analytics in business settings. And this is where the initial question that gave a title to this article arises:<b>  when to use which? </b>
+            </p>
+           <h2>When to Use Machine Learning</h2>
+            <p>The use of ML for analytics purposes is encouraged when:</p>
+                <ul>
+                    <li> There is a need to <b>make predictions or automate decisions from large and complex datasets</b>: scenarios include customer segmentation upon complex customer behavior data, recommender systems that predict and suggest potentially needed or liked products to a customer based on analyzing their shopping habits, and so on.</li>
+                    <li><b>Patterns to be found underneath the data are too intricate for manual analysis</b>: this is especially the case in tasks involving unstructured data, like image recognition and classification, and natural language processing e.g. to categorizing the sentiment in customer reviews. </li>
+                </ul>
+
+               <h2>When to Use Traditional Analytics</h2>
+                <p>On the other hand, the use of traditional analytics methods like statistics-based ones is a better option when:</p>
+                    <ul>
+                        <li> There is the goal of <b>understanding historical data, identifying trends, or testing hypotheses </b>using approaches like variance analysis and regression analysis.</li>
+                        <li> <b> Working with smaller and simpler datasets </b> where the focus is on <b>explaining relationships and correlations between data variables clearly and interpretably</b>, e.g. correlations between products sold, sales trends, etc.</li>
+                    </ul>
+
+            <a href="#Contents"> Back to Top </a>
+            <hr />
+            <h2 id="ProbabilityDistributions"> Probability Distributions</h2>
+            <ol>
+                <li><b>Normal: </b> It is probability the most common distribution you will ever see! Appears in user data on a client's bank data at PayPal. User age, engagements, and income generally follow normal with slight skewness.    </li>
+                <li><b>Bernoulli: </b> It is a binary outcome distribution. Binary labels like churn prediction and fraud detection - all follow the Bernoulli distribution. Oftentimes, they are imbalanced requiring down/up-sampling or SMOTE when training a classifier model.</li>
+                <li><b> Binomial: </b> It is the probability of K successes in N trials. Usually emerges in multiple product data. Understanding successes (e.g. clicks) per X number of sessions is vital to understanding user behaviors.    </li>
+                <li><b> Geometric: </b> It is the probability of first success in N trials. Geometric distribution helped understand funnel-based data for email campaigns for Google's free code education website (it was called Grasshopper). <br />
+                    Need to understand the number of days it takes for a student to graduate upon sign-up. This helps us design a viable AB testing strategy.    </li>
+                <li><b> Poisson: </b>  It deals with success counts per interval. Eg: survival regression when understanding factors that contribut to suicides. Can be used to understand the expected count of suicides in a fixed time horizon given covariates.   </li>
+                <li><b> Exponential: </b> It is the wait time before the first success. Used during the onset of Covid breakout: a model to predict Covid cases among Google's workforce. Bayesian-based regression model with the exponential distribution was used as the prior for this projection</li>
+                <li><b> Gamma: </b> While exponential defines the wait time for the first success, Gamma is the wait time until the K-th success. In the Covid model, this was another probability distribution that helped understand Covid spread.    </li>
+                <li><b>Beta: </b> It can be thought of as the base form for most of the continuous distributions like Exponential, Gamma, Normal, etc. When Bayesian statistics is applied, it is usually noticed that Beta is often used as priors.    </li>
+                <li><b> Uniform: </b>It assumes fixed probability across a fixed interval (a,b). Sometimes, when simulating user data, using the uniform distribution as the underlying assumption is useful.     </li>
+            </ol>
+              <div style="text-align:center" >
+            <img style="align-content:center" src="ProbabilityDistributions.jpeg" width="700" height="500"/><br/>
+            <a href="#Contents"> Back to Top </a>
+                  </div>
+            <hr />
+            <h1 id="ClassificationAlgorithms"  class="h2color"> 5 Essential Classification Algorithms Explained for Beginners </h1>
+            [<i> Resource: https://machinelearningmastery.com/5-essential-classification-algorithms-explained-beginners/</i>]
+            <h2> Introduction </h2>
+            <p class="kolo">Classification algorithms are at the heart of data science, helping us categorize and organize data into pre-defined classes.
+                These algorithms are used in a wide array of applications, from spam detection and medical diagnosis to image recognition and customer profiling.
+                It is for this reason that those new to data science must know about and understand these algorithms: they lay foundations for more advanced techniques and provide
+                insight into how those data-driven decisions are made.</p>
+            <ol>
+                <li> <b> Logistic Regression </b>
+                    <p>
+                        One of the most basic algorithms in machine learning is Logistic Regression. Used to classify data into one of two possible classes, it maps any real number to the range [0, 1] using a function known as the sigmoid or logistic function. As a probabilistic output can be expressed in terms of this, different threshold values can be used to categorize the data.
+                        <br />Logistic regression is commonly used in tasks like predicting customer churn (churn/not churn) and email spam identification (spam/not spam). It is appreciated for its simplicity and ease of understanding, making it a reasonable starting point for the newcomers. Additionally, logistic regression is computationally efficient and can handle large datasets.
+                        However, logistic regression often faces scrutiny due to its assumption of a linear relationship between the feature values and the log-odds of the outcome, which can be a problem when the actual relationship is more complex.
+                    </p>
+                </li>
+                <li> <b>Decision Trees</b>
+                    <p>
+                        Decision Trees provide a more straightforward approach to classification, sorting a dataset into smaller and increasingly granular subsets according to feature values.
+                        The algorithm selects the “best” feature split to make at each node in the tree using a criterion like Gini impurity or entropy. Inside this tree structure there are leaf nodes which
+                        indicate final class labels, decision nodes in which decisions for splits are made and subtrees take root, and a root node which represents the entire dataset of samples.
+                        <br />Common tasks involving decision trees include credit scoring and customer segmentation.
+                        They are simple to interpret and scale both numerical and categorical data without preprocessing or preparation. Decision trees are not without fault, however, as they have high inclination
+                        toward overfitting, especially as they grow deeper, and can be brittle. Techniques such as pruning and setting minimum leaf node membership sizes can help here.
+                    </p>
+               </li>
+                 <li> <b>Random Forest </b>
+                     <p>Random Forest is an ensemble method which manufactures multiple decision trees and then combines their output to attain higher accuracy and prediction stability, employing a technique called bagging (short for bootstrap aggregating). An improvement over “regular” decision tree bagging, random subsets of features and data are employed in the process to make the model variance higher.
+                         The model prediction is formed from an average of the output of each individual tree.
+                         <br /> Applications with high success from a random forest classifier include image classification and stock price prediction, measured by their accuracy and robustness. Random forests are better than the single decision trees in this way and can handle large data sets much more efficiently.
+                         This is not to say that the model is perfect, for it has a worryingly high computational requirement and is poorly interpretable due to a given model’s high number of constituent decision trees.
+                     </p>
+                 </li>
+                <li> <b>Support Vector Machines </b>
+                    <p>The aim of Support Vector Machines (SVM) is to find the hyperplane (a separation boundary of n-1 dimensions in a dataset with n dimensions) that separates the classes in the feature space effectively. Focusing on the locality of the two classes nearest the hyperplane, SVM introduces the support vectors — data points very close to this boundary — and the notion of a “margin”, which is the distance between the nearest data points from different classes near the hyperplane. Through a process known as the kernel trick, SVM projects data into higher dimensions, where a linear split is found.
+                        Using kernel functions like polynomial, radial basis function (RBF), or sigmoid, SVMs can effectively classify data that is not linearly separable in the original input space.
+                        <br />Applications such as bioinformatics and handwriting recognition use SVM, where the technique is particularly successful in high-dimensional conditions. SVMs can adapt to various other problems well, generally thanks to how different kernel functions can be employed.
+                        Nevertheless, there are data sizes for which SVM is not good, and the model requires careful parametrization, which can easily overwhelm newcomers.
+                    </p>
+                </li>
+                <li> <b> k-Nearest Neighbors</b>
+                    <p>An instance-based learning algorithm called k-Nearest Neighbors (k-NN) is one of incredible simplicity, proof that machine learning need not be unnecessarily complex in order to prove useful.
+                        k-NN’s classification of a data point relies sight unseen on the majority vote among the k closest neighbors. A distance metric, like the Euclidean distance, facilitates the selection of the nearest neighbors.
+                     <br /> Mirroring k-NN’s simplicity is its use in tasks such as pattern recognition and recommendation systems, its implementation providing a ready entry-point for the new student. A perk here is the lack of underlying data distribution assumption.
+                        Being computationally expensive when dealing with large datasets hurts it, however, as does its reliance on an arbitrary choice of k and sensitivity to irrelevant features. Proper feature scaling is paramount.
+                    </p>
+                </li>
+            </ol>
+            <h3> Summary </h3>
+            <p> Understanding these classification algorithms is absolutely necessary for someone entering data science. These algorithms are the starting point for highly sophisticated models, and are widely applicable in numerous fields of academics and deployment. New students are strongly encouraged to apply these algorithms to real-world data sets in order to acquire practical experience.
+                Developing a working knowledge of these fundamentals will leave you prepared for approaching more challenging tasks of data science in the future. </p>
+            <div style="text-align:center">
+            <a href="#Contents"> Back to Top </a>
+            </div>
+            <hr />
+<h1 id="7KeyTerms"  class="h2color"> 7 Key Terms Every Machine Learning Beginner Should Know</h1>
+[<i>Resource: https://machinelearningmastery.com/7-key-terms-every-machine-learning-beginner-should-know/ </i>]
+<ol>
+    <li> <b class="lstCol">Algorithm </b><br />
+        <p> An algorithm is a set of rules a computer uses to solve a problem. It finds patterns in data and makes predictions. <br />
+        There are several types of algorithms in machine learning:
+        <ol>
+        <li>Supervised Learning: Learn from labelled examples to predict or classify new data.</li>
+        <li>Unsupervised Learning: Discover patterns in data without labels.</li>
+        <li>Reinforcement Learning: Make decisions by taking actions in an environment </li>
+            </ol>
+
+    </li>
+    <li> <b  class="lstCol"> Model </b>
+        <p>
+            A model is created by training an algorithm with data. It finds the patterns and relationships found in the data. This lets the model predict new data.<br />
+For example:<br />
+            <ul>
+                <li><b> Linear Regression Model:</b> Predicts values by fitting a line to the data.</li>
+                <li><b> Decision Tree Model: </b> Makes predictions by splitting data into groups based on features.</li>
+                <li><b> Support Vector Machine (SVM) Model:</b> Finds the best boundary to separate different categories.</li>
+            </ul>
+
+    </li>
+    <li> <b class="lstCol"> Features </b>
+        <p>
+            Features are input data used to make predictions. They are measurable properties or characteristics of the data. They can be numerical or categorical.<br />
+For example, consider a model that predicts house prices. Features could be the size, location, and age of the house. Each feature helps the model understand how these aspects influence the price.
+        </p>
+    </li>
+    <li> <b class="lstCol"> Labels</b>
+        <p>
+            Labels are the outcomes that a machine learning model tries to predict. Each set of features is paired with a label in supervised learning. Similar to features, they can be numerical or categorical.<br />
+Consider a model that classifies emails as “spam” or “not spam”. The label is either “spam” or “not spam.” The model learns patterns from these features to predict the label for new emails.
+        </p>
+    </li>
+    <li> <b class="lstCol"> Overfitting</b>
+        <p>
+        Overfitting happens when a machine learning model learns the training data too well, including noise and outliers. This makes the model perform well on training data but poorly on new data. This occurs because the model is too complex and memorizes the training data rather than generalizes it.
+        To prevent overfitting, techniques like cross-validation, pruning, and regularization are used.</p>
+    </li>
+    <li> <b class="lstCol"> Underfitting</b>
+        <p>
+        Underfitting happens when a machine learning model is too simple to understand the data patterns. As a result, it performs poorly on both training data and new data. This usually occurs if the model lacks complexity or hasn’t been trained long enough.
+        Increase the model’s complexity or add more features to fit underfitting.</p>
+    </li>
+    <li> <b class="lstCol"> Hyperparameters </b>
+        <p>
+            Hyperparameters are settings that guide the learning process and the model’s structure. They are chosen before training starts. In contrast, parameters are learned from the data during training,
+            <br />
+Common hyperparameters include:
+            <ul>
+            <li> <b> Learning Rate: </b>Controls how much the model’s weights are updated during each training step.</li>
+            <li> <b> Number of Hidden Layers: </b>Specifies the number of layers between the input and output layers in the network.</li>
+            <li> <b> Batch Size:</b> Defines how many training examples are used in each iteration.</li>
+            <li> <b> Batch Size: </b>Defines how many training examples are used in each iteration.</li>
+                </ul>
+
+    </li>
+</ol>
+             <a href="#Contents" class="Home"> Back to Top </a>
+<hr />
+<h2 class="h2color" id="AutomateDataCleaning">  Automating Data Cleaning Processes with Pandas</h2>
+[<i>Resource: https://machinelearningmastery.com/automating-data-cleaning-processes-with-pandas/</i>]
+<p>
+    Few data science projects are exempt from the necessity of cleaning data. Data cleaning encompasses the initial steps of preparing data.
+    Its specific purpose is that only the relevant and useful information underlying the data is retained, be it for its posterior analysis, to use as inputs to an AI or machine learning model, and so on.
+    Unifying or converting data types, dealing with missing values, eliminating noisy values stemming from erroneous measurements, and removing duplicates are some examples of typical processes within the data cleaning stage.<br />
+As you might think, the more complex the data, the more intricate, tedious, and time-consuming the data cleaning can become, especially when implementing it manually.<br />
+This article delves into the functionalities offered by the Pandas library to automate the process of cleaning data. Off we go!
+</p>
+<h3>Cleaning Data with Pandas: Common Functions </h3>
+<p>
+    Automating data cleaning processes with pandas boils down to systematizing the combined, sequential application of several data cleaning functions to encapsulate the sequence of actions into a single data cleaning pipeline.
+    Before doing this, let’s introduce some typically used pandas functions for diverse data cleaning steps. In the sequel, we assume an example python variable df that contains a dataset encapsulated in a pandas DataFrame object.
+<ul>
+    <li>Filling missing values: pandas provides methods for automatically dealing with missing values in a dataset, be it by replacing missing values with a “default” value using the df.fillna() method,
+        or by removing any rows or columns containing missing values through the df.dropna() method. </li>
+    <li>Removing duplicated instances: automatically removing duplicate entries (rows) in a dataset could not be easier thanks to the df.drop_duplicates() method, which allows the removal of extra instances
+        when either a specific attribute value or the entire instance values are duplicated to another entry. </li>
+    <li> Manipulating strings: some pandas functions are useful to make the format of string attributes uniform. For instance, if there is a mix of lowercase, sentencecase, and uppercase values for an 'column' attribute
+        and we want them all to be lowercase, the df['column'].str.lower()method does the job. For removing accidentally introduced leading and trailing whitespaces, try the df['column'].str.strip() method.</li>
+    <li>Manipulating date and time: the pd.to_datetime(df['column']) converts string columns containing date-time information, e.g. in the dd/mm/yyyy format, into Python datetime objects, thereby easing their further manipulation. </li>
+    <li> Column renaming: automating the process of renaming columns can be particularly useful when there are multiple datasets seggregated by city, region, project, etc., and we want to add prefixes or suffixes to all or some of their
+        columns for easing their identification. The df.rename(columns={old_name: new_name}) method makes this possible.</li>
+</ul>
+
+<h3> Putting it all Together: Automated Data Cleaning Pipeline</h3>
+Time to put the above example methods together into a reusable pipeline that helps further automate the data-cleaning process over time. Consider a small dataset of personal transactions with three columns:
+    name of the person (name), date of purchase (date), and amount spent (value):<br />
+    <table border="1" >
+    <tr>
+        <th>
+
+</th>
+        <th>
+            name
+        </th>
+        <th>
+    date
+</th>
+        <th>i
+    value
+</th>
+    </tr>
+<tr>
+    <td> 0</td>
+    <td> Alice</td>
+    <td> 2023-01-01</td>
+    <td> 10.0</td>
+</tr>
+        <tr>
+    <td> 1</td>
+    <td> Bob</td>
+    <td> 2023-02-01</td>
+    <td> NaN</td>
+</tr>
+        <tr>
+    <td> 2</td>
+    <td> Charlie</td>
+    <td> None</td>
+    <td> 30.0</td>
+</tr>
+        <tr>
+    <td> 3</td>
+    <td> None</td>
+    <td> 2023-04-01</td>
+    <td> 40.0</td>
+</tr>
+        <tr>
+    <td> 4</td>
+    <td> Bob</td>
+    <td> 2023-02-01</td>
+    <td> NaN</td>
+</tr>
+<tr>
+    <td> 5</td>
+    <td> Dave</td>
+    <td> 2023-05-01</td>
+    <td> 60.0</td>
+</tr>
+    </table>
+    This dataset has been stored in a pandas DataFrame, df.<br />
+To create a simple yet encapsulated data-cleaning pipeline, we create a custom class called DataCleaner, with a series of custom methods for each of the above-outlined data cleaning steps, as follows:
+<pre>
+    <code>
+class DataCleaner:
+def __init__(self):
+    pass
+    </code>
+</pre>
+<pre>
+    <code>
+def fill_missing_values(self, df):
+    return df.fillna(method='ffill').fillna(method='bfill')
+    </code>
+</pre>
+<p>
+    Note: the ffill and bfill argument values in the ‘fillna’ method are two examples of strategies for dealing with missing values. In particular, ffill applies a “forward fill” that imputes missing values from the previous row’s value.
+    A “backward fill” is then applied with bfill to fill any remaining missing values utilizing the next instance’s value, thereby ensuring no missing values will be left.
+
+</p>
+<pre>
+    <code>
+def drop_missing_values(self, df):
+    return df.dropna()
+    </code>
+</pre>
+<pre>
+    <code>
+def remove_duplicates(self, df):
+    return df.drop_duplicates()
+    </code>
+</pre>
+<pre>
+    <code>
+def clean_strings(self, df, column):
+    df[column] = df[column].str.strip().str.lower()
+    return df
+    </code>
+</pre>
+<pre>
+    <code>
+def convert_to_datetime(self, df, column):
+    df[column] = pd.to_datetime(df[column])
+    return df
+    </code>
+</pre>
+<pre>
+    <code>
+def rename_columns(self, df, columns_dict):
+    return df.rename(columns=columns_dict)
+    </code>
+</pre>
+
+<pre>
+    <code>
+def clean_data(self, df):
+    df = self.fill_missing_values(df)
+    df = self.drop_missing_values(df)
+    df = self.remove_duplicates(df)
+    df = self.clean_strings(df, 'name')
+    df = self.convert_to_datetime(df, 'date')
+    df = self.rename_columns(df, {'name': 'full_name'})
+    return df
+    </code>
+</pre>
+Finally, we use the newly created class to apply the entire cleaning process in one shot and display the result.
+<pre>
+    <code>
+cleaner = DataCleaner()
+cleaned_df = cleaner.clean_data(df)
+print("\nCleaned DataFrame:")
+print(cleaned_df)
+    </code>
+</pre>
+    <table border="1"  >
+    <tr>
+        <th>
+
+</th>
+        <th>
+            full_name
+        </th>
+        <th>
+    date
+</th>
+        <th>
+    value
+</th>
+    </tr>
+<tr>
+    <td> 0</td>
+    <td> Alice</td>
+    <td> 2023-01-01</td>
+    <td> 10.0</td>
+</tr>
+        <tr>
+    <td> 1</td>
+    <td> Bob</td>
+    <td> 2023-02-01</td>
+    <td> 10.0</td>
+</tr>
+        <tr>
+    <td> 2</td>
+    <td> Charlie</td>
+    <td> 2023-02-01</td>
+    <td> 30.0</td>
+</tr>
+        <tr>
+    <td> 3</td>
+    <td> Charlie</td>
+    <td> 2023-04-01</td>
+    <td> 40.0</td>
+</tr>
+        <tr>
+    <td> 4</td>
+    <td> Bob</td>
+    <td> 2023-02-01</td>
+    <td> 40.0</td>
+</tr>
+<tr>
+    <td> 5</td>
+    <td> Dave</td>
+    <td> 2023-05-01</td>
+    <td> 60.0</td>
+</tr>
+    </table>
+This encapsulated pipeline is designed to facilitate and greatly simplify the overall data cleaning process on any new batches of data you get from now on.
+
+<a href="#Contents" class="Home"> Back to Top </a>
+<hr />
+
+<h2 class="h2color" id="OneHotEncoding"> One Hot Encoding: Understanding the “Hot” in Data</h2>
+[<i> Resource: https://machinelearningmastery.com/one-hot-encoding-understanding-the-hot-in-data/</i>]
+<p>
+    Preparing categorical data correctly is a fundamental step in machine learning, particularly when using linear models. One Hot Encoding stands out as a key technique, enabling the transformation of categorical variables into a machine-understandable format.
+    This article tells you why you cannot use a categorical variable directly and demonstrates the use One Hot Encoding in our search for identifying the most predictive categorical features for linear regression.
+</p>
+<h3> Overview </h3>
+<ul>
+    <li>What is One Hot Encoding? </li>
+    <li>Identifying the Most Predictive Categorical Feature </li>
+    <li>Evaluating Individual Features’ Predictive Power </li>
+</ul>
+
+<h3>What is One Hot Encoding? </h3>
+In data preprocessing for linear models, “One Hot Encoding” is a crucial technique for managing categorical data. In this method, “hot” signifies a category’s presence (encoded as one), while “cold” (or zero) signals its absence,
+using binary vectors for representation.<br />
+From the angle of levels of measurement, categorical data are nominal data, which means if we used numbers as labels (e.g., 1 for male and 2 for female), operations such as addition and subtraction would not make sense.
+And if the labels are not numbers, you can’t even do any math with it.
+<br />
+One hot encoding separates each category of a variable into distinct features, preventing the misinterpretation of categorical data as having some ordinal significance in linear regression and other linear models.
+After the encoding, the number bears meaning, and it can readily be used in a math equation.
+<br />
+For instance, consider a categorical feature like “Color” with the values Red, Blue, and Green. One Hot Encoding translates this into three binary features (“Color_Red,” “Color_Blue,” and “Color_Green”),
+each indicating the presence (1) or absence (0) of a color for each observation. Such a representation clarifies to the model that these categories are distinct, with no inherent order.
+<br />
+Why does this matter? Many machine learning models, including linear regression, operate on numerical data and assume a numerical relationship between values. Directly encoding categories as numbers (e.g., Red=1, Blue=2, Green=3)
+could imply a non-existent hierarchy or quantitative relationship, potentially skewing predictions. One Hot Encoding sidesteps this issue, preserving the categorical nature of the data in a form that models can accurately interpret.
+<br />
+Let’s apply this technique to the Ames dataset, demonstrating the transformation process with an example:
+<pre>
+    <code>
+# Load only categorical columns without missing values from the Ames dataset
+import pandas as pd
+Ames = pd.read_csv("Ames.csv").select_dtypes(include=["object"]).dropna(axis=1)
+print(f"The shape of the DataFrame before One Hot Encoding is: {Ames.shape}")
+
+# Import OneHotEncoder and apply it to Ames:
+from sklearn.preprocessing import OneHotEncoder
+
+encoder = OneHotEncoder(sparse=False)
+Ames_One_Hot = encoder.fit_transform(Ames)
+
+# Convert the encoded result back to a DataFrame
+Ames_encoded_df = pd.DataFrame(Ames_One_Hot, columns=encoder.get_feature_names_out(Ames.columns))
+
+# Display the new DataFrame and it's expanded shape
+print(Ames_encoded_df.head())
+print(f"The shape of the DataFrame after One Hot Encoding is: {Ames_encoded_df.shape}")
+    </code>
+</pre>
+This will output:
+<pre>
+    <code>
+The shape of the DataFrame before One Hot Encoding is: (2579, 27)
+
+   MSZoning_A (agr)  ...  SaleCondition_Partial
+0               0.0  ...                    0.0
+1               0.0  ...                    0.0
+2               0.0  ...                    0.0
+3               0.0  ...                    0.0
+4               0.0  ...                    0.0
+[5 rows x 188 columns]
+
+The shape of the DataFrame after One Hot Encoding is: (2579, 188)
+    </code>
+</pre>
+As seen, the Ames dataset’s categorical columns are converted into 188 distinct features, illustrating the expanded complexity and detailed representation that One Hot Encoding provides.
+This expansion, while increasing the dimensionality of the dataset, is a crucial preprocessing step when modeling the relationship between categorical features and the target variable in linear regression.
+<h3>Identifying the Most Predictive Categorical Feature </h3>
+<p>
+    After understanding the basic premise and application of One Hot Encoding in linear models, the next step in our analysis involves identifying which categorical feature contributes most significantly to predicting our target variable.
+    In the code snippet below, we iterate through each categorical feature in our dataset, apply One Hot Encoding, and evaluate its predictive power using a linear regression model in conjunction with cross-validation.
+    Here, the drop="first" parameter in the OneHotEncoder function plays a vital role:
+</p>
+<pre>
+    <code>
+# Buidling on the code above to identify top categorical feature
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import cross_val_score
+
+# Set 'SalePrice' as the target variable
+y = pd.read_csv("Ames.csv")["SalePrice"]
+
+# Dictionary to store feature names and their corresponding mean CV R² scores
+feature_scores = {}
+
+for feature in Ames.columns:
+    encoder = OneHotEncoder(drop="first")
+    X_encoded = encoder.fit_transform(Ames[[feature]])
+
+    # Initialize the linear regression model
+    model = LinearRegression()
+
+    # Perform 5-fold cross-validation and calculate R^2 scores
+    scores = cross_val_score(model, X_encoded, y)
+    mean_score = scores.mean()
+
+    # Store the mean R^2 score
+    feature_scores[feature] = mean_score
+
+# Sort features based on their mean CV R² scores in descending order
+sorted_features = sorted(feature_scores.items(), key=lambda item: item[1], reverse=True)
+print("Feature selected for highest predictability:", sorted_features[0][0])
+    </code>
+</pre>
+The drop="first" parameter is used to mitigate perfect collinearity. By dropping the first category (encoding it implicitly as zeros across all other categories for a feature),
+we reduce redundancy and the number of input variables without losing any information. This practice simplifies the model, making it easier to interpret and often improving its performance. The code above will output:
+<pre>
+    <code>
+Feature selected for highest predictability: Neighborhood
+    </code>
+</pre>
+Our analysis reveals that “Neighborhood” is the categorical feature with the highest predictability in our dataset. This finding highlights the significant impact of location on housing prices within the Ames dataset.
+<h3>Evaluating Individual Features’ Predictive Power </h3>
+With a deeper understanding of One Hot Encoding and identifying the most predictive categorical feature, we now expand our analysis to uncover the top five categorical features that significantly impact housing prices.
+This step is essential for fine-tuning our predictive model, enabling us to focus on the features that offer the most value in forecasting outcomes. By evaluating each feature’s mean cross-validated R² score, we can determine not
+just the importance of these features individually but also gain insights into how different aspects of a property contribute to its overall valuation.
+<br />Let’s delve into this evaluation:
+<pre>
+    <code>
+# Building on the code above to determine the performance of top 5 categorical features
+print("Top 5 Categorical Features:")
+for feature, score in sorted_features[0:5]:
+    print(f"{feature}: Mean CV R² = {score:.4f}")
+    </code>
+</pre>
+The output from our analysis presents a revealing snapshot of the factors that play pivotal roles in determining housing prices:
+<pre>
+    <code>
+Top 5 Categorical Features:
+Neighborhood: Mean CV R² = 0.5407
+ExterQual: Mean CV R² = 0.4651
+KitchenQual: Mean CV R² = 0.4373
+Foundation: Mean CV R² = 0.2547
+HeatingQC: Mean CV R² = 0.1892
+    </code>
+</pre>
+This result accentuates the importance of the feature “Neighborhood” as the top predictor, reinforcing the idea that location significantly influences housing prices. Following closely are “ExterQual” (Exterior Material Quality) and
+“KitchenQual” (Kitchen Quality), which highlight the premium buyers place on the quality of construction and finishes. “Foundation” and “HeatingQC” (Heating Quality and Condition) also emerge as significant, albeit with lower predictive power,
+suggesting that structural integrity and comfort features are critical considerations for home buyers.<br /><br />
+<a href="#Contents" class="Home"> Back to Top </a>
+<hr />
+<h2 class="h2color" id="OrdinalEncoding"> Decision Trees and Ordinal Encoding: A Practical Guide</h2>
+[<i> Resource: https://machinelearningmastery.com/decision-trees-and-ordinal-encoding-a-practical-guide/</i>]
+<p>
+Categorical variables are pivotal as they often carry essential information that influences the outcome of predictive models.
+However, their non-numeric nature presents unique challenges in model processing, necessitating specific strategies for encoding.</p>
+<h3> Overview</h3>
+<ul>
+    <li> Understanding Categorical Variables: Ordinal vs. Nominal</li>
+    <li> Implementing Ordinal Encoding in Python</li>
+    <li> Visualizing Decision Trees: Insights from Ordinally Encoded Data</li>
+</ul>
+<h3> Understanding Categorical Variables: Ordinal vs. Nominal</h3>
+<p>
+    Categorical features in datasets are fundamental elements that need careful handling during preprocessing to ensure accurate model predictions.
+    These features can broadly be classified into two types: ordinal and nominal. Ordinal features possess a natural order or hierarchy among their categories.
+    An example is the feature “ExterQual” in the Ames dataset, which describes the quality of the material on the exterior of a house with levels like “Poor”, “Fair”, “Average”, “Good”, and “Excellent”.
+    The order among these categories is significant and can be utilized in predictive modeling. Nominal features, in contrast, do not imply any inherent order. Categories are distinct and have no order relationship between them.
+    For instance, the “Neighborhood” feature represents various names of neighborhoods like “CollgCr”, “Veenker”, “Crawfor”, etc., without any intrinsic ranking or hierarchy.
+    <br />
+    The preprocessing of categorical variables is crucial because most machine learning algorithms require input data in numerical format. This conversion from categorical to numerical is typically achieved through encoding.
+    The choice of encoding strategy is pivotal and is influenced by both the type of categorical variable and the model being used.
+</p>
+<h4> Encoding Strategies for Machine Learning Models</h4>
+<p>
+    Linear models, such as linear regression, typically employ one-hot encoding for both ordinal and nominal features. This method transforms each category into a new binary variable, ensuring that the model treats each category as an
+    independent entity without any ordinal relationship. This is essential because linear models assume interval data. That is, linear models interpret numerical input linearly, meaning the numerical value assigned to each category in
+    ordinal encoding could mislead the model. Each incremental integer value in ordinal encoding might be incorrectly assumed by a linear model to reflect an equal step increase in the underlying quantitative measure, which can distort
+    the model output if this assumption doesn’t hold.<br />
+    Tree-based models, which include algorithms like decision trees and random forests, handle categorical data differently. These models can benefit from ordinal encoding for ordinal features because they make binary splits based on the feature values.
+    The inherent order preserved in ordinal encoding can assist these models in making more effective splits. Tree-based models do not inherently evaluate the arithmetic difference between categories. Instead, they assess whether a particular split
+    at any given encoded value best segments the target variable into its classes or ranges. Unlike linear models, this makes them less sensitive to how the categories are spaced.
+</p>
+<h3> Implementing Ordinal Encoding in Python</h3>
+<p>
+    To implement ordinal encoding in Python, we use the OrdinalEncoder from sklearn.preprocessing. This tool is particularly useful for preparing ordinal features for tree-based models. It allows us to specify the order of categories manually,
+    ensuring that the encoding respects the natural hierarchy of the data. We can achieve this using the information in the expanded data dictionary:
+</p>
+
+<pre>
+    <code>
+# Import necessary libraries
+import pandas as pd
+from sklearn.pipeline import Pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import FunctionTransformer, OrdinalEncoder
+
+# Load the dataset
+Ames = pd.read_csv('Ames.csv')
+
+# Manually specify the categories for ordinal encoding according to the data dictionary
+ordinal_order = {
+    'Electrical': ['Mix', 'FuseP', 'FuseF', 'FuseA', 'SBrkr'],  # Electrical system
+    'LotShape': ['IR3', 'IR2', 'IR1', 'Reg'],  # General shape of property
+    'Utilities': ['ELO', 'NoSeWa', 'NoSewr', 'AllPub'],  # Type of utilities available
+    'LandSlope': ['Sev', 'Mod', 'Gtl'],  # Slope of property
+    'ExterQual': ['Po', 'Fa', 'TA', 'Gd', 'Ex'],  # Evaluates the quality of the material on the exterior
+    'ExterCond': ['Po', 'Fa', 'TA', 'Gd', 'Ex'],  # Evaluates the present condition of the material on the exterior
+    'BsmtQual': ['None', 'Po', 'Fa', 'TA', 'Gd', 'Ex'],  # Height of the basement
+    'BsmtCond': ['None', 'Po', 'Fa', 'TA', 'Gd', 'Ex'],  # General condition of the basement
+    'BsmtExposure': ['None', 'No', 'Mn', 'Av', 'Gd'],  # Walkout or garden level basement walls
+    'BsmtFinType1': ['None', 'Unf', 'LwQ', 'Rec', 'BLQ', 'ALQ', 'GLQ'],  # Quality of basement finished area
+    'BsmtFinType2': ['None', 'Unf', 'LwQ', 'Rec', 'BLQ', 'ALQ', 'GLQ'],  # Quality of second basement finished area
+    'HeatingQC': ['Po', 'Fa', 'TA', 'Gd', 'Ex'],  # Heating quality and condition
+    'KitchenQual': ['Po', 'Fa', 'TA', 'Gd', 'Ex'],  # Kitchen quality
+    'Functional': ['Sal', 'Sev', 'Maj2', 'Maj1', 'Mod', 'Min2', 'Min1', 'Typ'],  # Home functionality
+    'FireplaceQu': ['None', 'Po', 'Fa', 'TA', 'Gd', 'Ex'],  # Fireplace quality
+    'GarageFinish': ['None', 'Unf', 'RFn', 'Fin'],  # Interior finish of the garage
+    'GarageQual': ['None', 'Po', 'Fa', 'TA', 'Gd', 'Ex'],  # Garage quality
+    'GarageCond': ['None', 'Po', 'Fa', 'TA', 'Gd', 'Ex'],  # Garage condition
+    'PavedDrive': ['N', 'P', 'Y'],  # Paved driveway
+    'PoolQC': ['None', 'Fa', 'TA', 'Gd', 'Ex'],  # Pool quality
+    'Fence': ['None', 'MnWw', 'GdWo', 'MnPrv', 'GdPrv']  # Fence quality
+}
+
+# Extract list of ALL ordinal features from dictionary
+ordinal_features = list(ordinal_order.keys())
+
+# List of ordinal features except Electrical
+ordinal_except_electrical = [feature for feature in ordinal_features if feature != 'Electrical']
+
+# Specific transformer for 'Electrical' using the mode for imputation
+electrical_imputer = Pipeline(steps=[
+    ('impute_electrical', SimpleImputer(strategy='most_frequent'))
+])
+
+# Helper function to fill 'None' for other ordinal features
+def fill_none(X):
+    return X.fillna("None")
+
+# Pipeline for ordinal features: Fill missing values with 'None'
+ordinal_imputer = Pipeline(steps=[
+    ('fill_none', FunctionTransformer(fill_none, validate=False))
+])
+
+# Preprocessor for filling missing values
+preprocessor_fill = ColumnTransformer(transformers=[
+    ('electrical', electrical_imputer, ['Electrical']),
+    ('cat', ordinal_imputer, ordinal_except_electrical)
+])
+
+# Apply preprocessor for filling missing values
+Ames_ordinal = preprocessor_fill.fit_transform(Ames[ordinal_features])
+
+# Convert back to DataFrame to apply OrdinalEncoder
+Ames_ordinal = pd.DataFrame(Ames_ordinal, columns=['Electrical'] + ordinal_except_electrical)
+
+# Apply Ordinal Encoding
+categories = [ordinal_order[feature] for feature in ordinal_features]
+ordinal_encoder = OrdinalEncoder(categories=categories)
+Ames_ordinal_encoded = ordinal_encoder.fit_transform(Ames_ordinal)
+Ames_ordinal_encoded = pd.DataFrame(Ames_ordinal_encoded, columns=['Electrical'] + ordinal_except_electrical)
+    </code>
+</pre>
+<p>
+    The code block above efficiently handles the preprocessing of categorical variables by first filling missing values and then applying the appropriate encoding strategy.
+    By viewing the dataset before encoding, we can confirm that our preprocessing steps have been correctly applied:
+</p>
+
+<pre>
+    <code>
+# Ames dataset of ordinal features prior to ordinal encoding
+print(Ames_ordinal)
+    </code>
+</pre>
+
+<pre>
+    <code>
+     Electrical LotShape Utilities LandSlope  ... GarageCond PavedDrive PoolQC Fence
+0         SBrkr      Reg    AllPub       Gtl  ...         TA          Y   None  None
+1         SBrkr      Reg    AllPub       Gtl  ...         TA          Y   None  None
+2         SBrkr      Reg    AllPub       Gtl  ...         Po          N   None  None
+3         SBrkr      Reg    AllPub       Gtl  ...         TA          N   None  None
+4         SBrkr      Reg    AllPub       Gtl  ...         TA          Y   None  None
+...         ...      ...       ...       ...  ...        ...        ...    ...   ...
+2574      FuseF      Reg    AllPub       Gtl  ...         Po          P   None  None
+2575      FuseA      IR1    AllPub       Gtl  ...         TA          Y   None  None
+2576      FuseA      Reg    AllPub       Gtl  ...         TA          Y   None  None
+2577      SBrkr      Reg    AllPub       Gtl  ...         TA          Y   None  None
+2578      SBrkr      IR1    AllPub       Gtl  ...         TA          Y   None  None
+
+[2579 rows x 21 columns]
+    </code>
+</pre>
+The output above highlights the ordinal features in the Ames dataset prior to any ordinal encoding. Below, we illustrate the specific information we provide to the OrdinalEncoder.
+Please note that we do not provide a list of features. We simply provide the ranking of each feature in the order they appear in our dataset.
+<h3> Visualizing Decision Trees: Insights from Ordinally Encoded Data</h3>
+<pre>
+    <code>
+# The information we input into ordinal encoder, it will automatically assign 0, 1, 2, 3, etc.
+print(categories)
+    </code>
+</pre>
+
+<pre>
+    <code>
+[['Mix', 'FuseP', 'FuseF', 'FuseA', 'SBrkr'],
+ ['IR3', 'IR2', 'IR1', 'Reg'],
+ ['ELO', 'NoSeWa', 'NoSewr', 'AllPub'],
+ ['Sev', 'Mod', 'Gtl'],
+ ['Po', 'Fa', 'TA', 'Gd', 'Ex'],
+ ['Po', 'Fa', 'TA', 'Gd', 'Ex'],
+ ['None', 'Po', 'Fa', 'TA', 'Gd', 'Ex'],
+ ['None', 'Po', 'Fa', 'TA', 'Gd', 'Ex'],
+ ['None', 'No', 'Mn', 'Av', 'Gd'],
+ ['None', 'Unf', 'LwQ', 'Rec', 'BLQ', 'ALQ', 'GLQ'],
+ ['None', 'Unf', 'LwQ', 'Rec', 'BLQ', 'ALQ', 'GLQ'],
+ ['Po', 'Fa', 'TA', 'Gd', 'Ex'],
+ ['Po', 'Fa', 'TA', 'Gd', 'Ex'],
+ ['Sal', 'Sev', 'Maj2', 'Maj1', 'Mod', 'Min2', 'Min1', 'Typ'],
+ ['None', 'Po', 'Fa', 'TA', 'Gd', 'Ex'],
+ ['None', 'Unf', 'RFn', 'Fin'],
+ ['None', 'Po', 'Fa', 'TA', 'Gd', 'Ex'],
+ ['None', 'Po', 'Fa', 'TA', 'Gd', 'Ex'],
+ ['N', 'P', 'Y'],
+ ['None', 'Fa', 'TA', 'Gd', 'Ex'],
+ ['None', 'MnWw', 'GdWo', 'MnPrv', 'GdPrv']]
+    </code>
+</pre>
+<p>
+    This sets the stage for an effective application of ordinal encoding, where the natural ordering of categories is crucial for subsequent model training.
+    Each category within a feature will be converted to a numerical value that reflects its rank or importance as specified, without assuming any equidistant spacing between them.
+</p>
+
+<pre>
+    <code>
+# Ames dataset of ordinal features after ordinal encoding
+print(Ames_ordinal_encoded)
+    </code>
+</pre>
+<p>
+    The transformed dataset is shown below. It is highly recommended to do a quick check against the original dataset to ensure that the results align with the information we obtained from the data dictionary.
+</p>
+
+<pre>
+    <code>
+      Electrical  LotShape  Utilities  ...  PavedDrive  PoolQC  Fence
+0            4.0       3.0        3.0  ...         2.0     0.0    0.0
+1            4.0       3.0        3.0  ...         2.0     0.0    0.0
+2            4.0       3.0        3.0  ...         0.0     0.0    0.0
+3            4.0       3.0        3.0  ...         0.0     0.0    0.0
+4            4.0       3.0        3.0  ...         2.0     0.0    0.0
+...          ...       ...        ...  ...         ...     ...    ...
+2574         2.0       3.0        3.0  ...         1.0     0.0    0.0
+2575         3.0       2.0        3.0  ...         2.0     0.0    0.0
+2576         3.0       3.0        3.0  ...         2.0     0.0    0.0
+2577         4.0       3.0        3.0  ...         2.0     0.0    0.0
+2578         4.0       2.0        3.0  ...         2.0     0.0    0.0
+
+[2579 rows x 21 columns]
+    </code>
+</pre>
+<p>
+    As we conclude this segment on implementing ordinal encoding, we have set the stage for a robust analysis. By meticulously mapping each ordinal feature to its intrinsic hierarchical value,
+    we empower our predictive models to understand better and leverage the structured relationships inherent in the data. The careful attention to the encoding detail paves the way for more insightful and precise modeling.
+</p>
+<h3> Visualizing Decision Trees: Insights from Ordinally Encoded Data</h3>
+<p>
+    In the final part of this post, we’ll delve into how a Decision Tree Regressor interprets and utilizes this carefully encoded data. We will visually explore the decision-making process of the tree,
+    highlighting how the ordinal nature of our features influences the paths and decisions within the model. This visual depiction will not only affirm the importance of correct data preparation but also illuminate the
+    model’s reasoning in a tangible way. With the categorical variables now thoughtfully preprocessed and encoded, our dataset is primed for the next crucial step: training the Decision Tree Regressor:
+</p>
+
+<pre>
+    <code>
+# Building on the above blocks of code
+# Import the necessary libraries
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.model_selection import train_test_split
+import dtreeviz
+
+# Load and split the data
+X_ordinal = Ames_ordinal_encoded # Use only the ordinal features for fitting the model
+y = Ames['SalePrice']
+X_train, X_test, y_train, y_test = train_test_split(X_ordinal, y, test_size=0.2, random_state=42)
+
+# Initialize and fit the Decision Tree
+tree_model = DecisionTreeRegressor(max_depth=3)
+tree_model.fit(X_train.values, y_train)
+
+# Visualize the decision tree using dtreeviz
+viz = dtreeviz.model(tree_model, X_train, y_train,
+               target_name='SalePrice', feature_names=X_train.columns.tolist())
+
+# In Jupyter Notebook, you can directly view the visual using the below:
+# viz.view()  # Renders and displays the SVG visualization
+
+# In PyCharm, you can render and display the SVG image:
+v = viz.view()     # render as SVG into internal object
+v.show()           # pop up window
+    </code>
+</pre>
+<p>By visualizing the decision tree, we provide a graphical representation of how our model processes features to arrive at predictions:</p>
+<img src="DecisionTree.jpeg" width="800" height="600" />
+            <br />
+The features chosen for the splits in this tree include ‘ExterQual’, ‘FireplaceQu’, ‘BsmtQual’, and ‘GarageQual’, and ‘KitchenQual’.
+These features were selected based on their ability to reduce the MSE when used to split the data. The levels or thresholds for these splits (e.g., ExterQual <= 2.5) were determined during the training process to optimize the
+separation of data points into more homogeneous groups. This visualization not only confirms the efficacy of our encoding strategy but also showcases the strategic depth that decision trees bring to predictive modeling.
+<a href="#Contents" class="Home"> Back to Top </a>
+<hr />
+<h2 class="h2color" id="Deployment"> Tips for Deploying ML Models Efficiently</h2>
+[<i> Resource: https://machinelearningmastery.com/tips-deploying-machine-learning-models-efficiently/</i>]
+<h3> Introduction </h3>
+    <p>
+        The process of deploying machine learning models is an important part of deploying AI technologies and systems to the real world. Unfortunately, the road to model deployment can be a tough one.
+        The process of deployment is often characterized by challenges associated with taking a trained model — the culmination of a lengthy data-preparation and model-training process — to the world at-large,
+        where it must continue to perform well. These challenges arise as the machine learning model must endure while the environment in which it exists changes, often dramatically.
+<br />
+        To help bring awareness to some of the problems (and solutions) associated with deploying models, a series of tips, meant to guide beginners and practitioners alike in best practices, are set out below.
+        These tips cover a range of topics, from optimization and containerization, to deployment processes such as CI/CD, to monitoring and security best practices, aimed at making deployment more ready for primetime.
+    </p>
+<ol>
+    <li> <b>Optimize Your Models for Production </b>
+           <p>
+        In the lab, machine learning models can make production-related sacrifices in the name of development. However, in the real world, machine learning models require optimization if they are to realize their design benefits.
+        Without optimization, a model likely cannot deal with the latency demands placed upon it by inference applications, perhaps using too many valuable CPU cycles or hogging much memory to be useful in realistic conditions.<br />
+Enhancements such as quantization, pruning, and knowledge distillation offer the promise of optimizing models. Quantization can reduce the number of bits used to represent weights, resulting in a smaller model and faster inference time.
+        Pruning eliminates decidedly unnecessary weights, resulting in a streamlined model. Knowledge distillation can help transfer knowledge between a larger model and a smaller one, improving training efficiency.<br />
+Tools such as TensorFlow Lite and ONNX are capable of contributing to model optimization. Capable of optimizing model during conversion, these tools reducing the effort required to make them ready for inference, in various settings,
+        including embedded and mobile.
+    </p>
+    </li>
+<li> <b>Containerize Your Application</b>
+    <p>
+        Containerization packages your machine learning models and any of its dependencies and requirements, creating a single deployable artifact that can run in essentially any environment.
+        Containerization affords the ability to run your model on any system that can run the particular brand of container, independent of the exact installation or configuration of the host system.<br />
+Docker is a popular tool for performing containerization. Docker helps create encapsulated and portable software packages. Kubernetes can effectively manage the lifecycle of containers.
+        Using a host of development and operational best practices, you could prepare, for example, a containerized Django application using a custom API and accessing a machine learning model for Kubernetes deployment.<br />
+Containerization is an essential skill for machine learning engineers these days, and while overlooking this seemingly tangential set of tools in favor of supplementing more machine learning knowledge, doing so would be a mistake. Containerization can become an important early step in the process of widening your audience and being able to easily manage your project in production.
+    </p>
+</li>
+    <li> <b>Implement Continuous Integration and Continuous Deployment </b>
+    <p>
+        Continuous integration and continuous deployment (CI/CD) can improve the reliability of your model deployment. Different such techniques and tools enable the automation of testing, deployment, and updates of models.<br />
+CI/CD approach makes exception handling in system testing, deployment, and rollout of reloads and updates seamless. Of note, the issues that can arise when preparing for and using CI/CD for machine learning are not any more troublesome than in the deployment of software.
+        This has helped make its adoption in machine learning model deployment and management widespread.<br />
+The CI and CD processes can be carried out utilizing CI/CD tools like Jenkins and Github Actions. Jenkins is an open-source automation server, enabling developers to build, test, and deploy their code reliably. GitHub Actions provides flexible CI/CD workflows directly integrated with GitHub repositories.
+        They both offer value in automating the entire software development and machine learning model deployment and management lifecycles, all via the definition tooling pipelines in convenient configuration files.
+    </p>
+</li>
+    <li> <b>Monitor Model Performance in Production </b>
+    <p>
+        Model performance needs to be kept under careful observation once the model is in production so that the model continues to deliver the desired value to the organization. Various tools help us to monitor performance,
+        but there is more to monitoring performance than merely watching numbers flash by in a terminal window. For instance, while various tools and methods can be used for monitoring machine learning model accuracy, response time, and resource usage, one should also adopt a solid logging package and strategy as well.
+        Tools like Kubernetes have a dashboard that can show response times, the outcome of key transactions, and request rate.<br />
+        In addition, it’s crucial to establish automated alerting systems that notify the machine learning operations engineers, and other stakeholders, of any significant deviations in model performance.
+        This proactive approach allows for immediate investigation and remediation, as opposed to whenever they are noticed during routine log inspections, minimizing potential disruptions. Is your model experiencing drift? It would be better to know about it now.<br />
+        Lastly, the integration of this assortment of monitoring solutions with a centralized dashboard can provide a holistic view of all deployed models, enabling more effective management and optimization of machine learning operations. Don’t overlook the value of “all in one place.”
+    </p>
+</li>
+    <li> <b>Ensure Model Security and Compliance </b>
+    <p>
+        We will conclude with something that is ubiquitously obvious from an application perspective, but often overlooked from a model point of view: security is of the utmost importance. Explicitly stated: don’t neglect to take into account compliance and security when deploying models. The different forms security breaches can take are numerous, and the implications of not protecting data are tremendous.<br />
+        To safeguard machine learning models, there are a few simple steps you can take that can have a huge impact. Start by safeguarding models while they are at rest and during transit, and by limiting who has access to models and their inputs. Fewer potential points of access means fewer potential breach opportunities. The model’s architecture can also play a role in defense, so be aware of your model’s internal structure.
+        Finally, regulatory compliance is another important issue and must be considered when deploying models for a whole host of reasons, from being a responsible player to avoiding sanction from authorities.
+    </p>
+</li>
+</ol>
+<p>
+    <h3> Summary</h3>
+    We are reminded that deploying machine learning models involves several key practices. Optimization helps models run better. Containerization is important for combinations of systems now and at scale.
+    Continuous integration and continuous deployment help to continue delivering predictions rapidly and accurately. And monitoring and ensuring security and compliance help secure models and keep them available to their users.
+
+            <div style="text-align:center" >
+            <img style="align-content:center" src="Development to Produciton Timeline.jpeg" width="700" height="500"/></div>
+<a href="#Contents" class="Home"> Back to Top </a>
+<hr />
+<h2 class="h2color" id="HyperparameterTuning"> Tips for Tuning Hyperparameters in Machine Learning Models</h2>
+[<i> Resource: https://machinelearningmastery.com/tips-for-tuning-hyperparameters-in-machine-learning-models/ </i>]
+<p>
+    If you’re familiar with machine learning, you know that the training process allows the model to learn the optimal values for the parameters—or model coefficients—that characterize it.
+    But machine learning models also have a set of hyperparameters whose values you should specify when training the model. So how do you find the optimal values for these hyperparameters? <br />
+You can use hyperparameter tuning to find the best values for the hyperparameters. By systematically adjusting hyperparameters, you can optimize your models to achieve the best possible results.<br /> <br />
+This tutorial provides practical tips for effective hyperparameter tuning—starting from building a baseline model to using advanced techniques like Bayesian optimization. Whether you’re new to hyperparameter tuning or looking to refine your approach, these tips will help you build better machine learning models. Let’s get started.
+</p>
+<ol>
+    <li> <b>Start Simple: Train a Baseline Model Without Any Tuning </b>
+<p> When beginning the process of hyperparameter tuning, it’s good to start simple by training a baseline model without any tuning. This initial model serves as a reference point to measure the impact of subsequent tuning efforts.
+
+Here’s why this step is essential and how to execute it effectively: <br />
+<ul>
+    <li> A baseline model provides a benchmark to compare against models with the models . This helps in quantifying the improvements achieved through hyperparameter tuning.
+</li>
+    <li> Select a default model: Choose a model that fits the problem at hand. For example, a decision tree for a classification problem or a linear regression for a regression problem.</li>
+    <li> Use default hyperparameters: Train the model using the default hyperparameters provided by the library. For instance, if using scikit-learn, instantiate the model without specifying any parameters.</li>
+</ul>
+
+
+Assess the performance of the baseline model using appropriate metrics. This step involves splitting the data into training and testing sets, training the model, making predictions, and evaluating the results:
+<pre>
+    <code>
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_iris
+
+# Load data
+data = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=25)
+
+# Initialize model with default parameters
+model = DecisionTreeClassifier()
+
+# Train model
+model.fit(X_train, y_train)
+
+# Predict and evaluate
+y_pred = model.predict(X_test)
+baseline_accuracy = accuracy_score(y_test, y_pred)
+print(f'Baseline Accuracy: {baseline_accuracy:.2f}')
+    </code>
+</pre>
+Document the performance metrics of the baseline model. This will be useful for comparison as you proceed with hyperparameter tuning.
+
+    </li>
+    <li> <b> Use Hyperparameter Search with Cross-Validation</b>
+<p>
+Once you have established a baseline model, the next step is to optimize the model’s performance through hyperparameter tuning. Utilizing hyperparameter search techniques with cross-validation is a robust approach to finding the best set of hyperparameters.
+<br />
+<b> Why use hyperparameter search with cross-validation?</b>
+<ul>
+    <li> Cross-validation provides a more reliable estimate of model performance by averaging results across multiple folds, reducing the risk of overfitting to a particular train-test split. </li>
+    <li>Hyperparameter search methods like Grid Search and Random Search allow for systematic exploration of the hyperparameter space, ensuring a thorough evaluation of potential configurations. </li>
+    <li> This method helps in selecting hyperparameters that generalize well to unseen data, leading to better model performance in production.</li>
+</ul>
+<b> Choose a search technique:</b> Select a hyperparameter search method. The two most commong strategies are:
+    <ul>
+        <li> Grid search which involves an exhaustive search over a parameter grid</li>
+        <li> Randomized search which involves random sampling parameters from a specified distribution</li>
+    </ul>
+<b> Define hyperparameter grid: </b> Specify the hyperparmeters and their respective ranges or distributions to search over.
+<pre>
+    <code>
+from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.datasets import load_iris
+
+# Load data
+data = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=25)
+
+# Initialize model
+model = DecisionTreeClassifier()
+
+# Define hyperparameter grid for Grid Search
+param_grid = {
+	'criterion': ['gini', 'entropy'],
+	'max_depth': [None, 10, 20, 30],
+	'min_samples_split': [2, 5, 10]
+}
+    </code>
+</pre>
+<b> Use cross-validation: </b>Instead of defining a cross-validation strategy separately, you can use cross_val_score to evaluate model performance with the specified cross-validation scheme.
+<pre>
+    <code>
+from sklearn.model_selection import cross_val_score
+
+# Grid Search
+grid_search = GridSearchCV(model, param_grid, cv=5, scoring='accuracy')
+grid_search.fit(X_train, y_train)
+best_params_grid = grid_search.best_params_
+best_score_grid = grid_search.best_score_
+
+print(f'Best Parameters (Grid Search): {best_params_grid}')
+print(f'Best Cross-Validation Score (Grid Search): {best_score_grid:.2f}')
+    </code>
+</pre>
+Using hyperparameter tuning with cross-validation this way ensures more reliable performance estimates and improved model generalization.
+
+    </li>
+    <li> <b>Use Randomized Search for Initial Exploration </b>
+<p>
+When starting hyperparameter tuning, it’s often beneficial to use randomized search for initial exploration.
+Randomized search provides a more efficient way to explore a wide range of hyperparameters compared to grid search, especially when dealing with high-dimensional hyperparameter spaces.<br /> <br />
+<b>Define hyperparameter distribution: </b>Specify the hyperparameters and their respective distributions from which to sample.
+<pre>
+    <code>
+from sklearn.model_selection import RandomizedSearchCV
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.datasets import load_iris
+import numpy as np
+
+# Load data
+data = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=42)
+
+# Initialize model
+model = DecisionTreeClassifier()
+
+# Define hyperparameter distribution for Random Search
+param_dist = {
+	'criterion': ['gini', 'entropy'],
+	'max_depth': [None] + list(range(10, 31)),
+	'min_samples_split': range(2, 11),
+	'min_samples_leaf': range(1, 11)
+}
+    </code>
+</pre>
+<b> Set up randomized search with cross-validation:</b>
+<pre>
+    <code>
+# Random Search
+random_search = RandomizedSearchCV(model, param_dist, n_iter=100, cv=5, scoring='accuracy')
+random_search.fit(X_train, y_train)
+best_params_random = random_search.best_params_
+best_score_random = random_search.best_score_
+
+print(f'Best Parameters (Random Search): {best_params_random}')
+print(f'Best Cross-Validation Score (Random Search): {best_score_random:.2f}')
+    </code>
+</pre>
+<b> Evaluate the model:</b> Train the model using the best hyperparameters and evaluate its performance on the test set.
+<pre>
+    <code>
+best_model = DecisionTreeClassifier(**best_params_random)
+best_model.fit(X_train, y_train)
+y_pred = best_model.predict(X_test)
+final_accuracy = accuracy_score(y_test, y_pred)
+
+print(f'Final Model Accuracy: {final_accuracy:.2f}')
+    </code>
+</pre>
+Randomized search is, therefore, better suited for high-dimensional hyperparameter spaces and computationally expensive models.
+    </li>
+    <li> <b> Monitor Overfitting with Validation Curves</b>
+<p>
+Validation curves help visualize the effect of a hyperparameter on the training and validation performance, allowing you to identify overfitting or underfitting.<br />
+Here’s an example. This code snippet evaluates how the performance of a Random Forest classifier varies with different values of the n_estimators hyperparameter using validation curves.
+    It does this by calculating training and cross-validation scores for a range of n_estimators values (10, 100, 200, 400, 800, 1000) across 5-fold cross-validation.
+<pre>
+    <code>
+from sklearn.model_selection import validation_curve
+from sklearn.ensemble import RandomForestClassifier
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Define hyperparameter range
+param_range = [10, 100, 200, 400, 800, 1000]
+
+# Calculate validation curve
+train_scores, test_scores = validation_curve(
+	RandomForestClassifier(), X_train, y_train,
+	param_name="n_estimators", param_range=param_range,
+	cv=5, scoring="accuracy")
+
+# Calculate mean and standard deviation
+train_mean = np.mean(train_scores, axis=1)
+train_std = np.std(train_scores, axis=1)
+test_mean = np.mean(test_scores, axis=1)
+test_std = np.std(test_scores, axis=1)
+    </code>
+</pre>
+It then plots the mean accuracy scores along with their standard deviations for both training and cross-validation sets. The resulting plot helps to visualize whether the model is overfitting or underfitting at different values of n_estimators.
+<pre>
+    <code>
+# Plot validation curve
+plt.plot(param_range, train_mean, label="Training score", color="r")
+plt.fill_between(param_range, train_mean - train_std, train_mean + train_std, color="r", alpha=0.3)
+plt.plot(param_range, test_mean, label="Cross-validation score", color="g")
+plt.fill_between(param_range, test_mean - test_std, test_mean + test_std, color="g", alpha=0.3)
+plt.title("Validation Curve with Random Forest")
+plt.xlabel("Number of Estimators")
+plt.ylabel("Accuracy")
+plt.legend(loc="best")
+plt.show()
+    </code>
+</pre>
+
+    </li>
+    <li> <b> Use Bayesian Optimization for Efficient Search</b>
+<p>
+Using Bayesian optimization for hyperparameter tuning is a highly efficient and effective approach. It uses probabilistic modeling to explore the hyperparameter space—requiring fewer evaluations and computational resources.<br />
+You’ll need libraries like scikit-optimize or hyperopt to perform Bayesian optimization. Here, we’ll use scikit-optimize:
+<pre>
+    <code>
+!pip install scikit-optimize
+    </code>
+</pre>
+<b> Define the hyperparameter space:</b>Specify the hyperparameters and their respective ranges to search over.
+<pre>
+    <code>
+from skopt import BayesSearchCV
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+# Load data
+data = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=25)
+
+# Initialize model
+model = DecisionTreeClassifier()
+
+# Define hyperparameter space for Bayesian Optimization
+param_space = {
+	'criterion': ['gini', 'entropy'],
+	'max_depth': [None] + list(range(10, 31)),
+	'min_samples_split': (2, 10),
+	'min_samples_leaf': (1, 10)
+}
+    </code>
+</pre>
+    <b> Set up Bayesian optimization with cross-validation: </b> Use Bayesian optimization with cross-validation to explore the hyperparameter space.<br />
+<pre>
+    <code>
+# Bayesian Optimization
+opt = BayesSearchCV(model, param_space, n_iter=32, cv=5, scoring='accuracy')
+opt.fit(X_train, y_train)
+best_params_bayes = opt.best_params_
+best_score_bayes = opt.best_score_
+
+print(f'Best Parameters (Bayesian Optimization): {best_params_bayes}')
+print(f'Best Cross-Validation Score (Bayesian Optimization): {best_score_bayes:.2f}')
+    </code>
+</pre>
+<b> Evaluate the model: </b>Train a final model using the best hyperparameters found by Bayesian optimization and evaluate its performance on the test set
+<pre>
+    <code>
+best_model = DecisionTreeClassifier(**best_params_bayes)
+best_model.fit(X_train, y_train)
+y_pred = best_model.predict(X_test)
+final_accuracy = accuracy_score(y_test, y_pred)
+
+print(f'Final Model Accuracy: {final_accuracy:.2f}')
+    </code>
+</pre>
+
+    </li>
+</ol>
+<h3> Summary</h3>
+<p> Effective hyperparameter tuning can make a substantial difference in the performance of your machine learning models. <br />
+By starting with a simple baseline model and progressively using search techniques, you can systematically explore and identify the best hyperparameters.
+From initial exploration with randomized search to efficient fine-tuning with Bayesian optimization, we went over practical tips to optimize your model’s hyperparameters.</p>
+<br />
+<a href="#Contents"> Back to Top</a>
+<hr />
+<h2 id ="MasterHyperparamTuning"  class="h2color">Mastering the Art of Hyperparameter Tuning: Tips, Tricks, and Tools</h2>
+[<i>Resource: https://machinelearningmastery.com/mastering-the-art-of-hyperparameter-tuning-tips-tricks-and-tools/</i>]
+<p>
+    Machine learning (ML) models contain numerous adjustable settings called hyperparameters that control how they learn from data. Unlike model parameters
+    that are learned automatically during training, hyperparameters must be carefully configured by developers to optimize model performance.
+    These settings range from learning rates and network architectures in neural networks to tree depths in decision forests, fundamentally shaping how
+    models process information.
+</p>
+<h3> What are Hyperparameters?</h3>
+<p>
+In ML, hyperparameters are like the buttons and gears of a radio system or any machine: these gears can be adjusted in multiple ways, influencing how the
+    machine operates. Similarly, an ML model’s hyperparameters determine how the model learns and processes data during training and inference, affecting its
+    performance, accuracy, and speed in optimally performing its intended task.
+<br />
+Importantly, as stated above, parameters and hyperparameters are not the same. ML model parameters — also called weights — are learned and adjusted by the
+    model during training. This is the case of coefficients in regression models and connection weights in neural networks. In contrast, hyperparameters are
+    not learned by the model but are set manually by the ML developer before training to control the learning process. For instance, several decision trees
+    trained under different hyperparameter settings for their maximum depth, splitting criterion, etc., may yield models that look and behave differently,
+    even when they are all trained on identical datasets.
+</p>
+<img src="Param_Hyperparam.jpeg" width ="800" height="200" />
+
+<h3>Tuning Hyperparameters: Tips, Tricks and Tools</h3>
+<p>As a rule of thumb, the more sophisticated an ML model, the wider the range of hyperparameters that shall be adjusted to optimize its behavior. Unsurprisingly,
+    deep neural networks are among the model types with the most different hyperparameters to look after — from learning rate to number and type of layers to
+    batch size, not to mention activation functions, which heavily influence nonlinearity and the capability to learn complex but useful patterns from data.<br />
+    So, the question arises: How do we find the best setting for the hyperparameters in our model, when it sounds like finding a needle in a haystack?<br />
+    Finding the best “version” of our model requires evaluating its performance based on metrics, hence it takes place as part of the cyclic process of training,
+    evaluating, and validating the model, as shown below.</p>
+<img src="ML_Systems_Lifecycle.jpeg" width ="800" height="200" />
+<p>
+    Of course, when there are several hyperparameters to play with, and each one may take a range of possible values, the number of possible combinations —
+    the positions in which all buttons in the radio system can be adjusted — can quickly become very large. Training every possible combination may be
+    unaffordable in terms of cost and time invested, hence better solutions are needed. In more technical words, the search space becomes immense. A common tool
+    to perform this daunting optimization task more efficiently is by applying search processes. Two common search techniques for hyperparameter tuning are:
+<ol>
+    <li> <b> Grid search: </b>this method exhaustively searches through a manually specified subset of the hyperparameter space, by testing all possible combinations
+        within that subset. It reduces the burden of trying different regions of the search space, but may still become computationally expensive when dealing
+        with many parameters and values per parameter. Suppose for instance a neural network model on which we’ll try tuning two hyperparameters: learning rate,
+        with the values, 0.01, 0.1, and 1; and batch size, with the values 16, 32, 64, and 128. A grid search would evaluate 3 × 4 = 12 combinations in total,
+        training 12 versions of the model and evaluating them to identify the best-performing one.    </li>
+    <li><b> Random search: </b>random search simplifies the process by sampling random combinations of hyperparameters. It’s faster than grid search and often finds
+        good solutions with less computational cost, particularly when some hyperparameters are more influential in model performance than others     </li>
+</ol>
+Besides these search techniques, other tips and tricks to consider to further enhance the hyperparameter tuning process include:<br />
+<ul>
+
+<li><b>Cross-validation for more robust model evaluation: </b>Cross-validation is a popular evaluation approach to ensure your model is more generalizable to future or unseen data, providing a more reliable measure of performance. Combining search methods with cross-validation is a very common approach, even though it means even more rounds of training and time invested in the overall process.</li>
+<li><b>Gradually narrow down the search: </b>start with a coarse or broad range of values for each hyperparameter, then narrow down based on initial results to further analyze the areas around the most promising combinations.</li>
+<li><b>Make use of early stopping: </b>in very time-consuming training processes like those in deep neural networks, early stopping helps stop the process when performance barely keeps improving. This is an effective solution against overfitting problems. Early stopping threshold can be deemed as a special kind of hyperparameter that can be tuned as well.</li>
+<li><b>Domain knowledge to the rescue: </b>leverage domain knowledge to set realistic bounds or subsets for your hyperparameters, guiding you to the most sensible ranges to try from the start and making the search process more agile.</li>
+<li><b>Automated solutions:</b> there are advanced approaches like Bayesian optimization to intelligently optimize the tuning process by balancing exploration and exploitation, similar to some reinforcement learning principles like bandit algorithms.</li>
+</ul>
+<h3> Hyperparameter Examples</h3>
+Random Forest hyperparameters with practical examples and explanations:
+<ul>
+<li>n_estimators: [100, 500, 1000]
+<ul>
+    <li> What: Number of trees in the forest</li>
+    <li> Example: With 10,000 samples, starting at 500 trees often works well</li>
+    <li> Why: More trees = better generalization but diminishing returns; monitor OOB error to find sweet spot</li>
+</ul>
+</li>
+<li> max_depth: [10, 20, 30, None]
+<ul>
+    <li> What: Maximum depth of each tree</li>
+    <li> Example: For tabular data with 20 features, start with max_depth=20</li>
+    <li> Why: Deeper trees capture more complex patterns but risk overfitting; None lets trees grow until leaves are pure</li>
+</ul>
+</li>
+<li>min_samples_split: [2, 5, 10]
+<ul>
+    <li>What: Minimum samples required to split node </li>
+    <li> Example: With noisy data, min_samples_split=10 can help reduce overfitting</li>
+    <li> Why: Higher values = more conservative splits, better generalization on noisy data</li>
+</ul>
+</li>
+<li> min_samples_leaf: [1, 2, 4]
+<ul>
+    <li> What: Minimum samples required in leaf nodes</li>
+    <li> Example: For imbalanced classification, min_samples_leaf=4 ensures meaningful leaf predictions</li>
+    <li> Why: Higher values prevent extremely small leaf nodes that might represent noise</li>
+</ul>
+</li>
+<li> bootstrap: [True, False]
+<ul>
+    <li>What: Whether to use bootstrapping when building trees </li>
+    <li> Example: False for small datasets (<1000 samples) to use all data points</li>
+    <li> Why: True enables out-of-bag error estimation but uses only ~63% of samples per tree</li>
+</ul>
+</li>
+</ul>
+
+<h4>Wrapping Up</h4>
+<p>By implementing systematic hyperparameter optimization strategies, developers can significantly
+reduce model development time while improving performance. The combination of automated search
+techniques with domain expertise enables teams to efficiently navigate vast parameter spaces
+and identify optimal configurations. As ML systems grow more complex, mastering these tuning approaches
+becomes increasingly valuable for building robust and efficient models that deliver real-world impact,
+no matter how complex the task may appear.</p>
+<br />
+<div style="text-align:center">
+            <a href="#Contents"> Back to Top </a>
+            </div>
+<hr />
+<h2 id ="NaiveBayes"  class="h2color">Understanding the Naive Bayes Algorithm 🎓</h2>
+[<i> Resource: LinkedIn</i>]
+    <br />
+
+📌 Why ‘Naive’?<br />
+<p>If you’re diving into machine learning, chances are you’ve come across the Naive Bayes algorithm. This simple yet powerful classification technique is often a favorite for tasks like spam filtering, sentiment analysis, and text classification.
+The algorithm assumes that all features in the dataset are independent of each other—an assumption that’s rarely true in real-world data. However, its performance is often surprisingly effective!
+    <br />
+Here’s what makes Naive Bayes stand out:</p>
+<p>
+<h4>🔍 Key Components:</h4>
+            <ul>
+<li>Formula: Based on Bayes’ Theorem, the algorithm calculates the posterior probability to predict the class of a given data point.</li>
+<li> Flow Chart: The step-by-step decision-making process highlights how probabilities for each attribute contribute to the final classification.</li>
+<li> Visualization: See how the algorithm creates decision boundaries in a 2D space to separate different classes effectively.</li>
+                </ul>
+</p>
+💡 When to Use It:
+            <ul>
+<li> When working with large datasets.</li>
+<li> When you need a quick, robust baseline model for classification problems.</li>
+<li> In text-based tasks where feature independence can be approximated (e.g., Bag of Words models).</li>
+</ul>
+        <br />
+        <div>
+        <img src="NaiveBayes.jpeg"  /></div>
+ <p> <a id="home-link" href="#" class="Home"> Home </a>  <br />   <a href="#Contents" class="Home"> Back to Top </a>  </p> <hr />
+  <h2 id="LinearRegression"> Linear Regression: The Underrated Hero of ML </h2>
+<p>
+    When you hear about ML, your mind might jump to complex neural networks or cutting-edge algorithms. But at the heart of this fascinating field lies one of its simplest yet most important tools: linear regression.<br />
+At its core, linear regression is a linear algebra problem. Calculating the regression coefficients—those numbers that define your predictive model—is essentially a matter of matrix multiplication.
+</p>
+            <p>
+                <b>The famous formula for ordinary least squares regression: β=inv (X'X) X'y  </b>
+            </p>
+            <p>
+This equation, though it may look intimidating, is really just a series of matrix operations. Each step—transposing X, multiplying matrices, and inverting—demonstrates the power of linear algebra in simplifying complex computations. <br />
+Linear algebra makes it possible to compute solutions efficiently, even for datasets with millions of observations. It reminds us that much of machine learning boils down to mathematical elegance, where concepts like vectors, matrices, and transformations come together to solve real-world problems.
+            </p>
+Understanding the connection between linear regression and linear algebra isn’t just academic—it is practical. <br />
+Watch the full lecture on Vizuara's YouTube channel here: <a href="https://lnkd.in/gWEHRRDr"> https://lnkd.in/gWEHRRDr</a>
+<div style="text-align:center">
+    <img src="LinearRegression.jpeg" width="500" height="500" />
+</div>
+<p>
+        <a id="home-link" href="#" class="Home"> Home </a>  <br />
+        <a href="#Contents" class="Home"> Back to Top </a>
+</p>
+         <hr />
+<h2 id="DeployUsingStreamlit"> How to Quickly Deploy Machine Learning Models with Streamlit</h2>
+            Deploying a simple ML model for regression using Streamlit. <br />
+            This novel platform streamlines and simplifies deploying artifacts like ML systems as Web services.
+<h3> A Glimpse of the Model Being Deployed</h3>
+The steps to have an ML model up and running in the cloud in a matter of minutes is showcased here. <br />
+An extremely simple linear regression model that predicts house prices based on just one attribute: the house size in square feet, is built and deployed.
+<pre>
+<code>
+    import streamlit as st
+    import pandas as pd
+    import numpy as np
+    from sklearn.model_selection import train_test_split
+    from sklearn.linear_model import LinearRegression
+    from sklearn.metrics import mean_squared_error, r2_score
+    import plotly.express as px
+
+    # Synthetic generation of data examples for training the model
+    def generate_house_data(n_samples=100):
+        np.random.seed(42)
+        size = np.random.normal(1500, 500, n_samples)
+        price = size * 100 + np.random.normal(0, 10000, n_samples)
+        return pd.DataFrame({'size_sqft': size, 'price': price})
+
+    # Function for instantiating and training linear regression model
+    def train_model():
+        df = generate_house_data()
+
+        # Train-test data splitting
+        X = df[['size_sqft']]
+        y = df['price']
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+        # Train the model
+        model = LinearRegression()
+        model.fit(X_train, y_train)
+
+        return model
+
+    # Streamlit User Interface for Deployed Model
+    def main():
+        st.title('🏠 Simple House Pricing Predictor')
+        st.write('Introduce the house size to predict its sale price')
+
+        # Train model
+        model = train_model()
+
+        # User input
+        size = st.number_input('House size (square feet)',
+                              min_value=500,
+                              max_value=5000,
+                              value=1500)
+
+        if st.button('Predict price'):
+            # Perform prediction
+            prediction = model.predict([[size]])
+
+            # Show result
+            st.success(f'Estimated price: ${prediction[0]:,.2f}')
+
+            # Visualization
+            df = generate_house_data()
+            fig = px.scatter(df, x='size_sqft', y='price',
+                            title='Size vs Price Relationship')
+            fig.add_scatter(x=[size], y=[prediction[0]],
+                           mode='markers',
+                           marker=dict(size=15, color='red'),
+                           name='Prediction')
+            st.plotly_chart(fig)
+
+    if __name__ == '__main__':
+        main()
+</code>
+</pre>
+            <p> Some quick notes about the main() method above:
+<ol>
+            <li>Streamlit is primarily used to define the user interface for interacting with the model once deployed. </li>
+<li>The model is first trained by calling a previously defined method, after which an input field and a button will appear to let the user introduce a house size and obtain a price prediction.</li>
+<li>Upon clicking on a button, Streamlit handles model inference and not only returns and displays the prediction, but also adds a Plotly interactive visualization of the prediction alongside the training data.</li>
+<li>The 🏠 emoji was purely intended 😉 </li>
+        </ol>
+The code shown above should execute correctly even if you tried a Python notebook like Jupyter or Colab — provided it comes preceded with pip install instructions for installing the necessary dependencies — <br />
+            but this won’t allow you to interact with the deployed model: for this, we must venture a tiny bit into the wild! </p>
+<h3> Deploying the Model </h3>
+<p>
+    To do the actual deployment, first copy and paste the above code into a .py file, created or uploaded into a GitHub repository of your own. In the same GitHub directory, you’ll also need a requirements.txt file containing these dependencies:
+</p>
+<pre>
+    <code>
+        streamlit==1.29.0
+        pandas==2.1.4
+        numpy==1.26.2
+        scikit-learn==1.3.2
+        plotly==5.18.0
+    </code>
+</pre>
+Make sure your target GitHub directory looks like this:<br />
+            <p style="text-align:center">
+<img  src ="Capture.jpeg" width="500" height="75" /></p>
+The model is deployed by linking these files with Streamlit Cloud app. Register on the website and click on Create App in the upper right corner.
+              <p style="text-align:center">
+<img  src ="Deploy.jpeg" width="500" height="125" /></p>
+            <br />
+Option 1: Deploy a public app from Github.
+Necessary elements to deploy our model as a Streamlit app: the Github repo URL, the branch, and main file (the .py file saved earlier), and an optioanl app URL from which anyone will be able to access. <br />
+Streamlit makes this step wasy by automatically firguring out part of this info.
+<p style="text-align:center">
+    <img  src ="DeployApp.jpeg" width="500" height="300" />
+</p>
+Click on deploy. Your deployed model is now accessible. The resulting interface:
+<p style="text-align:center">
+    <img  src ="DeployOutput.jpeg" width="500" height="400" />
+</p>
+            <p style="color:green"> Model deployed! </p>
+            <hr />
+
+<h2  id="BiasVarTradeOff"> Bias-Variance Tradeoff in Polynomial Regressoin </h2>
+When implementing linear regression, we often encounter scenarios where the model fails to achieve the desired R² score. This is usually because the data does not adhere to the linearity assumption. To address this, polynomial regression can be employed. <br />
+By introducing polynomial features into the dataset, the model is capable of fitting a curve instead of a straight line. The degree of the polynomial determines how much curvature the model can capture.<br />
+<ul>
+<li>
+<b>High-degree polynomials </b> provide high accuracy (low bias) but may lead to overfitting (high variance). </li>
+<li> <b>Low-degree polynomials </b> ensure low variance but might result in underfitting (high bias). </li> </ul>
+Striking the right balance between bias and variance is crucial—this is referred to as the Bias-Variance Tradeoff. [<i> Resource: LinkedIn</i>]
+            <p>📽️ 𝗣𝗼𝗹𝘆𝗻𝗼𝗺𝗶𝗮𝗹 𝗥𝗲𝗴𝗿𝗲𝘀𝘀𝗶𝗼𝗻: Complete Tutorial | Adjusted R² | 𝗕𝗶𝗮𝘀-𝗩𝗮𝗿𝗶𝗮𝗻𝗰𝗲 𝗧𝗿𝗮𝗱𝗲𝗼𝗳𝗳 : https://lnkd.in/geektYCd <br />
+                💻 𝗣𝗼𝗹𝘆𝗻𝗼𝗺𝗶𝗮𝗹 𝗥𝗲𝗴𝗿𝗲𝘀𝘀𝗶𝗼𝗻 𝗔𝗻𝗶𝗺𝗮𝘁𝗶𝗼𝗻 𝗖𝗼𝗱𝗲: https://lnkd.in/gtBY3pe3
+</p>
+            <div style="text-align:center">
+                <img src="Bias-VarianceTradeoff.jpeg" width="500" height="500" />
+            </div>
+<p>
+    <b> What is a Good R-squared Value? </b><br />
+R-squared is a measure of how well a linear regression model “fits” a dataset. Also commonly called the coefficient of determination, R-squared is the proportion of the variance in the response variable that can be explained by the predictor variable. <br />
+The value for R-squared can range from 0 to 1. A value of 0 indicates that the response variable cannot be explained by the predictor variable at all. A value of 1 indicates that the response variable can be perfectly explained without error by the predictor variable. <br />
+In practice, you will likely never see a value of 0 or 1 for R-squared. Instead, you’ll likely encounter some value between 0 and 1. <br />
+For example, suppose you have a dataset that contains the population size and number of flower shops in 30 different cities. You fit a simple linear regression model to the dataset, using population size as the predictor variable and flower shops as the response variable. <br />
+In the output of the regression results, you see that R2  = 0.2. This indicates that 20% of the variance in the number of flower shops can be explained by the population size. <br />
+This leads to an important question: is this a “good” value for R-squared?<br />
+The answer to this question depends on your objective for the regression model. Namely:<br />
+<ol>
+            <li>Are you interested in explaining the relationship between the predictor(s) and the response variable?</li>
+OR
+<li>Are you interested in predicting the response variable?</li></ol>
+Depending on the objective, the answer to “What is a good value for R-squared?” will be different.<br />
+<br />
+            <b>Explaining the Relationship Between the Predictor(s) and the Response Variable</b><br />
+If your main objective for your regression model is to explain the relationship between the predictor(s) and the response variable, the R-squared is mostly irrelevant.<br />
+For example, suppose in the regression example from above, you see that the coefficient  for the predictor population size is 0.005 and that it’s statistically significant. <br />
+    This means that an increase of one in population size is associated with an average increase of 0.005 in the number of flower shops in a particular city. Also, population size is a statistically significant predictor of the number of flower shops in a city.<br />
+Whether the R-squared value for this regression model is 0.2 or 0.9 doesn’t change this interpretation. Since you are simply interested in the relationship between population size and the number of flower shops, you don’t have to be overly concerned with the R-square value of the model.<br /><br />
+    <b>Predicting the Response Variable </b> <br />
+If your main objective is to predict the value of the response variable accurately using the predictor variable, then R-squared is important.<br />
+In general, the larger the R-squared value, the more precisely the predictor variables are able to predict the value of the response variable.<br />
+How high an R-squared value needs to be depends on how precise you need to be. For example, in scientific studies, the R-squared may need to be above 0.95 for a regression model to be considered reliable. <br />In other domains, an R-squared of just 0.3 may be sufficient if there is extreme variability in the dataset.<br />
+To find out what is considered a “good” R-squared value, you will need to explore what R-squared values are generally accepted in your particular field of study. <br />If you’re performing a regression analysis for a client or a company, you may be able to ask them what is considered an acceptable R-squared value.<br /><br />
+    <b>Prediction Intervals</b> <br />
+A prediction interval specifies a range where a new observation could fall, based on the values of the predictor variables. Narrower prediction intervals indicate that the predictor variables can predict the response variable with more precision.<br />
+Often a prediction interval can be more useful than an R-squared value because it gives you an exact range of values in which a new observation could fall. This is particularly useful if your primary objective of regression is to predict new values of the response variable.<br />
+For example, suppose a population size of 40,000 produces a prediction interval of 30 to 35 flower shops in a particular city. This may or may not be considered an acceptable range of values, depending on what the regression model is being used for.<br />
+Conclusion
+In general, the larger the R-squared value, the more precisely the predictor variables are able to predict the value of the response variable.<br />
+How high an R-squared value needs to be to be considered “good” varies based on the field. Some fields require higher precision than others.<br />
+To find out what is considered a “good” R-squared value, consider what is generally accepted in the field you’re working in, ask someone with specific subject area knowledge, or ask the client/company you’re performing the regression analysis for what they consider to be acceptable.<br />
+If you’re interested in explaining the relationship between the predictor and response variable, the R-squared is largely irrelevant since it doesn’t impact the interpretation of the regression model.<br />
+If you’re interested in predicting the response variable, prediction intervals are generally more useful than R-squared values.<br />
+    [<i>Resource: https://www.statology.org/good-r-squared-value/</i>]
+</p>
+<p>
+A desired R-squared score for a linear regression model depends heavily on the field of study and the complexity of the data, but generally, a higher R-squared value (closer to 1) indicates a better fit, meaning the model explains<br />
+    a larger proportion of the variance in the dependent variable; however, a "good" R-squared can range from around 0.5 in social sciences to 0.9 or higher in certain scientific fields where high precision is expected.<br /><br />
+    <h3> Key points about R-squared:</h3>
+    <b> Interpretation: </b>R-squared represents the percentage of variance in the dependent variable explained by the independent variable(s) in the model.<br />
+    <b>Scale: </b> R-squared values range from 0 to 1, where 0 indicates the model explains none of the variance and 1 indicates a perfect fit.<br />
+    <b>Context matters:</b>What constitutes a "good" R-squared depends on the specific research area and data characteristics.<br />
+    <h3>When to consider a lower R-squared as acceptable:</h3>
+            <ul>
+<li><b>High variability in data: </b>If the data inherently has a lot of noise, a lower R-squared may be expected.</li>
+            <ul>
+            <li><b>Complex phenomena:</b> Studying complex systems with many influencing factors might result in a lower R-squared even with a well-built model. <br />
+                <h3>Important considerations: </h3>
+            <li><b>Adjusted R-squared:</b>  When comparing models with different numbers of variables, use adjusted R-squared, which penalizes for added variables that do not significantly improve the model. </li>
+            <li> <b>Visual inspection: </b>Always examine the residual plot to check for patterns or outliers that could affect the R-squared interpretation.</li>
+            </ul>
+    [<i>Resource: AI Overview</i>]
+                </ul>
+<p> <a id="home-link" href="#" class="Home"> Home </a>  <br />   <a href="#Contents" class="Home"> Back to Top </a>  </p> <hr />
+<h2 id="SentimentAnalysis"> NLP: SVM with GridSearchCV for Sentiment Analysis</h2>
+<p>Sentiment analysis, a subfield of Natural Language Processing (NLP), involves determining the sentiment expressed in a piece of text, typically as positive, negative, or neutral. <br />
+    Support Vector Machines (SVMs) are powerful machine learning algorithms well-suited for classification tasks, including sentiment analysis.</p>
+            <h4> GridSearchCV: Optimizing Hyperparameters </h4>
+<p>
+To achieve the best possible performance from an SVM model, it's crucial to tune its hyperparameters. GridSearchCV is a technique that systematically explores different combinations of hyperparameters to find the optimal configuration.</p>
+<h4>Steps involved</h4>
+            <ol>
+                <li><b> Data Preprocessing:</b>
+                <ul>
+                    <li> Text Cleaning: Remove stop words, punctuation, and irrelevant characters.</li>
+                    <li> Tokenization: Break text into individual words or tokens.</li>
+                    <li> Feature Extraction: Convert text data into numerical representations:</li>
+                    <li> Bag-of-Words: Represent documents as a bag of words, counting their occurrences.</li>
+                    <li>TF-IDF: Weigh words based on their importance in the document and the corpus. </li>
+                    <li> Word Embeddings: Map words to dense vectors capturing semantic and syntactic information.</li>
+                </ul></li>
+                <li><b> Model Selection and Hyperparameter Tuning </b> <br />
+                SVM Model: Choose a suitable SVM kernel (linear, polynomial, radial basis function, sigmoid).</li>
+                <li><b> Model Training and Evaluation</b>
+                <ul>
+                    <li>Split Data: Divide the dataset into training and testing sets. </li>
+                    <li> Train Model: Fit the SVM model to the training data.</li>
+                    <li> Evaluate Performance: Use metrics like accuracy, precision, recall, and F1-score to assess the model's performance on the testing set.</li>
+                </ul></li>
+            </ol>
+            Key considerations:
+            <ul>
+                <li> Data Quality: Clean and well-preprocessed data is essential for accurate sentiment analysis.</li>
+                <li> Feature Engineering: Experiment with different feature extraction techniques to improve model performance.</li>
+                <li> Hyperparameter Tuning: GridSearchCV is a powerful tool, but it can be computationally expensive. Consider using techniques like RandomizedSearchCV for faster exploration.</li>
+                <li> Model Evaluation: Choose appropriate evaluation metrics based on the specific problem and business requirements.</li>
+                <li> Imbalanced Data: If the dataset is imbalanced, techniques like oversampling, undersampling, or class weighting can be used to improve model performance.</li>
+
+            </ul>
+            <a href="NLP SVM with GridSearch.pdf"> Code File </a>
+<p> <a id="home-link" href="#" class="Home"> Home </a>  <br />   <a href="#Contents" class="Home"> Back to Top </a>  </p> <hr />
+ <h2 id="Master8MLAlgorithms"> Master 8 ML algorithms </h2>
+<ol>
+ <li> Linear Regression <br />
+Definition: Predicts continuous values by fitting the best straight line to your data.<br />
+Example: Predicting house prices based on square footage. </li>
+<li> Logistic Regression<br />
+Definition: Predicts a category (e.g., yes/no) by finding the probability of an event.<br />
+Example: Determining if an email is spam or not.</li>
+<li> Decision Trees <br />
+Definition: Makes decisions using a tree-like structure based on conditions.<br />
+Example:  Deciding if a student passes based on grades and attendance.</li>
+<li> Random Forest <br />
+Definition:Combines multiple decision trees for more accurate predictions.<br />
+Example: Predicting whether a loan applicant will default or not.</li>
+<li> Support Vector Machines (SVM) <br />
+Definition:Finds the best boundary (line or curve) to separate different categories.<br />
+Example:  Classifying animals as cats or dogs based on features like size and fur type.</li>
+<li> K-Nearest Neighbors (KNN) <br />
+Definition:Classifies data points based on the nearest neighbors in the dataset.<br />
+Example:  Recommending movies based on similar users’ preferences.</li>
+<li> Naive Bayes <br />
+Definition:  Classifies data by applying probabilities based on past occurrences. <br />
+Example:  Predicting tomorrow’s weather based on historical patterns.</li>
+<li> K-Means Clustering <br />
+Definition: Groups similar data points into clusters without predefined labels. <br />
+Example: Segmenting customers by behavior for targeted marketing.  </li>
+</ol>
+<a href="ML Algorithms.pdf"> ML Algorithms</a>
+<p> <a id="home-link" href="#" class="Home"> Home </a>  <br />   <a href="#Contents" class="Home"> Back to Top </a>  </p> <hr />
+            <h2 id= "MLModels">Mastering Machine Learning: A Guide to Popular Models </h2>
+<p>Mastering Machine Learning: A Guide to Popular Models <br />
+Machine Learning (ML) has revolutionized industries, from healthcare to finance, enabling us to make data-driven decisions at scale. But for many, the sheer variety of ML models can be overwhelming. <br />
+Here's a simplified breakdown of popular models and their categories:
+    <ol>
+
+<li> <b> Supervised Learning</b> <br />
+Classification: Models like KNN, SVM, Decision Trees, and Logistic Regression help categorize data. Think fraud detection or email spam filtering.<br />
+Regression: For tasks like predicting housing prices, models like Linear Regression, Ridge, and Lasso are commonly used.<br /> </li>
+<li><b>Unsupervised Learning </b><br />
+Clustering: Algorithms such as k-Means and DBSCAN are perfect for grouping similar data points without labels, like customer segmentation. <br />
+Dimensionality Reduction: Tools like PCA and t-SNE simplify complex data into meaningful insights.<br /></li>
+<li><b>Reinforcement Learning </b> <br />
+Techniques like Q-Learning and A3C are key to dynamic decision-making in environments like robotics and gaming. <br /></li>
+<li><b>Ensemble Models</b> <br />
+Combining the power of multiple models, approaches like Random Forest, Gradient Boosting (XGBoost, LightGBM), and Stacking deliver exceptional performance.<br /></li>
+<li><b>Neural Networks</b> <br />
+From CNNs for image recognition to RNNs (LSTM/GRU) for sequential data, Neural Networks dominate in areas like NLP and computer vision. Emerging stars like GANs and Transformers are driving innovation further.</li>
+</ol>
+Remember, the choice of model always depends on the problem, data, and desired outcomes. <br />
+            <p style="text-align:left">
+            [<i> Resource: https://www.linkedin.com/feed/update/urn:li:activity:7276954854705524737?utm_source=share&utm_medium=member_desktop </i> ]</p>
+
+            <div style="text-align:center">
+                <img src="MLModels.jpeg" width="500" height="600" />
+            </div>
+      <p> <a id="home-link" href="#" class="Home"> Home </a>  <br />   <a href="#Contents" class="Home"> Back to Top </a>  </p> <hr />
+
+<a href ="Machine Learning Algorithm Cheatsheet.pdf">Machine Learning Algorithm Cheatsheet</a><br/>
+
+<a href ="Building ML Systems with Python.pdf">Building ML Systems with Python </a> <br />
+
+            <a href ="Evaluate the Quality of a Clustering Solution.pdf">Evaluate the Quality of a Clustering Solution</a>
+            <p> <a id="home-link" href="#" class="Home"> Home </a>  <br />   <a href="#Contents" class="Home"> Back to Top </a>  </p> <hr />
+   <h2 id="Learning"> Transfer Learning vs. Fine-tuning vs. Multitask Learning vs. Federated Learning </h2>
+Most ML models are trained independently without any interaction with other models. <br/>
+But real-world ML uses many powerful learning techniques that rely on model interactions.
+The following animation summarizes four such well-adopted and must-know training methodologies:<br/>
+<br/>
+1) Transfer learning <br/>
+Useful when:<br/>
+- The task of interest has less data.<br/>
+- But a related task has abundant data.<br/>
+This is how it works:<br/>
+- Train a neural network model (base model) on the related task.<br/>
+- Replace the last few layers on the base model with new layers.<br/>
+- Train the network on the task of interest, but don’t update the weights of the unreplaced layers.<br/>
+
+Training on a related task first allows the model to capture the core patterns of the task of interest.<br/>
+Next, it can adapt the last few layers to capture task-specific behavior.<br/>
+<br/>
+2) Fine-tuning<br/>
+Update the weights of some or all layers of the pre-trained model to adapt it to the new task.<br/>
+The idea may appear similar to transfer learning. But here, the whole pretrained model is typically adjusted to the new data.<br/><br/>
+3) Multi-task learning (MTL)<br/>
+A model is trained to perform multiple related tasks simultaneously.<br/>
+Architecture-wise, the model has:<br/>
+- A shared network<br/>
+- And task-specific branches<br/>
+<br/>
+The rationale is to share knowledge across tasks to improve generalization.<br/>
+In fact, we can also save computing power with MTL:<br/>
+- Imagine training 2 independent models on related tasks.<br/>
+- Now compare it to having a network with shared layers and then task-specific branches.<br/>
+<br/>
+Option 2 will typically result in:<br/>
+- Better generalization across all tasks.<br/>
+- Less memory to store model weights.<br/>
+- Less resource usage during training.<br/>
+<br/>
+4) Federated learning<br/>
+This is a decentralized approach to ML. Here, the training data remains on the user's device.<br/>
+So in a way, it's like sending the model to data instead of data to model. To preserve privacy, only model updates are gathered from devices and sent to the server.<br/>
+The keyboard of our smartphone is a great example of this.<br/>
+It uses FL to learn typing patterns. This happens without transmitting sensitive keystrokes to a central server.<br/>
+Note: Here, the model is trained on small devices. Thus, it MUST be lightweight yet useful.<br/>
+Model compression techniques are prevalent in such cases. I have linked a detailed guide in the comments.<br/>
+<div style="text-align:center">
+                <img src="Learning.jpeg" width="500" height="600" />
+            </div>
+<a href="https://www.linkedin.com/posts/avi-chawla_transfer-learning-vs-fine-tuning-vs-multitask-activity-7279445419934265344-Ky2l?utm_source=share&utm_medium=member_desktop"> Resource link</a>
+
+            <p> <a id="home-link" href="#" class="Home"> Home </a>  <br />   <a href="#Contents" class="Home"> Back to Top </a>  </p> <hr />
+            <h2 id="MLRoadmap"> Machine Learning Roadmap </h2>
+            <a href ="ML Roadmap.pdf"> Roadmap </a>
+
+            <p>
+        <a id="home-link" href="#" class="Home"> Home </a>  <br />
+        <a href="#Contents" class="Home"> Back to Top </a>
+</p>
+<hr />
+<h2 id="LinearAlgebra"> Linear Algebra </h2>
+          <a href="Basics of Linear Algebra for ML.pdf"> Basics of Linear Algebra for ML</a> <br />
+            <p> <a id="home-link" href="#" class="Home"> Home </a>  <br />   <a href="#Contents" class="Home"> Back to Top </a>  </p> <hr />
+            <a href="Analysis of Conventional Feature Learning Algorithms.pdf">Analysis of Conventional Feature Learning Algorithms</a><br />
+<a href="Basics of Linear Algebra for ML.pdf">Basics of Linear Algebra for ML</a><br />
+<a href="Building ML Systems with Python.pdf">Building ML Systems with Python</a><br />
+<a href="EDA with Pandas.pdf">EDA with Pandas</a><br />
+<a href="SVM Algorithm.pdf">SVM Algorithm</a><br />
+<a href="Synthetic Dataset Generation.pdf">Synthetic Dataset Generation</a><br />
+<a href="The Power of Data Clustering in Machine Learning.pdf">The Power of Data Clustering in Machine Learning</a><br />
+<a href="Pandas Cheat Sheet.pdf">Pandas Cheat Sheet</a><br />
+<a href="Pandas DataFrame Operations.pdf">Pandas DataFrame Operations</a><br />
+<a href="Pandas Notes.pdf">Pandas Notes</a><br />
+<a href="Maths for ML.pdf">Maths for ML</a><br />
+<a href="ML Algorithms.pdf">ML Algorithms</a><br />
+<a href="ML Attention Mechanism.pdf">ML Attention Mechanism</a><br />
+<a href="ML Roadmap.pdf">ML Roadmap</a><br />
+<a href="NLP SVM with GridSearch.pdf">NLP SVM with GridSearch</a><br />
+<a href="Machine Learning Algorithm Cheatsheet.pdf">Machine Learning Algorithm Cheatsheet</a><br />
+<a href="Evaluate the Quality of a Clustering Solution.pdf">Evaluate the Quality of a Clustering Solution</a><br />
+<a href="PySpark.pdf">PySpark</a><br />
+            <a href="Master Data Visualizations with Matplotlib.pdf">Master Data Visualizations with Matplotlib</a><br />
+<a href="Matplotlib.pdf">Matplotlib</a><br />
+   </div>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,735 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link rel="stylesheet" href="styles.css" />
+    <title></title>
+     <style>        
+         div.wid {
+                width:650px;
+                padding:30px;
+                text-align:justify;
+                position:absolute;                    
+                left:25%;
+                width:800px;
+         }
+         }
+         div.ind {
+             text-indent:15px;
+         }
+         
+ </style>
+</head>
+<body id = "Top">
+<script src="script1.js" defer></script>
+    <form id="form1" >
+        <a id="home-link" href=""  style="text-align: center; display: block;" >Home Trial Javascript</a> <br />
+        <div class="wid">
+            <ul>
+        <li> <a href="#Essential"> Why RAG is so essential?</a></li>
+        <li> <a href="#BuildingRAG"> Building a Graph RAG System: A Step-by-Step Approach</a></li>
+         <li> <a href="#RAGbasedAI"> RAG-based AI</a></li>
+            <li> <a href="#LateChunking"> Late Chunking - An Improved Chunking Method </a></li>
+                <li> <a href="#RAGTechniques"> 25 RAG Techniques Revolutionizing GenAI </a></li>
+                 <li> <a href="#RAGDevStack"> RAG Developers' Stack </a></li>
+                <li> <a href="#7AgenticRAGArch"> 7 Agentic RAG Architecture </a></li>
+            </ul>
+            <h2 id="Essential">    Why is #RAG so essential? </h2>
+             Here’s a simple analogy to clear the confusion:<br />
+            <p>Imagine you’re chatting with an AI assistant, and you ask, "What are the main highlights from COP29 climate summit in 2024?"<br />
+                If the AI relies only on its pre-trained data (let’s say it's trained up to 2023), it may offer incomplete or outdated insights. The result? A lackluster, generic response.<br />
+<a id="home-link" href=""  style="text-align: center; display: block;" >Home Trial Javascript</a> <br />
+             Here’s where Retrieval-Augmented Generation (#RAG) comes into play! <br />
+                🌟 With RAG, the AI can tap into external knowledge bases or live databases to fetch the latest, most relevant information. <br />
+                It doesn’t just “guess” based on old data—it retrieves fresh context and combines it with its generative abilities to provide a detailed, accurate, and contextually rich answer. </p>
+
+            <p>For instance:<br />
+                <li> Imagine asking an AI for insights on the latest breakthrough in quantum computing. <br />
+                     Without RAG, it might reference older developments. <br />
+                    But with RAG, it can pull the most recent advancements, papers, or announcements and deliver a much more informed response. </li> 
+                <li> Or consider asking for updates on newly approved AI regulations in the EU. <br />
+                     With RAG, the assistant retrieves data directly from relevant legal sources or news updates, keeping you ahead.</li>
+                    In applications where timeliness, precision, and relevance are critical, RAG is a game-changer. <br />
+                    From customer support chatbots that provide real-time product updates to advanced research assistants that retrieve cutting-edge scientific findings, RAG ensures your AI stays sharp and responsive. 🚀</p>
+            
+           
+<a id="home-link" href="#"  style="text-align: center; display: block;" >Home Trial Javascript</a> <br />
+        <a href="#Top" > Back to Top</a>
+        <hr />
+
+        [<i>Resource: https://machinelearningmastery.com/building-graph-rag-system-step-by-step-approach/ </i>]
+            <h2 id="BuildingRAG">    Building a Graph RAG System: A Step-by-Step Approach</h2>
+            <p> <b> Graph RAG, Graph RAG, Graph RAG! </b>This term has become the talk of the town, and you might have come across it as well. But what exactly is Graph RAG, and what has made it so popular? 
+                Explore the concept behind Graph RAG, why it’s needed, and, as a bonus, how to implement it using LlamaIndex. </p>
+            <p> The shift from large language models (LLMs) to Retrieval-Augmented Generation (RAG) systems: 
+                LLMs rely on static knowledge, which means they only use the data they were trained on. 
+                This limitation often makes them prone to hallucinations—generating incorrect or fabricated information. 
+                To handle this, RAG systems were developed. Unlike LLMs, RAG retrieves data in real-time from external knowledge bases, 
+                using this fresh context to generate more accurate and relevant responses. These traditional RAG systems work by using text embeddings to retrieve specific information. 
+                While powerful, they come with limitations. If you’ve worked on RAG-related projects, you’ll probably relate to this: 
+                the quality of the system’s response heavily depends on the clarity and specificity of the query. But an even bigger challenge emerged — <b>the inability to reason effectively across multiple documents.</b>
+            </p>
+            <p>
+                Example: Imagine you’re asking the system:<br />
+                <i> “Who were the key contributors to the discovery of DNA’s double-helix structure, and what role did Rosalind Franklin play?”</i> <br />
+                <panel> In a traditional RAG setup, the system might retrieve the following pieces of information:
+                    <ul>
+                        <li> <b>Document 1: </b>“James Watson and Francis Crick proposed the double-helix structure in 1953.”</li>
+                        <li> <b>Document 2: </b>“Rosalind Franklin’s X-ray diffraction images were critical in identifying DNA’s helical structure.”</li>
+                        <li> <b>Document 3: </b>“Maurice Wilkins shared Franklin’s images with Watson and Crick, which contributed to their discovery.”</li>
+                    </ul>
+                    The problem? Traditional RAG systems treat these documents as independent units. They don’t connect the dots effectively, leading to fragmented responses like: <br />
+                    “Watson and Crick proposed the structure, and Franklin’s work was important.”
+                </panel>
+                <p> This response lacks depth and misses key relationships between contributors. 
+                    Enter Graph RAG! By organizing the retrieved data as a graph, Graph RAG represents each document or fact as a node, and the relationships between them as edges.</p>
+                </p>
+            <p>
+                Here’s how Graph RAG would handle the same query:
+                <ul> 
+                    <li> <b> Nodes:</b> Represent facts (e.g., “Watson and Crick proposed the structure,” “Franklin contributed critical X-ray images”).</li>
+                    <li> <b> Edges:</b> Represent relationships (e.g., “Franklin’s images → shared by Wilkins → influenced Watson and Crick”).</li>
+                </ul>
+            </p>
+            <p> 
+                By reasoning across these interconnected nodes, Graph RAG can produce a complete and insightful response like:<br />
+                <i> “The discovery of DNA’s double-helix structure in 1953 was primarily led by James Watson and Francis Crick. 
+                    However, this breakthrough heavily relied on Rosalind Franklin’s X-ray diffraction images, which were shared with them by Maurice Wilkins.”</i> <br />
+                This ability to combine information from multiple sources and answer broader, more complex questions is what makes Graph RAG so popular.
+            </p>
+            <h2> The Graph RAG Pipeline</h2>
+            <img src="GraphRAG Approach.jpeg" width="700" height ="500"/>
+            <h3> <b>Step 1: Source Documents → Text Chunks  </b></h3>
+            LLMs can handle only a limited amount of text at a time. To maintain accuracy and ensure that nothing important is missed, large documents are broken down into smaller, manageable "chunks" of text for processing.
+            <h3> <b> Step 2: Text Chunks → Element Instances</b></h3>
+            From each chunk of source text, the LLMs are prompted to identify graph nodes and edges. For example, from a news article, the LLMs might detect that “NASA launched a spacecraft” and link “NASA” (entity: node) to “spacecraft” (entity: node) through “launched” (relationship: edge).
+            <h3> <b>Step 3: Element Instances → Element Summaries </b></h3>
+            After identifying the elements, the next step is to summarize them into concise, meaningful descriptions using LLMs. 
+            This process makes the data easier to understand. For example, for the node “NASA,” the summary could be: “NASA is a space agency responsible for space exploration missions.” 
+            For the edge connecting “NASA” and “spacecraft,” the summary might be: “NASA launched the spacecraft in 2023.” These summaries ensure the graph is both rich in detail and easy to interpret.
+            <h3> <b>Step 4: Element Summaries → Graph Communities </b></h3>
+            The graph created in the previous steps is often too large to analyze directly. To simplify it, the graph is divided into communities using specialized algorithms like Leiden. 
+            These communities help identify clusters of closely related information. For example, one community might focus on “Space Exploration,” grouping nodes such as “NASA,” “Spacecraft,” and “Mars Rover.” 
+            Another might focus on “Environmental Science,” grouping nodes like “Climate Change,” “Carbon Emissions,” and “Sea Levels.” This step makes it easier to identify themes and connections within the dataset.
+
+            <h3> <b> Step 5: Graph Communities → Community Summaries</b></h3>
+            LLMs prioritize important details and fit them into a manageable size. Therefore, each community is summarized to give an overview of the information it contains. 
+            For example: A community about “space exploration” might summarize key missions, discoveries, and organizations like NASA or SpaceX. 
+            These summaries are useful for answering general questions or exploring broad topics within the dataset.
+            <h3> <b> Step 6: Community Summaries → Community Answers → Global Answer </b></h3>
+            Finally, the community summaries are used to answer user queries. Here’s how:<br />
+            <ol>
+                <li> <b> Query the Data: </b> A user asks, “What are the main impacts of climate change?”</li>
+                <li> <b> Community Analysis: </b> The AI reviews summaries from relevant communities.</li>
+                <li> <b> Generate Partial Answers: </b>Each community provides partial answers, such as:
+                    <ul> 
+                        <li> “Rising sea levels threaten coastal cities.”</li>
+                        <li> “Disrupted agriculture due to unpredictable weather.”</li>
+                   </ul>
+                </li>
+                <li> <b> Combine into a Global Answer: </b> These partial answers are combined into one comprehensive response:</li>
+            </ol>
+            <i> “Climate change impacts include rising sea levels, disrupted agriculture, and an increased frequency of natural disasters.” </i> <br />
+            This process ensures the final answer is detailed, accurate, and easy to understand.
+        
+        
+            <h2> Step-by-Step Implementation of GraphRAG with LlamaIndex </h2>
+            You can build your custom Python implementation or use frameworks like LangChain or LlamaIndex. For this article, the LlamaIndex baseline code provided on their website, has been used.
+            <ol>
+                <li> <b> Install Dependencies </b> <br />
+                    Install the required libraries for the pipeline:<br />
+                    <code>pip install llama-index grapsologic cumpy==1.24.4 scipy 1.12.0 </code>
+                    <b>graspologic: </b>Used for graph algorithms like Hierarchical Leiden for community detection.
+                </li>
+                <li> <b> Load and Preprocess Data</b><br />
+                    Load sample news data, which will be chunked into smaller parts for easier processing. For demonstration, we limit it to 50 samples. Each row (title and text) is converted into a <b>Document </b>object.<br />
+                    
+                    <pre> <code >
+                        
+import pandas as pd 
+from llama_index.core import Document
+
+# Load sample dataset 
+news = pd.read_csv("https://raw.githubusercontent.com/tomasonjo/blog-datasets/main/news_articles.csv")[:50]
+
+# Convert data into LlamaIndex Document objects
+documents = [
+Document(text=f"{row['title']}: {row['text']}")
+for _, row in news.iterrows()
+]
+                    </code>
+                        </pre>
+                <li> <b> Step 3: Split Text into Nodes</b> <br />
+                    Use <b> SentenceSplitter</b>to break down documents into manageable chunks.<br />
+                    <pre><code>
+                        <br />
+from llama_index.core.node_parser import SentenceSplitter<br />
+
+splitter = SentenceSplitter( 
+    chunk_size=1024, 
+    chunk_overlap=20,
+)
+nodes = splitter.get_nodes_from_documents(documents)
+                    </code> </pre>
+                    <b> chunk_overlap=20:</b> Ensures chunks overlap slightly to avoid missing information at the boundaries
+                </li>    
+                    <li> <b>Step 4: Configure the LLM, Prompt, and GraphRAG Extractor </b><br />
+                        Set up the LLM (e.g., GPT-4). This LLM will later analyze the chunks to extract entities and relationships. <br /> </li>
+                        <pre><code>
+                            
+from llama_index.llms.openai import OpenAI
+
+os.environ["OPENAI_API_KEY"] = "your_openai_api_key" 
+llm = OpenAI(model="gpt-4") 
+                        </code> </pre>
+                        <p>
+                            The <b>GraphRAGExtractor </b>uses the above LLM, a prompt template to guide the extraction process, and a parsing function to process the LLM’s output into structured data. 
+                            Text chunks (called nodes) are fed into the extractor. For each chunk, the extractor sends the text to the LLM along with the prompt, which instructs the LLM to identify entities, their types, and their relationships. 
+                            The response is parsed by a function (<b>parse_fn</b>), which extracts the entities and relationships. These are then converted into <b>EntityNode </b>objects (for entities) and <b>Relation </b>objects (for relationships), 
+                            with descriptions stored as metadata. The extracted entities and relationships are saved into the text chunk’s metadata, ready for use in building knowledge graphs or performing queries.
+                        </p>
+                        <p>
+                            <b>Note: </b>The issue in the original implementation was that the <b>parse_fn </b>failed to extract entities and relationships from the LLM-generated response, resulting in empty outputs for parsed entities and relationships. 
+                            This occurred due to overly complex and rigid regular expressions that did not align well with the LLM response’s actual structure, particularly regarding inconsistent formatting and line breaks in the output. 
+                            To address this, I have simplified the <b>parse_fn</b> by replacing the original regex patterns with straightforward patterns designed to match the key-value structure of the LLM response more reliably. 
+                            The updated part looks like this:
+                        </p> 
+                        <pre> 
+                        <code style="text-align:left;"> 
+entity_pattern = r'entity_name:\s*(.+?)\s*entity_type:\s*(.+?)\s*entity_description:\s*(.+?)\s*'
+relationship_pattern = r'source_entity:\s*(.+?)\s*target_entity:\s*(.+?)\s*relation:\s*(.+?)\s*relationship_description:\s*(.+?)\s*'
+
+def parse_fn(response_str: str) -> Any: 
+entities = re.findall(entity_pattern, response_str)
+relationships = re.findall(relationship_pattern, response_str)
+return entities, relationships
+                        </code></pre>
+                        The prompt template and <b>GraphRAGExtractor </b>class are kept as is, as follows:
+                        <p style="text-align:left">
+                            <pre><code>
+import asyncio
+import nest_asyncio
+
+nest_asyncio.apply()
+
+from typing import Any, List, Callable, Optional, Union, Dict
+from IPython.display import Markdown, display
+
+from llama_index.core.async_utils import run_jobs
+from llama_index.core.indices.property_graph.utils import (
+    default_parse_triplets_fn,
+)
+from llama_index.core.graph_stores.types import (
+    EntityNode,
+    KG_NODES_KEY,
+    KG_RELATIONS_KEY,
+    Relation,
+)
+from llama_index.core.llms.llm import LLM
+from llama_index.core.prompts import PromptTemplate
+from llama_index.core.prompts.default_prompts import (
+    DEFAULT_KG_TRIPLET_EXTRACT_PROMPT,
+)
+from llama_index.core.schema import TransformComponent, BaseNode
+from llama_index.core.bridge.pydantic import BaseModel, Field
+class GraphRAGExtractor(TransformComponent):
+    """Extract triples from a graph.
+
+    Uses an LLM and a simple prompt + output parsing to extract paths (i.e. triples) and entity, relation descriptions from text.
+
+    Args:
+        llm (LLM):
+            The language model to use.
+        extract_prompt (Union[str, PromptTemplate]):
+            The prompt to use for extracting triples.
+        parse_fn (callable):
+            A function to parse the output of the language model.
+        num_workers (int):
+            The number of workers to use for parallel processing.
+        max_paths_per_chunk (int):
+            The maximum number of paths to extract per chunk.
+    """
+
+    llm: LLM
+    extract_prompt: PromptTemplate
+    parse_fn: Callable
+    num_workers: int
+    max_paths_per_chunk: int
+
+    def __init__(
+        self,
+        llm: Optional[LLM] = None,
+        extract_prompt: Optional[Union[str, PromptTemplate]] = None,
+        parse_fn: Callable = default_parse_triplets_fn,
+        max_paths_per_chunk: int = 10,
+        num_workers: int = 4,
+    ) -> None:
+        """Init params."""
+        from llama_index.core import Settings
+
+        if isinstance(extract_prompt, str):
+            extract_prompt = PromptTemplate(extract_prompt)
+
+        super().__init__(
+            llm=llm or Settings.llm,
+            extract_prompt=extract_prompt or DEFAULT_KG_TRIPLET_EXTRACT_PROMPT,
+            parse_fn=parse_fn,
+            num_workers=num_workers,
+            max_paths_per_chunk=max_paths_per_chunk,
+        )
+
+    @classmethod
+    def class_name(cls) -> str:
+        return "GraphExtractor"
+
+    def __call__(
+        self, nodes: List[BaseNode], show_progress: bool = False, **kwargs: Any
+    ) -> List[BaseNode]:
+        """Extract triples from nodes."""
+        return asyncio.run(
+            self.acall(nodes, show_progress=show_progress, **kwargs)
+        )
+
+    async def _aextract(self, node: BaseNode) -> BaseNode:
+        """Extract triples from a node."""
+        assert hasattr(node, "text")
+
+        text = node.get_content(metadata_mode="llm")
+        try:
+            llm_response = await self.llm.apredict(
+                self.extract_prompt,
+                text=text,
+                max_knowledge_triplets=self.max_paths_per_chunk,
+            )
+            entities, entities_relationship = self.parse_fn(llm_response)
+        except ValueError:
+            entities = []
+            entities_relationship = []
+
+        existing_nodes = node.metadata.pop(KG_NODES_KEY, [])
+        existing_relations = node.metadata.pop(KG_RELATIONS_KEY, [])
+        metadata = node.metadata.copy()
+        for entity, entity_type, description in entities:
+            metadata[
+                "entity_description"
+            ] = description  # Not used in the current implementation. But will be useful in future work.
+            entity_node = EntityNode(
+                name=entity, label=entity_type, properties=metadata
+            )
+            existing_nodes.append(entity_node)
+
+        metadata = node.metadata.copy()
+        for triple in entities_relationship:
+            subj, rel, obj, description = triple
+            subj_node = EntityNode(name=subj, properties=metadata)
+            obj_node = EntityNode(name=obj, properties=metadata)
+            metadata["relationship_description"] = description
+            rel_node = Relation(
+                label=rel,
+                source_id=subj_node.id,
+                target_id=obj_node.id,
+                properties=metadata,
+            )
+
+            existing_nodes.extend([subj_node, obj_node])
+            existing_relations.append(rel_node)
+
+        node.metadata[KG_NODES_KEY] = existing_nodes
+        node.metadata[KG_RELATIONS_KEY] = existing_relations
+        return node
+
+    async def acall(
+        self, nodes: List[BaseNode], show_progress: bool = False, **kwargs: Any
+    ) -> List[BaseNode]:
+        """Extract triples from nodes async."""
+        jobs = []
+        for node in nodes:
+            jobs.append(self._aextract(node))
+
+        return await run_jobs(
+            jobs,
+            workers=self.num_workers,
+            show_progress=show_progress,
+            desc="Extracting paths from text",
+        )
+                            </code> </pre>
+                        </p>
+        <pre><code>
+            <strong>KG_TRIPLET_EXTRACT_TMPL</strong> = """
+-Goal-
+Given a text document, identify all entities and their entity types from the text and all relationships among the identified entities.
+Given the text, extract up to {max_knowledge_triplets} entity-relation triplets.
+
+-Steps-
+1. Identify all entities. For each identified entity, extract the following information:
+- entity_name: Name of the entity, capitalized
+- entity_type: Type of the entity
+- entity_description: Comprehensive description of the entity's attributes and activities
+Format each entity as ("entity")
+
+2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.
+For each pair of related entities, extract the following information:
+- source_entity: name of the source entity, as identified in step 1
+- target_entity: name of the target entity, as identified in step 1
+- relation: relationship between source_entity and target_entity
+- relationship_description: explanation as to why you think the source entity and the target entity are related to each other
+
+Format each relationship as ("relationship")
+
+3. When finished, output.
+
+-Real Data-
+######################
+text: {text}
+######################
+output:"""
+             </code>
+        </pre>
+<pre> <code> 
+kg_extractor = GraphRAGExtractor(
+llm=llm,
+extract_prompt=KG_TRIPLET_EXTRACT_TMPL,
+max_paths_per_chunk=2,
+parse_fn=parse_fn,
+)
+      </code></pre>
+                     
+    <li> <b> Step 5: Build the Graph Index</b></li>    
+The PropertyGraphIndex extracts entities and relationships from text using kg_extractor and stores them as nodes and edges in the GraphRAGStore.
+<pre>
+    <code>
+import re
+from llama_index.core.graph_stores import SimplePropertyGraphStore
+import networkx as nx
+from graspologic.partition import hierarchical_leiden
+
+from llama_index.core.llms import ChatMessage
+class GraphRAGStore(SimplePropertyGraphStore):
+    community_summary = {}
+    max_cluster_size = 5
+
+    def generate_community_summary(self, text):
+        """Generate summary for a given text using an LLM."""
+        messages = [
+            ChatMessage(
+                role="system",
+                content=(
+                    "You are provided with a set of relationships from a knowledge graph, each represented as "
+                    "entity1->entity2->relation->relationship_description. Your task is to create a summary of these "
+                    "relationships. The summary should include the names of the entities involved and a concise synthesis "
+                    "of the relationship descriptions. The goal is to capture the most critical and relevant details that "
+                    "highlight the nature and significance of each relationship. Ensure that the summary is coherent and "
+                    "integrates the information in a way that emphasizes the key aspects of the relationships."
+                ),
+            ),
+            ChatMessage(role="user", content=text),
+        ]
+        response = OpenAI().chat(messages)
+        clean_response = re.sub(r"^assistant:\s*", "", str(response)).strip()
+        return clean_response
+
+    def build_communities(self):
+        """Builds communities from the graph and summarizes them."""
+        nx_graph = self._create_nx_graph()
+        community_hierarchical_clusters = hierarchical_leiden(
+            nx_graph, max_cluster_size=self.max_cluster_size
+        )
+        community_info = self._collect_community_info(
+            nx_graph, community_hierarchical_clusters
+        )
+        self._summarize_communities(community_info)
+
+    def _create_nx_graph(self):
+        """Converts internal graph representation to NetworkX graph."""
+        nx_graph = nx.Graph()
+        for node in self.graph.nodes.values():
+            nx_graph.add_node(str(node))
+        for relation in self.graph.relations.values():
+            nx_graph.add_edge(
+                relation.source_id,
+                relation.target_id,
+                relationship=relation.label,
+                description=relation.properties["relationship_description"],
+            )
+        return nx_graph
+
+    def _collect_community_info(self, nx_graph, clusters):
+        """Collect detailed information for each node based on their community."""
+        community_mapping = {item.node: item.cluster for item in clusters}
+        community_info = {}
+        for item in clusters:
+            cluster_id = item.cluster
+            node = item.node
+            if cluster_id not in community_info:
+                community_info[cluster_id] = []
+
+            for neighbor in nx_graph.neighbors(node):
+                if community_mapping[neighbor] == cluster_id:
+                    edge_data = nx_graph.get_edge_data(node, neighbor)
+                    if edge_data:
+                        detail = f"{node} -> {neighbor} -> {edge_data['relationship']} -> {edge_data['description']}"
+                        community_info[cluster_id].append(detail)
+        return community_info
+
+    def _summarize_communities(self, community_info):
+        """Generate and store summaries for each community."""
+        for community_id, details in community_info.items():
+            details_text = (
+                "\n".join(details) + "."
+            )  # Ensure it ends with a period
+            self.community_summary[
+                community_id
+            ] = self.generate_community_summary(details_text)
+
+    def get_community_summaries(self):
+        """Returns the community summaries, building them if not already done."""
+        if not self.community_summary:
+            self.build_communities()
+        return self.community_summary
+    </code>
+</pre>
+<pre>
+    <code>
+from llama_index.core import PropertyGraphIndex
+
+index = PropertyGraphIndex(
+    nodes=nodes,
+    property_graph_store=GraphRAGStore(),
+    kg_extractors=[kg_extractor],
+    show_progress=True,
+)
+    </code>
+</pre>
+Output:
+<pre>
+    <code>
+Extracting paths from text: 100%|██████████| 50/50 [02:51<00:00,  3.43s/it]
+Generating embeddings: 100%|██████████| 1/1 [00:01<00:00,  1.53s/it]
+Generating embeddings: 100%|██████████| 4/4 [00:01<00:00,  2.27it/s]
+    </code>
+</pre>
+    <li> <b>Step 6: Detect Communities and Summarize </b><br />
+        Use graspologic’s Hierarchical Leiden algorithm to detect communities and generate summaries. 
+        Communities are groups of nodes (entities) that are densely connected internally but sparsely connected to other groups. 
+        This algorithm maximizes a metric called modularity, which measures the quality of dividing a graph into communities.
+<pre> <code>
+index.property_graph_store.build_communities()
+      </code></pre>
+<p>Warning: Isolated nodes (nodes with no relationships) are ignored by the Leiden algorithm. 
+    This is expected when some nodes do not form meaningful connections, resulting in a warning. So, don’t panic if you encounter this.</p>
+    </li>    
+<li> <b> Query the Graph</b><br />
+    <p>Initialize the GraphRAGQueryEngine to query the processed data. When a query is submitted, the engine retrieves relevant community summaries from the GraphRAGStore. 
+        For each summary, it uses the LLM to generate a specific answer contextualized to the query via the generate_answer_from_summary method. 
+        These partial answers are then synthesized into a coherent final response using the aggregate_answers method, where the LLM combines multiple perspectives into a concise output.</p>
+<pre>
+    <code>
+from llama_index.core.query_engine import CustomQueryEngine
+from llama_index.core.llms import LLM
+class GraphRAGQueryEngine(CustomQueryEngine):
+    graph_store: GraphRAGStore
+    llm: LLM
+
+    def custom_query(self, query_str: str) -> str:
+        """Process all community summaries to generate answers to a specific query."""
+        community_summaries = self.graph_store.get_community_summaries()
+        community_answers = [
+            self.generate_answer_from_summary(community_summary, query_str)
+            for _, community_summary in community_summaries.items()
+        ]
+
+        final_answer = self.aggregate_answers(community_answers)
+        return final_answer
+
+    def generate_answer_from_summary(self, community_summary, query):
+        """Generate an answer from a community summary based on a given query using LLM."""
+        prompt = (
+            f"Given the community summary: {community_summary}, "
+            f"how would you answer the following query? Query: {query}"
+        )
+        messages = [
+            ChatMessage(role="system", content=prompt),
+            ChatMessage(
+                role="user",
+                content="I need an answer based on the above information.",
+            ),
+        ]
+        response = self.llm.chat(messages)
+        cleaned_response = re.sub(r"^assistant:\s*", "", str(response)).strip()
+        return cleaned_response
+
+    def aggregate_answers(self, community_answers):
+        """Aggregate individual community answers into a final, coherent response."""
+        # intermediate_text = " ".join(community_answers)
+        prompt = "Combine the following intermediate answers into a final, concise response."
+        messages = [
+            ChatMessage(role="system", content=prompt),
+            ChatMessage(
+                role="user",
+                content=f"Intermediate answers: {community_answers}",
+            ),
+        ]
+        final_response = self.llm.chat(messages)
+        cleaned_final_response = re.sub(
+            r"^assistant:\s*", "", str(final_response)
+        ).strip()
+        return cleaned_final_response
+    </code>
+</pre>
+<pre>
+<code>
+query_engine = GraphRAGQueryEngine(
+    graph_store=index.property_graph_store, llm=llm
+)
+response = query_engine.query("What are news related to financial sector?")
+display(Markdown(f"{response.response}"))
+</code>
+</pre>
+Output:
+<pre>
+    <code>
+The majority of the provided summaries and information do not contain any news related to the financial sector. 
+However, there are a few exceptions. Matt Pincus, through his company MUSIC, has made investments in Soundtrack Your Brand, indicating 
+a financial commitment to support the company's growth. Nirmal Bang has given a Buy Rating to Tata Chemicals Ltd. (TTCH), suggesting a positive 
+investment recommendation. Coinbase Global Inc. is involved in a legal conflict with the U.S. Securities and Exchange Commission (SEC) and is
+also engaged in a financial transaction involving the issuance of 0.50% Convertible Senior Notes. Deutsche Bank has recommended buying shares of 
+Allegiant Travel and SkyWest, indicating promising opportunities in the aviation sector. Lastly, Coinbase Global, Inc. has repurchased 0.50% 
+Convertible Senior Notes due 2026, indicating strategic financial management.
+    </code>
+</pre>
+</li></ol>
+            <h3> Wrapping Up</h3> 
+            Graph RAG enables you to answer both specific factual and complex abstract questions by understanding the relationships and structures within your data. 
+            However, it’s still in its early stages and has limitations, particularly in terms of token utilization, which is significantly higher than traditional RAG. Nevertheless, it’s an important development,
+
+    <p style="text-align:center"> 
+   <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+    <a href="#Top"> Back to Top</a></p>
+    <hr />
+<h2 id="RAGbasedAI"> RAG-based AI</h2>
+<p> Building a <b>  production grade Retrieval Augmented Generation (RAG) based AI system  </b> is hard <br />
+Here are some of the moving parts in the RAG based systems that you will need to take care of and continuously tune in order to achieve desired results:<br />
+</p>
+<h3> Retrieval </h3>
+
+ <li>  F) Chunking - how do you chunk the data that you will use for external context.
+            <ul>
+                <li> Small, Large chunks.</li>
+                <li> Sliding or tumbling window for chunking. </li>
+                <li> Retrieve parent or linked chunks when searching or just use originally retrieved data.</li>
+            </ul>
+ </li>
+<li> C) Choosing the embedding model to embed and query and external context to/from the latent space. Considering Contextual embeddings.</li><br />
+<li> D) Vector Database
+        <ul>
+                <li> Which Database to choose.</li>
+                <li> Where to host. </li>
+                <li> What metadata to store together with embeddings.</li>
+                <li> Indexing strategy.</li>
+            </ul>
+</li>
+ <li> E) Vector Search
+            <ul>
+                <li> Choice of similarity measure.</li>
+                <li> Choosing the query path - metadata first vs. ANN first. </li>
+                <li>Hybrid search.</li>
+            </ul>
+ </li>
+<li> G) Heuristics - business rules applied to your retrieval procedure.
+        <ul>
+                <li> Time importance.</li>
+                <li> Reranking. </li>
+                <li> Duplicate context (diversity ranking). </li>
+                <li> Source retrieval. </li>
+                <li> Conditional document preprocessing.</li>
+            </ul>
+</li>
+<h3> Generation </h3>
+<p> A) LLM - Choosing the right Large Language Model to power your application. <br />
+✅ It is becoming less of a headache the further we are into the LLM craze. The performance of available LLMs are converging, both open source and proprietary. The main choice nowadays is around using a proprietary model or self-hosting.</p>
+<p> B) Prompt Engineering - having context available for usage in your prompts does not free you from the hard work of engineering the prompts. You will still need to align the system to produce outputs that you desire and prevent jailbreak scenarios.</p>
+<p> H) Observing, Evaluating, Monitoring and Securing your application in production!</p>
+            <div style="text-align:center">
+                <img src="RAGMovingParts.jpeg" width="500" height="500" />
+            </div>
+            <p style="text-align:center">
+   <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+    <a href="#Top"> Back to Top</a></p>
+    <hr />
+            <h2> How Do Vector Databases Work ? </h2>
+            <h4> ▶️ What is a Vector Database</h4>
+A vector database is a specialized database designed to store, index, and retrieve high-dimensional vectors efficiently. These vectors often represent unstructured data such as text, images, audio, or videos that have been processed and embedded using machine learning models.
+<h4>▶️How Does a Vector Database Work?</h4>
+The core concept of a vector database is to store embeddings (vector representations) and retrieve the most similar vectors for a given input query efficiently.
+<h4>▶️Why Are Vector Databases Important?</h4>
+◾ Efficiency: They enable fast search and retrieval, even for massive datasets. <br />
+◾ Scalability: Designed to handle billions of vectors in real-time applications. <br />
+◾ Versatility: Works with a variety of unstructured data, including text, audio, video, and images. <br />
+◾ Precision: Uses similarity metrics to deliver high-quality, relevant results. <br />
+<h4>▶️Popular vector database solutions include Pinecone, Weaviate, Milvus, and FAISS.</h4>
+              <div style="text-align:center">
+                <img src="VectorDatabases.jpeg" width="500" height="500" />
+            </div>
+<a href="https://www.linkedin.com/feed/update/urn:li:activity:7274188510847217664?utm_source=share&utm_medium=member_desktop"> Resource Link </a>
+
+            <p style="text-align:center">
+   <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+    <a href="#Top"> Back to Top</a></p>
+    <hr />
+            <h2 id="LateChunking"> Late Chunking - An Improved Chunking Method </h2>
+<p> Are we all chunking our documents the wrong way for our AI and RAG applications? <br />
+Late chunking is the solution for proper context and retrieval.<br />
+Rather than splitting the document and processing chunks in isolation, late chunking maintains document-wide context while still producing distinct chunk embeddings.<br />
+Unlike traditional "naive chunking" that splits text before embedding, late chunking processes the entire document through a transformer model first, then applies chunking afterward. <br />
+This approach helps preserve contextual information across chunks, which is particularly valuable when dealing with references and relationships between different parts of the text.<br />
+In late chunking, the transformer processes the entire text first, allowing chunk embeddings to capture context from the whole text, unlike the naive approach which first splits the text into sub-strings which are passed as independent units to the model.<br />
+To understand why this matters, consider a Wikipedia article about Berlin. When processing a chunk containing the phrase “the city”, traditional chunking would embed this phrase in isolation. With late chunking, however, those tokens are embedded with awareness of the earlier mention of “Berlin” since all tokens were processed together. The final pooling step then preserves these contextual relationships while maintaining the desired chunk structure. <br />
+This results in chunk embeddings that capture both local meaning and broader document context, leading to more semantically accurate representations.<br />
+Research Paper: Late chunking and its advantages <a href="https://lnkd.in/gb_788fZ"> https://lnkd.in/gb_788fZ </a><br/>
+Join our upcoming hands-on LinkedIn live to understand how you can build agentic RAG systems:<a href="https://lnkd.in/ggYK4YME"> https://lnkd.in/ggYK4YME </a> <br />
+    The only prerequisite for this hands-on is to have a SingleStore account (yes, it is free).  Get your account for Free: <a href="https://lnkd.in/gJBdwgND"> https://lnkd.in/gJBdwgND </a>
+</p>
+            <div style="text-align:center">
+                <img src = "LateChunking.jpeg" width="500" height="500" />
+            </div>
+            <p style="text-align:left">
+           <a href ="https://www.linkedin.com/posts/pavan-belagatti_are-we-all-chunking-our-documents-the-wrong-activity-7274674837296463873-ka_j?utm_source=share&utm_medium=member_desktop">  Resource Link  </a>
+            </p>
+
+            <p style="text-align:center">
+   <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+    <a href="#Top"> Back to Top</a></p>
+    <hr />
+            <h2 id="RAGTechniques"> 25 RAG Techniques Revolutionizing GenAI </h2>
+<a href ="25 Types of RAG.pdf"> 25 Types of RAG </a>
+            <p style="text-align:center">
+   <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+    <a href="#Top"> Back to Top</a></p>
+    <hr />
+            <h2 id="RAGDevStack"> RAG Developers' Stack</h2>
+RAG stands for Retrieval Augmented Generation. <br />
+RAG helps to enhance the accuracy of LLM answers by providing relevant context from external knowledge bases.<br />
+LLMs - LLMs are advanced deep learning models based on transformers decoders. We have both open-source and closed LLMs.<br />
+Frameworks - Frameworks help to develop RAG applications without coding everything from scratch. LangChain and Llama Index are some of the popular frameworks for building RAG applications.<br />
+Vector Databases - Vector databases store the text chunks, metadata and their embeddings. <br />
+Data Extraction - RAG applications require extraction of data from websites and documents (PDF, word, slides, etc.) <br />
+Open LLMs Access - Ollama is a tool that helps to use open LLMs locally. Platforms like Groq, Hugging Face and Together AI offer API access to open LLMs.<br />
+Text Embeddings - Text embeddings are used to transform text chunks into embeddings for similar chunks retrieval. Apart from text embedding models, image embedding and multi-modal embedding models are also available.<br />
+Evaluation - Giskard and Ragas are the popular libraries to evaluate RAG applications. <br />
+            <div style="text-align:center">
+                <img src = "RAGDevStack.jpeg" width="500" height="500" />
+            </div>
+            <p style="text-align:center">
+   <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+    <a href="#Top"> Back to Top</a></p>
+        <h2 id="7AgenticRAGArch"> 7 Agentic RAG Architecture </h2>
+<a href="7 Agentic RAG Architecture.pdf" target="_blank"> 7 Agentic RAG Architecture </a>
+    <hr />
+             <a href ="TypesofChunking.pdf">Types of Chunking  </a><br />
+            <a href ="25 Types of RAG.pdf">25 Types of RAG   </a><br />
+
+    </div>
+        </form>
+</body>
+</html>

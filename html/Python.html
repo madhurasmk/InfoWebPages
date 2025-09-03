@@ -1,0 +1,434 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="styles.css" />
+
+</head>
+<body id ="Top">
+
+    <form id="form1"  class="mar">
+        <div class="wid modal-content" >
+          <a id="home-link" href="" style="text-align: center; display: block;">Home</a>
+
+            <script src="script1.js" defer></script>
+            <ul>
+            <li> <a href="#PythonRoadmap">  Python Roadmap </a></li>
+            <li> <a href="#PythonOneLiners"> 10 Python One-Liners That Will Boost Your Data Science Workflow</a></li>
+            <li> <a href="#ZipUnzip"> Zip and Unzip folders in Python!</a></li>
+            <li> <a href="#GraphsInPython">Graphs In Python </a></li>
+            <li> <a href="#SyntheticDataGeneratorinPython"> Synthetic Data Generator in Python</a></li>
+             <li> <a href="#CVVideoPlayer"> CV Video Player - Once and For All </a></li>
+            <li> <a href="#PythonEssentialLibraries"> Python with These Essential Libraries </a></li>
+             <li> <a href="#EssentialPythonLibraries"> Essential Python Libraries </a></li>
+            <li> <a href="#PythonVideotoAudio"> Python Video to Audio </a></li>
+            <li> <a href="#PythonSequenceProtocol"> Python's Sequence Protocol </a></li>
+            <li> <a href="#PandasDataFrameOperations"> Pandas DataFrame Operations</a></li>
+                <li> <a href="#WebAppwithFlask"> Web App with Flask</a></li>
+                <li> <a href="#PythonvsSQL">  Python vs SQL</a></li>
+                <li> <a href="#PythonInterviewQuestions"> Python Interview Questions </a></li>
+                </ul>
+<div  >
+            <table border="0" align="right">
+                <tr>
+                    <th>
+                        Files
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <li><a href="Tuples, Namedtuples, Classes, Dataclasses in Python.pdf"> Tuples, NamedTuples, Class, DataClass </a></li><br />
+
+                    </td>
+                </tr>
+            </table>
+    </div>
+<br />
+            <h2 id="PythonRoadmap">  Python Roadmap </h2>
+            <div style="text-align:center">
+                <img src="Python Roadmap.jpeg" width="500" height="600" />
+            </div>
+            <p style="text-align: left">
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7280598718335078401?utm_source=share&utm_medium=member_desktop"> Resource Link </a></p>
+
+<p>
+      <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+
+        <a href="#Top" style="text-align: center; display: block;"> Back to Top </a>
+    </p>
+<hr />
+
+            <h2 id="PythonOneLiners" class="col"> 10 Python One-Liners That Will Boost Your Data Science Workflow</h2>
+            <ol class="col">
+                <li class = "col"> Efficient Missing Data Handling <br />df.fillna({col: df[col].median() for col in df.select_dtypes(include='number').columns} |
+                    {col: df[col].mode()[0] for col in df.select_dtypes(include='object').columns}, inplace=True) </li> <br />
+                <li>Highly Correlated Features Removal<br />df = df.loc[:, df.corr().abs().max() < 0.95] </li><br />
+                <li class = "col">Conditional Column Apply<br /> df['new_col'] = df.apply(lambda x: x['A'] * x['B'] if x['C'] > 0 else x['A'] + x['B'], axis=1)</li> <br />
+                <li>Finding Common and Different Element<br /> set1 = {"apple", "banana", "cherry", "date", "fig"}
+                    set2 = {"cherry", "date", "elderberry", "fig", "grape"} <br /> set1.intersection(set2) <br /> set1.difference(set2) </li><br />
+                <li class = "col">Boolean Masks for Filtering<br />import numpy as np <br />
+                    data = np.array([10, 15, 20, 25, 30, 35, 40, 45, 50]) <br />   data[(data % 2 == 0)] </li><br />
+                <li>List Count Occurrence<br /> data = [10, 10, 20, 20, 30, 35, 40, 40, 40, 50] <br />from collections import Counter<br />
+                    Counter(data)</li> <br />
+                <li class = "col">Numerical Extraction from Text<br /> import re <br />
+                    list(map(int, re.findall(r'\d+', "Sample123Text456")))</li><br />
+                <li>Flatten Nested List<br />nested_list = [  <br />
+                    [1, 2, 3], <br />
+                    [4, 5], <br />
+                    [6, 7, 8, 9] <br />
+                ] <br /> sum(nested_list, [])</li><br />
+                <li class = "col">List to Dictionary<br /> fruit = ['apple', 'banana', 'cherry']<br />
+                    values = [100, 200, 300] <br />dict(zip(fruit, values))</li><br />
+                <li>Dictionary Merging<br <br /> fruit_mapping = {'apple': 100, 'banana': 200, 'cherry': 300}<br />
+                    furniture_mapping = {'table': 100, 'chair': 200, 'sofa': 300} <br /> {**fruit_mapping, **furniture_mapping }</li><br />
+            </ol>
+            <p>
+    <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+        <a href="#Top" style="text-align: center; display: block;"> Back to Top </a>
+    </p>
+            <hr />
+            <h3 id="ZipUnzip" style="color:blue"> Zip and Unzip folders in Python! </h3>
+            <p>Perfect for automating file compression and extraction tasks. </p>
+            <pre style ="color:brown">
+                <code>
+import os
+import zipfile
+
+def zip_folder(ip_folder, op_folder):
+    with zipfile.ZipFile(op_folder, 'w') as zipf:
+        for foldername, subfolders, filenames in os.walk("C:\\Books"):
+            for fname in filenames:
+                filepath = os.path.join(foldername, fname) 
+                zipf.write(filepath,fname)
+ip_folder = "C:\\Books" 
+op_folder = "c:\\0Madhura\\Books.zip"
+
+# Zip files
+zip_folder(ip_folder, op_folder) 
+
+# UnZip files
+def unzip_folder(zipfolder, finalfolder):
+    with zipfile.ZipFile(zipfolder, 'r') as zip_ref:
+        zip_ref.extractall(finalfolder)
+unzip_folder("c:\\0Madhura\\Books.zip", "c:\\0Madhura\\Books")
+
+                </code>
+            </pre>
+    <hr />
+    <h2 id = "GraphsInPython"> Graphs in Python </h2>
+    When you want to work with graphs in Python <br />
+Use 𝐩𝐲𝐭𝐡𝐨𝐧-𝐢𝐠𝐫𝐚𝐩𝐡.<br />
+𝐩𝐲𝐭𝐡𝐨𝐧-𝐢𝐠𝐫𝐚𝐩𝐡 offers a Python Interface to igraph, a fast and open source C library to manipulate and analyze graphs.<br />
+Due to its high performance, it can handle larger graphs for complex network research which you can visualize with matplotlib or plotly. <br />
+Its documentation also offers neat tutorials for different purposes.
+    <br />
+<div style="text-align:center">
+    <img src="GraphsInPython.jpeg" width = 500 height="500" />
+</div>
+   <p>
+       <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+        <a href="#Top" style="text-align: center; display: block;"> Back to Top </a>
+    </p>
+    <hr />
+            <h2 id="SyntheticDataGeneratorinPython">Synthetic Data Generator in Python </h2>
+
+ Synthetic Data Generator project using Python and Tkinter. This tool allows users to create customizable synthetic datasets with adjustable parameters for various statistical distributions. It was a fantastic opportunity to enhance my skills in GUI development and data visualization. Here’s what I achieved:
+<li>User Interface: Designed a clean and intuitive Tkinter GUI that enables users to select from different distributions (Normal, Uniform, Binomial, and Poisson) and input necessary parameters. The dark theme improves usability and aesthetics. </li>
+<li>Data Generation: Implemented functionality to generate synthetic datasets based on user-selected distributions, utilizing NumPy for efficient data creation. </li>
+<li> Real-Time Input Validation: Integrated real-time validation of user inputs to ensure the "Generate Data" button is enabled only when all inputs are valid, enhancing the overall user experience.</li>
+<li>Data Visualization: Added histogram visualization using Matplotlib to help users understand the distribution of generated data at a glance. </li>
+<li> Export Functionality: Enabled users to save generated datasets in CSV format for further analysis or use in other applications.</li>
+<li>Error Handling: Implemented comprehensive error handling to provide informative messages when invalid inputs are detected or when no data has been generated yet. </li>
+This project was an excellent way to apply my knowledge of Python programming and develop a practical tool for synthetic data generation. <br />
+
+Check out the full project on GitHub: https://lnkd.in/ec26MDKj
+
+     <p>
+        <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+
+        <a href="#Top" style="text-align: center; display: block;"> Back to Top </a>
+    </p>
+    <hr />
+
+            <h2 id="CVVideoPlayer"> CV Video Player - Once and For All </h2>
+A Python video player package made for computer vision research <br />
+            <p>When developing computer vision algorithms, the journey from concept to working implementation often involves countless iterations of watching, analyzing, and debugging video frames.<br />
+            The same bolierplate code for video visualization and debugging needs to be written repeatedly. To solve this problem, the author of the article has created CVVideoPlayer  package, a Python-based open-source video player package, specifically designed for computer vision practitioners.</p>
+            <h3> Debugging video-related algorithms is hard</h3>
+<p> If you’ve ever developed an algorithm for video analysis, you’ve probably written some version of the following code to help you visualize and debug it:</p>
+<pre> <code>
+import cv2
+cap = cv2.VideoCapture("video_path")
+ret = True
+while ret:
+  ret, frame = cap.read()
+  algo_output = some_video_analsys_algorithm(frame)
+  frame_to_display = visualizer(frame, algo_output)
+  cv2.imshow(frame_to_display)
+  cv2.waitKey()
+</code></pre>
+            This code is rarely enough, especially when you need to, for example:
+            <li> Navigation through the video back and forth frame by frame.</li>
+            <li>The ability to record the output to a file. </li>
+            <li>Supporting sources other than a simple video file (frame folder, stream, remote storage, etc.) </li>
+
+The most annoying thing: lack of interactivity. <br />
+<p>
+    Using this kind of code, The visualization is created before rendering and cannot change once displayed. <br />
+    And, while this is okay for simple algorithms, for the more complex ones, there is just way too much information needed for each frame. <br />
+    And without the ability to decide, on the fly, what you want to display, you find yourself running the same video again and again, each time with different visualization parameters.
+</p>
+<h3>Enter CV VideoPlayer</h3>
+<p> CV VideoPlayer was born from the need for a simple customizable solution for interactively rendering videos and frames. <br />
+    It allows any number of overlays, sidebars, or any other frame edits, each of which can be easily switched on and off by the user during run time. let’s see an example of how this is done: </p>
+<h4> Installation </h4>
+    <pre> <code>
+     pip install cvvideoplayer
+        </code></pre>
+            <h4> Playing vanilla video </h4>
+            <p> We can then import the video player and run an unedited video with the following code: </p>
+            <pre> <code>
+from cvvideoplayer import create_video_player
+VIDEO_OR_FRAME_FOLDER_PATH = "<add local path here>"
+video_player = create_video_player(video_source=VIDEO_OR_FRAME_FOLDER_PATH)
+video_player.run()
+</code></pre>
+            <p>
+                This will open the video player and allow you to play it with the spacebar or using the arrows, it will also add some default built-in frame-edit-callbacks which we will elaborate on in the following section.
+            </p>
+<h4>    Editing the frames to add visualization </h4>
+            <p>To add custom-built visualization to the video we can use the frame_edit_callbacks argument of the create_video_player constructor function like so: </p>
+      <pre> <code>
+  from cvvideoplayer import VideoPlayer
+
+VIDEO_OR_FRAME_FOLDER_PATH = "<add local path here>"
+
+video_player = create_video_player(
+video_source=VIDEO_OR_FRAME_FOLDER_PATH,
+frame_edit_callbacks=[
+        FitFrameToScreen(),
+        FrameInfoOverlay(),
+        KeyMapOverlay(),
+    ]
+)
+video_player.run()
+      </code></pre>
+            <p>
+       <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+        <a href="#Top" style="text-align: center; display: block;"> Back to Top </a>
+    </p>
+    <hr />
+   <h2 id="PythonEssentialLibraries"> 𝐏𝐲𝐭𝐡𝐨𝐧 𝐰𝐢𝐭𝐡 𝐓𝐡𝐞𝐬𝐞 𝐄𝐬𝐬𝐞𝐧𝐭𝐢𝐚𝐥 𝐋𝐢𝐛𝐫𝐚𝐫𝐢𝐞𝐬</h2>
+𝐏𝐲𝐭𝐡𝐨𝐧 + 𝐍𝐮𝐦𝐏𝐲 = 𝐍𝐮𝐦𝐞𝐫𝐢𝐜𝐚𝐥 𝐂𝐨𝐦𝐩𝐮𝐭𝐚𝐭𝐢𝐨𝐧<br />
+Perform mathematical and statistical operations with ease. NumPy’s powerful n-dimensional array objects are essential for scientific computing.<br />
+𝐏𝐲𝐭𝐡𝐨𝐧 + 𝐏𝐚𝐧𝐝𝐚𝐬 = 𝐃𝐚𝐭𝐚 𝐌𝐚𝐧𝐢𝐩𝐮𝐥𝐚𝐭𝐢𝐨𝐧 <br />
+Easily clean, transform, and analyze your data. Pandas offers robust data structures like DataFrames, making it essential for any data analyst. <br />
+𝐏𝐲𝐭𝐡𝐨𝐧 + 𝐒𝐜𝐢𝐤𝐢𝐭-𝐋𝐞𝐚𝐫𝐧 = 𝐌𝐚𝐜𝐡𝐢𝐧𝐞 𝐋𝐞𝐚𝐫𝐧𝐢𝐧𝐠<br />
+Implement machine learning algorithms easily. Scikit-Learn provides efficient tools for data mining and analysis, built on NumPy, SciPy, and Matplotlib.<br />
+𝐏𝐲𝐭𝐡𝐨𝐧 + 𝐓𝐞𝐧𝐬𝐨𝐫𝐅𝐥𝐨𝐰 = 𝐃𝐞𝐞𝐩 𝐋𝐞𝐚𝐫𝐧𝐢𝐧𝐠<br />
+Build and train neural networks efficiently. TensorFlow provides a comprehensive platform for developing and deploying machine learning models.<br />
+𝐏𝐲𝐭𝐡𝐨𝐧 + 𝐏𝐲𝐓𝐨𝐫𝐜𝐡 = 𝐃𝐞𝐞𝐩 𝐋𝐞𝐚𝐫𝐧𝐢𝐧𝐠<br />
+Similar to TensorFlow, PyTorch offers a dynamic computational graph and user-friendly API, making it popular among researchers for deep learning tasks.<br />
+𝐏𝐲𝐭𝐡𝐨𝐧 + 𝐌𝐚𝐭𝐩𝐥𝐨𝐭𝐥𝐢𝐛 = 𝐃𝐚𝐭𝐚 𝐕𝐢𝐬𝐮𝐚𝐥𝐢𝐳𝐚𝐭𝐢𝐨𝐧<br />
+Create informative and attractive visualizations. Matplotlib is the foundation for many plotting libraries, helping you turn data insights into charts and graphs.<br />
+𝐏𝐲𝐭𝐡𝐨𝐧 + 𝐅𝐥𝐚𝐬𝐤 = 𝐌𝐢𝐜𝐫𝐨𝐬𝐞𝐫𝐯𝐢𝐜𝐞𝐬<br />
+Build lightweight web applications and APIs. Flask is a micro-framework that offers simplicity and flexibility for small to medium-sized projects.<br />
+𝐏𝐲𝐭𝐡𝐨𝐧 + 𝐃𝐣𝐚𝐧𝐠𝐨 = 𝐖𝐞𝐛 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐦𝐞𝐧𝐭<br />
+Develop robust and scalable web applications quickly. Django’s high-level framework supports rapid development and clean design.<br />
+𝐏𝐲𝐭𝐡𝐨𝐧 + 𝐍𝐋𝐓𝐊 = 𝐍𝐚𝐭𝐮𝐫𝐚𝐥 𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞 𝐏𝐫𝐨𝐜𝐞𝐬𝐬𝐢𝐧𝐠<br />
+Process and analyze text data. NLTK (Natural Language Toolkit) provides tools for working with human language data, supporting tasks like classification and tokenization.<br />
+𝐏𝐲𝐭𝐡𝐨𝐧 + 𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐬 = 𝐇𝐓𝐓𝐏 𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐬<br />
+Simplify HTTP requests. Requests allow you to send HTTP/1.1 requests, providing a wide range of functionalities to interact with web services.<br />
+𝐏𝐲𝐭𝐡𝐨𝐧 + 𝐒𝐜𝐫𝐚𝐩𝐲 = 𝐖𝐞𝐛 𝐒𝐜𝐫𝐚𝐩𝐢𝐧𝐠<br />
+Efficiently extract data from websites. Scrapy is an open-source framework for web crawling, used to gather and process data from websites.<br />
+<div style="text-align:center">
+    <img src="PythonForEverything.jpeg" width="500" height="500" />
+</div>
+
+
+     <p>
+     <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+        <a href="#Top" style="text-align: center; display: block;"> Back to Top </a>
+    </p>
+    <hr />
+<h2 id="EssentialPythonLibraries"> Essential Python Libraries </h2>
+            𝗗𝗮𝘁𝗮 𝗠𝗮𝗻𝗶𝗽𝘂𝗹𝗮𝘁𝗶𝗼𝗻: <br />
+Libraries like Pandas, NumPy, and Polars make handling large datasets efficient by offering powerful tools for data wrangling and transformation. <br />
+
+𝗗𝗮𝘁𝗮 𝗩𝗶𝘀𝘂𝗮𝗹𝗶𝘇𝗮𝘁𝗶𝗼𝗻: <br />
+Use libraries like Matplotlib, Seaborn, and Plotly to create stunning, insightful graphs, charts, and dashboards. <br />
+
+𝗦𝘁𝗮𝘁𝗶𝘀𝘁𝗶𝗰𝗮𝗹 𝗔𝗻𝗮𝗹𝘆𝘀𝗶𝘀: <br />
+SciPy, PyMC3, and Statsmodels provide advanced tools for performing statistical tests and probabilistic modeling. <br />
+
+𝗠𝗮𝗰𝗵𝗶𝗻𝗲 𝗟𝗲𝗮𝗿𝗻𝗶𝗻𝗴: <br />
+Scikit-learn, TensorFlow, and PyTorch empower developers to build, train, and deploy ML models with ease. <br />
+
+𝗡𝗮𝘁𝘂𝗿𝗮𝗹 𝗟𝗮𝗻𝗴𝘂𝗮𝗴𝗲 𝗣𝗿𝗼𝗰𝗲𝘀𝘀𝗶𝗻𝗴 (𝗡𝗟𝗣): <br />
+Libraries like spaCy, NLTK, and TextBlob make it simple to analyze and process human language data. <br />
+            <div style="text-align:center">
+    <img src="Essential Python Libraries.jpeg" width="500" height="600" />
+</div>
+  <p>
+      <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+        <a href="#Top" style="text-align: center; display: block;"> Back to Top </a>
+    </p>
+    <hr />
+
+<h2 id="PythonVideotoAudio"> Convert Video to Audio using Python</h2>
+<pre> <code>
+pip install moviepy
+import moviepy.editor
+
+#replace the parameter with the location of video
+video = moviepy.eidtor.VideoFileClip("path\video_name.mp4")
+
+audio_data = video.audio
+# replace the parameter with the location along with filename
+
+audio_data.write_audiofile("path\audio_name/mp3")
+            </code></pre>
+<div style="text-align:center">
+    <img src="PythonVideotoAudio.jpeg" width="500" height="500" />
+</div>
+  <p>
+        <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+        <a href="#Top" style="text-align: center; display: block;"> Back to Top </a>
+    </p>
+    <hr />
+            <h2> Python Interview Questions </h2>
+<ol> <li> Is Python a compiled language or an interpreted language? <br />
+Ans Python is primarily an interpreted language, which means that Python code is executed line by line by an interpreter. <br />
+    However, there is more complexity to this, as Python uses a combination of interpreting and compiling. <br />
+</li></ol>
+ * Do you know What is Interpreted and compiled language?
+ <ol>
+     <li> Interpreted Language:
+         <ul>
+ <li> <b> Immediate Execution: </b>Python code is executed directly by the interpreter without the need for a separate compilation step. This allows for <b> quick testing and debugging</b><br />
+ <b>Flexibility:</b> Python supports <b>dynamic typing </b> and other runtime features that are easier to implement in an interpreted language. <br />
+             </ul>
+     </li>
+
+ <li> Compilation in Python: <br />
+ <b> Bytecode Compilation: </b>Before execution, Python code (.py files) is first compiled to an intermediate bytecode (.pyc files). This bytecode is a low-level representation that the Python interpreter can execute.️<br />
+ <b>CPython Interpreter: </b>The standard implementation of Python (C Python) interprets this bytecode using a virtual machine.<br />
+     <b> Just-In-Time Compilation: </b>Some implementations of Python, like <b> PyP </b> use JIT compilation to improve performance by compiling bytecode to machine code during execution. <br />
+ </li>
+ </ol>
+➡️ The combination allows Python to be both <b> powerful and user-friendly </b> language
+<p>
+        <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+        <a href="#Top" style="text-align: center; display: block;"> Back to Top </a>
+    </p>
+    <hr />
+<h2 id ="PythonSequenceProtocol"> Python's Sequence Protocol </h2>
+<p>
+    In Python, protocols are like informal interfaces—a collection of special methods that, when implemented, allow user-created objects to exhibit specific behaviors. <br />
+The Sequence Protocol is a fantastic example. By implementing just a couple of special methods —__getitem__ and __len__— your custom objects can behave like standard Python sequences!
+</p>
+<h3> Why is this so powerful?</h3>
+            It means your objects can:
+            <ul>
+<li>Iterate effortlessly using loops.</li>
+<li>Support slicing, making subsets of data easy to work with.</li>
+<li>Play nicely with Python's standard library, enabling reuse of Python's rich ecosystem without extra code.</li>
+            </ul>
+In the example, a Users class implements the sequence protocol. By defining __getitem__ and __len__, it transforms into a sequence-like container for user names.
+This lets you iterate, slice, and even apply functions like reversed() seamlessly—no extra boilerplate needed. <br />
+<p>Python’s sequence protocol is also the foundation for many built-in types like list, tuple, and str. By tapping into it, you’re leveraging the same underlying behavior that makes Python so intuitive!</p>
+            <div style="text-align:center">
+                <img src="SequenceProtocol.jpeg" width="500" height="600" />
+            </div>
+<p style="text-align: left">
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7276667884209135617? utm_source=share&utm_medium=member_desktop"> Resource Link </a></p>
+<p>
+       <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+        <a href="#Top" style="text-align: center; display: block;"> Back to Top </a>
+    </p>
+    <hr />
+            <h2  id="PandasDataFrameOperations"> Pandas DataFrame Operations</h2>
+          Are you preparing for a data analysis or data engineering interview? Pandas DataFrame operations are a MUST-KNOW topic that frequently appears in interviews. To help you ace this, here’s a consolidated list of common Pandas DataFrame operation interview questions to prepare you for success! 💼✨
+Key Pandas Interview Questions:
+
+1️⃣ 𝐃𝐚𝐭𝐚𝐅𝐫𝐚𝐦𝐞 𝐁𝐚𝐬𝐢𝐜𝐬: <br />
+How do you create a DataFrame from scratch? <br />
+What are the differences between loc and iloc for accessing data? <br />
+2️⃣ 𝐃𝐚𝐭𝐚 𝐈𝐧𝐬𝐩𝐞𝐜𝐭𝐢𝐨𝐧: <br />
+How can you view the first and last few rows of a DataFrame? <br />
+What does the info() and describe() method tell you about a DataFrame? <br />
+3️⃣ 𝐃𝐚𝐭𝐚 𝐌𝐚𝐧𝐢𝐩𝐮𝐥𝐚𝐭𝐢𝐨𝐧: <br />
+How do you add, rename, or delete columns in a DataFrame? <br />
+Explain how to filter rows based on a condition. <br />
+How do you sort a DataFrame by a column? <br />
+4️⃣ 𝐀𝐠𝐠𝐫𝐞𝐠𝐚𝐭𝐢𝐨𝐧 𝐚𝐧𝐝 𝐆𝐫𝐨𝐮𝐩𝐢𝐧𝐠: <br />
+How do you group data and calculate summary statistics? <br />
+What are some common aggregation functions in Pandas? <br />
+5️⃣ 𝐌𝐢𝐬𝐬𝐢𝐧𝐠 𝐃𝐚𝐭𝐚 𝐇𝐚𝐧𝐝𝐥𝐢𝐧𝐠: <br />
+How can you detect missing values in a DataFrame? <br />
+What are the ways to handle missing data (fill or drop)? <br />
+6️⃣ 𝐌𝐞𝐫𝐠𝐢𝐧𝐠 𝐚𝐧𝐝 𝐉𝐨𝐢𝐧𝐢𝐧𝐠: <br />
+How do you merge two DataFrames on a common column? <br />
+What’s the difference between merge, concat, and join? <br />
+7️⃣ 𝐀𝐝𝐯𝐚𝐧𝐜𝐞𝐝 𝐎𝐩𝐞𝐫𝐚𝐭𝐢𝐨𝐧𝐬: <br />
+Explain how to apply custom functions using apply(). <br />
+How can you create a pivot table in Pandas? <br />
+What are common date-time operations in Pandas? <br />
+8️⃣ 𝐒𝐚𝐯𝐢𝐧𝐠 𝐚𝐧𝐝 𝐋𝐨𝐚𝐝𝐢𝐧𝐠 𝐃𝐚𝐭𝐚: <br />
+How do you save a DataFrame to a CSV or Excel file? <br />
+How can you load a DataFrame from an external file? <br />
+            <a href="PandasDataFrameOperations.pdf"> Python code Pandas DataFrame Operations</a><br />
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7276789869371154432?updateEntityUrn=urn%3Ali%3Afs_updateV2%3A%28urn%3Ali%3Aactivity%3A7276789869371154432%2CFEED_DETAIL%2CEMPTY%2CDEFAULT%2Cfalse%29"> Resource Link</a><br />
+            <p>        <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />  <a href="#Top" style="text-align: center; display: block;"> Back to Top </a>    </p>    <hr />
+   <h2  id="WebAppwithFlask"> Web App with Flask</h2>
+        Building Your First Web App with Flask<br />
+Flask is often the gateway for many beginners into the world of web applications due to its simplicity and flexibility. If you’re new to web development, Flask provides you with the tools needed to build a web app quickly without overwhelming you with complexity. Let’s walk through what Flask is and why it’s a great choice for your first web application project.<br />
+What is Flask?<br />
+Flask is a lightweight WSGI (Web Server Gateway Interface) web application framework. It's designed to make getting started very easy and quick, with the ability to scale up to complex applications. It offers suggestions, but doesn't enforce any dependencies or project layout. This flexibility is one of its core strengths, making it particularly friendly for beginners.<br />
+
+Why Choose Flask?<br />
+1. Simplicity: Flask’s simple and readable codebase is ideal for beginners.<br />
+2. Flexibility: Unlike other frameworks, Flask lets you use the components you need without requiring you to use a particular toolset.<br />
+3. Extensibility: Flask can be extended with numerous extensions available to add features as if they were implemented in Flask itself.<br />
+<br />
+Creating a Basic Flask App<br />
+Building a basic web application with Flask involves a few simple steps:<br />
+1. Setup: Install Flask using pip, Python’s package installer.<br />
+2. Create an App: Write a Python script that imports Flask and creates an instance of the Flask class. This instance becomes the WSGI application.<br />
+3. Define Routes: A route is the URL where your application provides a web page. You define a route in Flask by writing a Python function and then using the Flask `route` decorator to associate the function with a URL.<br />
+4. Run the App: Finally, run your application by calling `app.run()` in your script. This command starts a local development server that you can access through your web browser.<br />
+<br />
+Flask’s minimalistic approach doesn’t just ease your learning curve but also provides a deep sense of understanding and control over your application's structure and behavior. You get to learn the intricacies of web development without any components hidden away from you.
+<br />
+By starting with Flask, you build a strong foundation in web application development, preparing you to tackle more complex frameworks and projects as you grow.
+    <br />
+
+            <p>        <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />       <a href="#Top" style="text-align: center; display: block;"> Back to Top </a>    </p>    <hr />
+    <h2  id="PythonvsSQL"> Python vs SQL</h2>
+            <a href ="Python vs SQL.pdf" target="_blank"> Python vs SQL</a>
+                        <p>        <a id="home-link" href="#" style="text-align: center; display: block;"> Home </a> <br />    <a href="#Top" style="text-align: center; display: block;"> Back to Top </a>    </p>    <hr />
+             <h2  id="PythonInterviewQuestions" target="_blank"> Python Interview Questions</h2>
+            <a href ="Python Interview Questions.pdf" target="_blank"> Python Interview Questions</a><br />
+            <a href ="60 Python Interview QA.pdf" target="_blank"> 60 Python Interview QA  </a><br />
+<a href ="500 Python Interview Questions.pdf" target="_blank">  500 Python Interview Questions </a><br />
+             <a href ="Python Tips and Tricks.pdf" target="_blank"> Python Tips and Tricks  </a><br />
+<a href="Python For Beginner.pdf" target="_blank">Python For Beginner</a><br />
+<a href="Python Interview Codes Cheatsheet.pdf" target="_blank">Python Interview Codes Cheatsheet</a><br />
+<a href="Python Interview Questions.pdf" target="_blank">Python Interview Questions</a><br />
+<a href="Python Interview Questions1.pdf" target="_blank">Python Interview Questions1</a><br />
+<a href="Python Tips and Tricks.pdf" target="_blank">Python Tips and Tricks</a><br />
+<a href="Python vs SQL.pdf" target="_blank">Python vs SQL</a><br />
+<a href="Tuples, Namedtuples, Classes, Dataclasses in Python.pdf" target="_blank">Tuples, Namedtuples, Classes, Dataclasses in Python</a><br />
+<a href="Most Asked Python Interview Questions.pdf" target="_blank">Most Asked Python Interview Questions</a><br />
+<a href="Python Pandas The Definitive Hands-on Guide.pdf" target="_blank">Python Pandas The Definitive Hands-on Guide</a><br />
+<a href="PySpark vs Pandas vs SQL.pdf" target="_blank">PySpark vs Pandas vs SQL</a><br />
+
+            <p>        <a id="home-link" href="#" style="text-align: center; display: block;"> Home </a> <br />   <a href="#Top" style="text-align: center; display: block;"> Back to Top </a>    </p>    <hr />
+
+</div>
+        </form>
+<script src="script1.js" defer></script>
+</body>
+</html>

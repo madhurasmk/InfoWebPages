@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body id="Top">
+<script src="script1.js" defer></script>
+
+<div class="wid">
+<a id="home-link" href="#" class="Home"> Home </a> 
+     <ul>
+               <li> <a href="#Multi-GPU">4 strategies for multi-GPU training explained visually </a></li>
+               <li> <a href="#DLFromScratch">Deep Learning from Scratch </a></li>
+     </ul>
+<h2 id = "Multi-GPU">4 strategies for multi-GPU training explained visually. </h2><br />
+
+By default, deep learning models only utilize a single GPU for training, even if multiple GPUs are available.<br />
+An ideal way to proceed (especially in big-data settings) is to distribute the training workload across multiple GPUs.<br />
+The graphic below depicts four common strategies for multi-GPU training:<br />
+1) Model parallelism<br />
+- Different parts (or layers) of the model are placed on different GPUs.<br />
+- Useful for huge models that do not fit on a single GPU.<br />
+- However, model parallelism also introduces severe bottlenecks as it requires data flow between GPUs when activations from one GPU are transferred to another GPU.<br />
+<br />
+2) Tensor parallelism<br />
+- Distributes and processes individual tensor operations across multiple devices or processors.<br />
+- It is based on the idea that a large tensor operation, such as matrix multiplication, can be divided into smaller tensor operations, and each smaller operation can be executed on a separate device or processor.<br />
+- Such parallelization strategies are inherently built into standard implementations of PyTorch and other deep learning frameworks, but they become much more pronounced in a distributed setting.<br />
+<br />
+3) Data parallelism<br />
+- Replicate the model across all GPUs.<br />
+- Divide the available data into smaller batches, and each batch is processed by a separate GPU.<br />
+- The updates (or gradients) from each GPU are then aggregated and used to update the model parameters on every GPU.<br />
+<br />
+4) Pipeline parallelism<br />
+- This is often considered a combination of data parallelism and model parallelism.<br />
+- So the issue with standard model parallelism is that 1st GPU remains idle when data is being propagated through layers available in 2nd GPU:<br />
+- Pipeline parallelism addresses this by loading the next micro-batch of data once the 1st GPU has finished the computations on the 1st micro-batch and transferred activations to layers available in the 2nd GPU.<br />
+- The process looks like this:<br />
+↳ 1st micro-batch passes through the layers on 1st GPU.<br />
+↳ 2nd GPU receives activations on 1st micro-batch from 1st GPU.<br />
+↳ While the 2nd GPU passes the data through the layers, another micro-batch is loaded on the 1st GPU.<br />
+↳ And the process continues.<br />
+- GPU utilization drastically improves this way. This is evident from the animation below where multi-GPUs are being utilized at the same timestamp (look at t=1, t=2, t=5, and t=6).<br />
+    <div style="text-align:center">                <img src="Multi-GPU Training Strategies.jpeg" width="500" height="600" />            </div>
+    <p style="text-align:center">    <a href="#Top" style="color: green;">Back to top</a> <br>    <a id="home-link" href="#" class="Home"> Home </a> </p>            <hr />
+    <h2 id="DLFromScratch">Deep Learning from Scratch </h2> <br />
+    <a href="Deep Learning from Scratch.pdf">Deep Learning from Scratch </a>
+
+    <p style="text-align:center">    <a href="#Top" style="color: green;">Back to top</a> <br>    <a id="home-link" href="#" class="Home"> Home </a> </p>            <hr />
+    </div>
+</body>
+</html>

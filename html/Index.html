@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head >
+    <!-- meta http-equiv="refresh" content="10" -->
+        <link rel="stylesheet" href="styles.css" />
+    <title>Index</title>
+    <style>
+        .padd {
+            padding:20px;
+        }
+    </style>
+    <link rel="stylesheet" href="Chatbot.css" />
+</head>
+<body>
+<form id = "outerForm">
+    <div class = "form-group">
+        &emsp;&emsp;<input type="button" id="btnLogout" name="Logout" value="Logout" size="10" class="button"  onclick="logout()"  style="float: right;">
+    </div>
+</form>
+<script src="logout.js"></script>
+<!--
+<body><button id="chatbot-btn">💬 Chat</button>
+    <div id="chatbot-container">
+        <div id="chatbot-header">AI Chatbot <span id="close-btn" style="float:right; cursor:pointer;">&times;</span></div>
+        <div id="chatbot-messages"></div>
+        <div id="chatbot-input">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+<script>
+        document.getElementById('chatbot-btn').addEventListener('click', function() {
+            document.getElementById('chatbot-container').style.display = 'flex';
+            this.style.display = 'none';
+        });
+
+        document.getElementById('close-btn').addEventListener('click', function() {
+            document.getElementById('chatbot-container').style.display = 'none';
+            document.getElementById('chatbot-btn').style.display = 'block';
+        });
+
+        document.getElementById('send-btn').addEventListener('click', function() {
+            let userInput = document.getElementById('user-input').value;
+            if (userInput.trim() !== "") {
+                let chatMessages = document.getElementById('chatbot-messages');
+                let userMessage = `<div><strong>You:</strong> ${userInput}</div>`;
+                chatMessages.innerHTML += userMessage;
+                document.getElementById('user-input').value = "";
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        });
+    </script>
+-->
+ <!-- form action="/run_script" method="post">
+        <button type="submit">Run Script</button>
+    </form -->
+    <form id="form1" >
+        <div>
+            <table border="2">
+                <tr>
+                    <th> Prompt Engineering </th>
+                    <th>Generative AI</th>
+                    <th>Machine Learning</th>
+                     <th>Python</th>
+                    <th>SQL                    </th>
+                    <th>                        Good Articles                    </th>
+                </tr>
+                <tr>
+                    <td class="padd">
+                         <div class="card">
+                      <div class="card-content">
+                        <ul>
+                            <li> Prompt Engineering Techniques </li>
+                            <li> Prompt Engineering Designs </li>
+                            <li> <a href="WhyRAG.html" class="card-link"> RAG </a> </li>
+                            <li> <a href="Multi-agents Vs RAG.html" class="card-link"> Multi-agents Vs RAG </a> </li>
+                            <li> <a href="Building Chatbot.html" class="card-link"> Chatbot</a> </li>
+                            <li> <a href="LLM.html" class="card-link"> LLMs </a> </li>
+                            <li> <a href="Data Science.html" class="card-link"> Data Science </a> </li>
+                        <li> <a href="ChatGPT.html" class="card-link"> ChatGPT articles </a> </li>
+                        </ul>
+            </div>
+    </div>
+                    </td>
+                    <td class="padd">
+                        <div class="card">
+        <div class="card-content">
+            <h3>Generative AI Pages</h3> <!-- Moved outside <ul> -->
+            <ul>
+                <li><a href="GenerativeAI.html" class="card-link">Generative AI</a></li>
+                <li><a href="VectorSearch.html" class="card-link">Vector Search</a></li>
+            </ul>
+        </div>
+    </div>
+                    </td>
+                    <td class="padd">
+                          <div class="card">
+        <div class="card-content">
+                        <ul>
+                            <li>                                <a href= "Machine Learning.html" class="card-link">Machine Learning </a>                            </li>
+                            <li>                               <a href= "DeepLearning.html" class="card-link">Deep Learning </a>                                                   </li>
+                        </ul>
+                    </div>    </div>
+
+                    </td>
+                    <td class="padd">
+                        <a href= "Python.html" class="card-link">
+                             <div class="card"> <div class="card-content"> Python
+                            </div>    </div>
+                    </a>
+        </td>
+                    <td class="padd">
+                         <a href= "SQL.html" class="card-link">
+                            <div class="card"> <div class="card-content"> Popular SQL Problems
+                             </div></div>
+                        </a>
+                    </td>
+                    <td class="padd">
+                        <a href ="GoodArticles.html" class="card-link">
+                            <div class="card"> <div class="card-content"> Good Articles
+                            </div></div>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <table border="2" style="text-align:center">
+    <tr>
+        <th>            JavaScript        </th>
+        <th>            Full Stack Development        </th>
+        <th>            OOPS        </th>
+        <th>             General Information for Developers        </th>
+        <th>        Data Science</th>
+        <th>        HTML </th>
+        <th>        Research Papers </th>
+    </tr>
+    <tr>
+            <td>
+                <a href ="JavascriptMaterials.html" class="card-link">
+                <div class="card"><div class="card-content"> JavaScript Materials
+                </div> </div>
+                </a>
+            </td>
+            <td>
+                 <a href= "Full Stack Development.html" class="card-link">
+                <div class="card"><div class="card-content" style="text-align:center">  Tips
+                </div>  </div>
+                 </a>
+            </td>
+            <td>
+                <a href= "50 OOPs Interview QA.pdf" class="card-link">
+                 <div class="card" style="text-align:center"><div class="card-content">OOPs Interview QA
+                     </div></div>
+                </a>
+
+             </td>
+            <td>
+                <a href= "GeneralInfoforDevelopers.html" class="card-link">
+                <div class="card"><div class="card-content" style="text-align:center">   Most used Git commands
+                </div>  </div>
+
+                </a>
+            </td>
+        <td>
+            <a href="Data Science.html" class="card-link">
+                <div class="card"><div class="card-content">Data Science Page <br />
+                </div></div>
+        </a>
+        <td>
+        <a href= "HTML Tips.pdf" class="card-link">
+            <div class="card"><div class="card-content">HTML Tips
+            </div></div>
+            </a>
+    </td>
+        <td>
+            <a href="Research Papers.html" class="card-link">
+            <div class="card">        <div class="card-content">   Research Papers
+            </div>    </div>
+            </a>
+        </td>
+    </tr>
+            <tr>
+                <td>
+                     <a href="DataEngineeringTerms.html" class="card-link">
+                        <div class="card">        <div class="card-content">
+                            Data Engineering
+                        </div>    </div>
+                </td>
+                <td>
+                     <a href="MyWorks.html" class="card-link">
+                        <div class="card">        <div class="card-content">
+                            My Works
+                        </div>    </div>
+                </td>
+            </tr>
+</table>
+         <a href="" target="_blank" onclick="window.open(this.href, '_blank'); return false;">LinkedIn Links </a>
+
+        <!--
+        <br /><br /><br />
+        <a href="https://www.dictionary.com/e/word-of-the-day/"> Word of the day </a>
+        <br /><br />
+        <a href="https://login.personifyhealth.com/"> Personify Health </a>
+        <br /><br />
+        <a href="https://chatgpt.com/"> ChatGPT </a>
+        <br /><br />
+        <a href="https://digitalpolicy-dev.azurewebsites.net/Login"> Data Generation </a>
+        <br /><br />
+        <a href="https://app.slack.com/client/T06KT7N8ST0/D06L2JCKBCL"> Telcron </a>
+        <br /><br />
+        <a href="https://mail.google.com/mail/u/0/#inbox"> madhurasm Gmail </a>
+         <br /><br />
+        <a href="https://mail.google.com/mail/u/1/#inbox"> madhurask Gmail </a>   -->
+        <br /><br />
+        <br />
+<table border="2" style="text-align:center">
+    <tr>
+        <td style="padding: 20px;">      <a href="https://www.dictionary.com/e/word-of-the-day/">  <div class="card">
+        <div class="card-content">  Word of the day </div>
+    </div> </a></td>
+        <td style="padding: 20px;text-align:center">
+            <a href="https://libgen.is/" class="card-link" target="_blank" >
+                <div class="card" >
+                <div class="card-content" style="text-align:center">         Libgen <br />Download pdf books    </div>
+                </div> </a>
+            <br />
+
+            <a href="https://www.pdf2go.com/epub-to-pdf" class="card-link" target="_blank" >
+                <div class="card" >
+
+               <li> <div class="card-content" style="text-align:left">         Convert  epub to pdf  </div>  </li>
+            <a href="https://convertio.co/mobi-pdf/" class="card-link" target="_blank" >
+         <li><div class="card-content" style="text-align:left">         Convert    mobi to pdf  </div>  </li>
+
+                <a href="https://convertio.co/azw3-pdf/" class="card-link" target="_blank" >
+                  <li>    <div class="card-content" style="text-align:left">         Convert  azw3 to pdf  </div> </li>
+            </div> </a>
+        </td>
+        <td style="padding: 20px; style=">   <a href="https://chatgpt.com/" class="card-link">  <div class="card" >
+        <div class="card-content"style="text-align:center">        ChatGPT </div>
+    </div>   </a>   </td>
+        <td style="padding: 20px;">   <a href="https://digitalpolicy-dev.azurewebsites.net/Login"> <div class="card">
+        <div class="card-content" style="text-align:center">         Data Generation </div>
+    </div> </a></td>
+        <td style="padding: 20px;">    <a href="https://app.slack.com/client/T06KT7N8ST0/D06L2JCKBCL" target= _blank>  <div class="card">
+        <div class="card-content">        Telcron     <br />
+            <a href="https://webmail.telcronllc.com/" target= _blank> Telcron Webmail  </a> <br />
+        madhuram@telcronllc.com </div>
+    </div> </a></td>
+        <td style="padding: 20px;">
+            <div class="card">        <div class="card-content">
+              <a href="https://mail.google.com/mail/u/0/#inbox" > madhurasm Gmail </a>
+             </div>    </div>
+        </td>
+         <td style="padding: 20px;">
+             <div class="card">        <div class="card-content">
+                <a href="https://mail.google.com/mail/u/1/#inbox"> madhurask Gmail </a>
+         </div>    </div>
+         </td>
+    </tr>
+    <tr>
+         <td style="padding: 20px;">     <div class="card">        <div class="card-content">
+             <a href="https://search.hudsonlibrary.org/MyAccount/Home" target= _blank> Hudson Library </a><br />
+             Sangmesh - 28080012436622 <br />
+             Poorvi - 28080012436614
+          </div>    </div>
+         </td>
+          <td style="padding: 20px;">   <div class="card">        <div class="card-content">
+              <a href="https://encore.fallslibrary.org/iii/cas/login?service=https%3A%2F%2Fencore.fallslibrary.org%3A443%2Fiii%2Fencore%2Fj_acegi_cas_security_check" target= _blank> Cuyahoga Falls Library </a><br />
+          Sangmesh - PTMPL010967990 <br />
+Madhura - PTMPL010966323<br />
+Poorvi - 	PTMPL010966307 <br />
+ </div>    </div>
+         </td>
+        <td>
+            <div class="card">        <div class="card-content">
+            <b>TechPundits </b><br />
+            <a href ="https://dev.azure.com/techpunditsinc/Donegal/_sprints/taskboard/Donegal%20Team/Donegal/Sprint%204" target= _blank>  Sprint 04 </a><br /> <br />
+          <b>  Repos </b>
+            <a href ="https://dev.azure.com/techpunditsinc/Donegal/_git/MLRagDemo">  MLRagDemo  </a> <br />
+            <a href ="https://dev.azure.com/techpunditsinc/Donegal/_git/PolicyPulse">  PolicyPulse  </a> <br />
+            <a href ="https://dev.azure.com/techpunditsinc/Donegal/_git/MLRagNet">  MLRagNet  </a> <br />
+             </div>    </div>
+        </td>
+        <td> <a href = "https://app.pluralsight.com/id" target= _blank>
+            <div class="card">        <div class="card-content">
+           PluralSight  <br />
+            madhura@techpunditsinc.com
+             </div>    </div></a>
+        </td>
+    </tr>
+</table>
+
+</form>
+<br />
+<br />
+<form>
+    <input id="btn" type ="button" onclick="printHello1()" value="Hello" style="color:blue">
+</form>
+<script>
+    function printHello1(){
+    if (document.getElementById("btn").value == "Hi Madhura")
+        document.getElementById("btn").value = "Hello"
+    else
+        if (document.getElementById("btn").value == "Hello")
+            document.getElementById("btn").value = "Hi Madhura"
+}
+</script>
+</body>
+</html>

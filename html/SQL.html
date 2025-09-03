@@ -1,0 +1,328 @@
+﻿
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head >
+    <meta http-equiv="refresh"> <!--  content="20" -- refreshes the page after every 20 seconds -->
+
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <title></title>
+    <script src="script1.js" defer></script>
+</head>
+<body>
+
+<a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+
+<div class="wid">
+
+    <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+    <ul>
+    <li> <a href="#SQL Problems"> 5  Popular SQL Problems for Data Science Interviews </a></li>
+        <li> <a href="#MasterSQL"> Master SQL in 30 Days!</a></li>
+        <li><a href="#SQLQueryLogicalOrder"> SQL Query Logical Order </a></li>
+         <li> <a href="#ImpConcepts"> Important Backend Concepts for Interview</a></li>
+        <li> <a href="#SQLInterviewQuestions"> SQLInterviewQuestions </a></li>
+    </ul>
+    <h2 class="h2style" id="SQL Problems">5  Popular SQL Problems for Data Science Interviews</h2>
+    <form id="form1" >
+    <!-- input type="file" multiple>
+
+        <video poster="C:\Users\Sangmesh\Desktop\WA pics\Camcorder.jpg"> </video -->
+
+    <input type="date"  id="startDate"> <input type="date"  id="endDate">
+         <input type="button"  id="btnDate" name="Date" value="Date" onclick="getDate()"><br />
+         <label id="dateLabel"></label> <!-- Label to display the selected date -->
+
+       <script>
+        function getDate(){
+            // Get start and end date values
+            let start = document.getElementById('startDate').value;
+            let end = document.getElementById('endDate').value;
+            const dateLabel = document.getElementById('dateLabel');
+
+            // Check if both dates are selected
+            if (!start || !end) {
+                dateLabel.textContent = "Please select both dates.";
+                return;
+            }
+
+            // Parse the dates
+            const sDate = new Date(start);
+            const eDate = new Date(end);
+
+            // Check if start date is after end date
+            if (sDate > eDate) {
+                dateLabel.textContent = "Start date cannot be after end date.";
+            } else {
+                // Calculate difference in days
+                const diffTime = Math.abs(eDate - sDate);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                // Display the dates and the duration
+                dateLabel.textContent = `Duration: ${diffDays} day(s).`;
+            }
+        }
+    </script>
+
+          <p class="QCol"> <b>Problem 1</b>
+                You have a sales table with columns: sale_id, sale_date, store_id, and amount. <br />
+                Write a query to calculate the running total of sales for each store ordered by date. <br /><br />
+        </p>
+          <i class="col"> Answer 1 </i>  <br />
+              <div class="a">select sale_id, sale_date, store_id, amount, <br /> </div>
+                <div class="b">sum(amount) over (  </div>
+                <div class="c"> partition by store_id, <br /> </div>
+                <div class="c">     order by sale date)   as running_total </div>
+                <div class="a">from sales  <br /> </div>
+               <div class="b">order by store_id, sale date<br /> </div>
+            
+            <hr />
+            <p class="QCol"> <b>Problem 2 </b><br />                
+                You have an employees table with columns: employee_id, manager_id, and salary.<br />
+                Write a query to calculate the total salary expense for each manager, including their direct reports.<br /><br /> 
+            </p>
+                <i class="col"> Answer 2 </i>
+                <div class="a">select e.manager_id, <br /> </div>
+                  <div class="b">sum(e.salary) as total_salary_expense</div>
+                  <div class="a">from employees e <br /> </div>
+                 <div class="b">group by e.manager_id;<br /> </div>
+            
+            <hr />
+            <p class="QCol"> <b>Problem 3 </b><br />
+
+               You have a departments table with columns: department_id and parent_department_id.<br />
+                Write a query to find all sub-departments under a given department.<br /><br />
+            </p>
+
+            <i class="col"> Answer 3 </i> 
+                <div class="a">With recursive SubDepartments as ( <br /> </div>
+                <div class="b"> select department_id, parent_department_id <br /> </div>
+              <div class="c">from departments <br /> </div>
+             <div class="d"> where department_id = :given_department_id <br /> </div>
+                <div class="b"> union all<br /> </div>
+                <div class="b"> select d.department_id, d.parent_department_id <br /> </div>
+                <div class="c">from departments d <br /> </div>
+                <div class="b"> inner join <br /> </div>
+                <div class="c"> SubDepartments sd<br /> </div>
+                <div class="b"> on <br /> </div>
+                <div class="c">d.parent_department_id = sd.department_id )<br /> </div>
+                <div class="a"> select department_id<br /> </div>
+                <div class="b">from SubDepartments <br /> </div>
+            
+            <hr />
+            <p class="QCol"> <b>Problem 4 </b><br />
+                You have a user_data table with a user_info column containing json data.<br />
+                Write a query to extract the email field and count users by their country. <br /><br /> 
+            </p>
+
+            <i class="col"> Answer 4 </i>
+                <div class="a">select user_info->>'email' as email, user_info->>'country' as country, count(*) as user_count  <br /> </div>
+              <div class="b">from user_data<br /> </div>
+             <div class="c">group by user_info->>'country', user_info->>'email' ;<br /> </div>
+            
+            <hr />
+            <p class="QCol"> <b >Problem 5 </b><br />
+                You have a sales table with columns: store_id, sale_date, and amount.<br />
+                Write a query to show the total sales for each store, with separate columns for each month.<br /><br />
+            </p>
+            <i class="col"> Answer 5 </i>
+                <div class="a">select store_id,   <br /> </div>
+                    <div class="b">sum(case when extract(month from sale_date = 1 then amount else 0 end) as January,</div>
+                    <div class="b">sum(case when extract(month from sale_date = 2 then amount else 0 end) as February,</div>                
+                    <div class="b">sum(case when extract(month from sale_date = 3 then amount else 0 end) as March,</div>
+                    <div class="b">sum(case when extract(month from sale_date = 4 then amount else 0 end) as April,</div>                
+                    <div class="b">sum(case when extract(month from sale_date = 5 then amount else 0 end) as May,</div>
+                    <div class="b">sum(case when extract(month from sale_date = 6 then amount else 0 end) as June,</div>                
+                    <div class="b">sum(case when extract(month from sale_date = 7 then amount else 0 end) as July,</div>
+                    <div class="b">sum(case when extract(month from sale_date = 8 then amount else 0 end) as August,</div>                
+                    <div class="b">sum(case when extract(month from sale_date = 9 then amount else 0 end) as September,</div>
+                    <div class="b">sum(case when extract(month from sale_date = 10 then amount else 0 end) as October,</div>                
+                    <div class="b">sum(case when extract(month from sale_date = 11 then amount else 0 end) as November,</div>
+                    <div class="b">sum(case when extract(month from sale_date = 12 then amount else 0 end) as December</div>                
+                 <div class="a">from sales<br /> </div>
+                <div class="b">group by store_id;<br /> </div>         
+        <p style="text-align:center">
+        <a href="#Top" style="color: green;">Back to top</a> <br />
+        <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+    </p>
+<hr />
+       <h2 id="MasterSQL" class="txtDefCol"> Master SQL in 30 Days!</h2>
+        <p  class="txtDefCol">
+            [<i> Resource: LinkedIn </i>]<br />
+            SQL is the backbone of data analysis and one of the most sought-after skills for data professionals. But how do you start or level up your expertise systematically?<br />
+            Here’s a 30-day SQL learning roadmap that I recently came across, covering everything from the basics to advanced topics and optimization techniques. Whether you're a beginner or an experienced analyst, this structured plan can help solidify your knowledge:
+        </p>
+<ol class="bolds">
+    <li>👉 Stage 1: SQL for Data Analysis (Foundations)</li>
+    <li>👉 Stage 2: Intermediate SQL</li>
+    <li>👉 Stage 3: Advanced SQL (Stored Procedures, ACID Properties)</li>
+    <li>👉 Stage 4: Advanced Data Analysis Techniques (Window Functions, CTEs, Pivots)</li>
+    <li>👉 Stage 5: Best Practices & Query Optimization</li>
+</ol>
+<!-- panel class="txtDefCol" -->
+    💡 My personal favorite? Window Functions and Query Optimization – game-changers for scaling your queries and gaining deeper insights.
+    For those who are starting or want to brush up their SQL, this roadmap could be a great guide. 
+    🔑 Pro tip: SQL is not just about writing queries – it’s about storytelling with data. Focus on using SQL to deliver clear, actionable insights.
+<!-- /panel -->
+        
+<img src="MasterSQLin30Days.jpeg" width="600" height="600"/>    
+    <p style="text-align:center">         <a href="#Top" style="color: green;">Back to top</a> <br />        <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />  </p>        <hr />
+        <h2 id="SQLQueryLogicalOrder"> SQL Query Logical Order </h2>
+        Visualizing a SQL query <br />
+SQL statements are executed by the database system in several steps, including:<br />
+- Parsing the SQL statement and checking its validity<br />
+- Transforming the SQL into an internal representation, such as relational algebra<br />
+- Optimizing the internal representation and creating an execution plan that utilizes index information<br />
+- Executing the plan and returning the results<br />
+        <div style="text-align:center">                 <img src="SQL Query Logical Order.jpeg" width="500" height="600" />            </div>
+<p style="text-align:center">         <a href="#Top" style="color: green;">Back to top</a> <br />        <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />  </p>        <hr />
+        <h2 id="ImpConcepts"> Important Backend Concepts for Interview</h2>
+        <a href ="Important Backend Concepts for Interview.pdf"> Important Backend Concepts for Interview</a>
+        <p style="text-align:center">
+        <a href="#Top" style="color: green;">Back to top</a> <br />
+       <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />
+    </p>
+        <a href ="https://www.linkedin.com/posts/vishal-singh-b3a1a9113_sql-activity-7295268027745415169-Lxev?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAserdoBrWTJ_GT-n7tBmRXeigaawSekO2M" style="text-align: left; display: block;"> SQL </a>
+<p>
+    SQL (Structured Query Language) is the key to managing and analyzing data efficiently. Whether you’re retrieving records, updating tables, or performing complex queries, SQL is a must-have skill for data professionals!<br />
+
+🔹 Why Learn SQL?<br />
+✅ Query large datasets with ease 📊<br />
+✅ Extract valuable insights 🔎<br />
+✅ Manage and manipulate databases efficiently ⚙️<br />
+✅ Essential for data analysis, engineering, and development 💡<br />
+<br />
+🔹 Key SQL Commands<br />
+🔹 SELECT – Retrieve data from a table<br />
+🔹 INSERT – Add new records<br />
+🔹 UPDATE – Modify existing data<br />
+🔹 DELETE – Remove records<br />
+🔹 JOIN – Combine data from multiple tables<br />
+
+SQL is widely used in industries like finance, healthcare, and e-commerce to handle vast amounts of data. Mastering it opens doors to roles in data science, analytics, and backend development! 🚀
+</p>
+
+        <p style="text-align:center">         <a href="#Top" style="color: green;">Back to top</a> <br />
+            <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />  </p>        <hr />
+        <h2 id="SQLInterviewQuestions"> SQL Interview Questions</h2>
+<ul>
+ <li>What is the  difference between Copying and Referencing a table? <br />
+Copying a table: Means you are creating an exact copy of your existing table with all applied steps.Both the tables are independent of each other. <br />
+
+Referencing a table: Means you are creating an exact copy of your existing table but the referenced table will be dependent on the original table. <br /></li>
+
+ <li> <i>What is Cardinality and types?</i> <br />
+Cardinality: Means relationship between two tables in a data  model <br />
+        Types:
+<ol>
+    <li> One to One </li>
+    <li> One to Many</li>
+     <li>Many to Many </li>
+</ol>
+relationship between two tables <br />
+ </li>
+ <li> <i>What is the  difference between Sum( )  and Sumx( ) function?  </i><br />
+Sum ( ) : Sum ( ) is just sumarizing values of one single column. <br />
+Syntax: Sum(Expression) <br />
+Sumx ( ) : Sumx( ) is the sum of expression for each row in a table. <br />
+Syntax: Sumx(Table, Expression)	 <br />
+Example: If you have two columns named Revenue and Cost in the Sales table and you want calculate Total reveune and Net profit :  <br />
+Total revenue: Sum(Sales[Revenue]) <br />
+Return a Total revenue  <br />
+Net profit: Sumx(Sales, Sales[Revenue] - Sales[Cost])  <br />
+Return Net profit <br />
+</li>
+ <li> <i>Can you explain Decompostion tree AI visual? </i> <br />  </li>
+Let’s you visualize data across different dimension. <br />
+  It automatically aggregates data & enables drilling down into our dimension in any order <br />
+Excellent tool for root cause analysis. <br />
+1.Let’s you visualize data across different dimension. <br />
+
+2. It automatically aggreats data & enable drilling down into our dimension in any order <br />
+
+3. Excellent tool for root cause analysis. <br />
+</li>
+ <li> <i>What is the difference Pro, Premium and Premium Per User License?  </i><br /> </li>
+Pro license: It is a user based lincense.  <br />
+Power Bi developer need a Pro lincense. It supports model size 1 GB. <br />
+
+Premium License: It is a capacity based lincense.organisation use this lincense. It supports model size 400 GB.  <br />
+
+Premium Per User License: It aslo a user  <br />
+based license use some of the advance features. It supports model size 100 GB. <br />
+
+</li>
+ <li> <i>What is the  difference between Related ( ) and LookupValue ( ) function ? </i> <br /> </li>
+Related ( ): The Related function requires that a regular relationship exists between the current table and the table with related information. <br />
+
+LookupValue ( ): Lookup value function works even when there is no relationship exists between the current table and table with the related information and hence we can retrieve the information from non-related table.
+ <br /></li>
+ <li> <i>What is Query folding?  </i><br /> </li>
+
+Query folding: Conversion of M language to the native language of the source and the transformation happeing on the source side directly instead of our local machine. As a result, the performance of our model increase.
+ <br />
+Example: If you pull  data from database, it will convert  M language into the native language of the SQL server.
+    </ul>
+ <br />
+          <p style="text-align:center">         <a href="#Top" style="color: green;">Back to top</a> <br />        <a id="home-link" href="" style="text-align: center; display: block;"> Home </a> <br />  </p>        <hr />
+        <input type = "file" id="fileInput" capture="user" accept=".pdf" multiple>
+        <div id="fileLinkContainer"></div>
+<a href ="10 Complex SQL Queries.pdf" target="_blank">  10 Complex SQL Queries </a><br />
+
+           <a href ="SQL Optimization.pdf" target="_blank">  SQL Optimization</a> <br />
+        <a href ="50 SQL Interview Questions.pdf"  target="_blank"> 50 SQL Interview Questions  </a><br />
+<a href ="Window Functions in SQL.pdf"  target="_blank"> Window Functions in SQL</a><br />
+         <a href ="SQL Pocket Dictionary.pdf" target="_blank"> SQL Pocket Dictionary </a><br />
+         <a href ="SQL Queries.pdf" target="_blank">  SQL Queries</a><br />
+         <a href ="SQL.pdf" target="_blank"> SQL </a><br />
+         <a href ="SQL1.pdf" target="_blank">SQL 1  </a><br />
+         <a href ="SQL2.pdf" target="_blank">  SQL</a><br />
+         <a href ="Zero to Adv SQL.pdf" target="_blank">  Zero to Adv SQL</a><br />
+<a href ="Top 25 SQL Interview Questions.pdf" target="_blank"> Top 25 SQL Interview Questions </a><br />
+<a href="Common Table Expressions.pdf" target="_blank">Common Table Expressions</a><br />
+<a href="SQL Interview Qs.pdf" target="_blank">SQL Interview Qs</a><br />
+<a href="SQL Optimization.pdf" target="_blank">SQL Optimization</a><br />
+<a href="SQL Pocket Dictionary.pdf" target="_blank">SQL Pocket Dictionary</a><br />
+<a href="SQL Queries.pdf" target="_blank">SQL Queries</a><br />
+<a href="SQL.pdf" target="_blank">SQL</a><br />
+<a href="SQL1.pdf" target="_blank">SQL1</a><br />
+<a href="SQL2.pdf" target="_blank">SQL2</a><br />
+<a href="Top 25 SQL Interview Questions.pdf" target="_blank">Top 25 SQL Interview Questions</a><br />
+<a href="Data Cleaning using SQL.pdf" target="_blank">Data Cleaning using SQL</a><br />
+<a href="Advanced SQL Concepts.pdf" target="_blank">Advanced SQL Concepts</a><br />
+
+<a href="SQL Scenario-Based Interview QA.pdf" target="_blank">SQL Scenario-Based Interview QA</a><br />
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const files = event.target.files;
+            const container = document.getElementById('fileLinkContainer');
+
+            for (let file of files) {
+                const fileURL = URL.createObjectURL(file);
+
+                // Create a hyperlink
+                const link = document.createElement('a');
+                link.href = fileURL;
+                link.textContent = `Open ${file.name}`;
+                link.target = "_blank";
+
+                // Add the link to a new line
+                const lineBreak = document.createElement('br');
+                container.appendChild(link);
+                container.appendChild(lineBreak);
+            }
+
+            // Remove and recreate the file input to clear the selected files
+            const oldInput = document.getElementById('fileInput');
+            const newInput = oldInput.cloneNode();
+            oldInput.parentNode.replaceChild(newInput, oldInput);
+            newInput.addEventListener('change', arguments.callee);
+        });
+    </script>
+ </form>
+</div>
+</body>
+</html>
